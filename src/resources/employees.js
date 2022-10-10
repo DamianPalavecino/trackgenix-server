@@ -32,4 +32,22 @@ router.post('/add', (req, res) => {
   });
 });
 
+router.delete('/delete/:id', (req, res) => {
+  const employeeId = req.params.id;
+  const filteredEmployees = employees.filter(
+    (employee) => employee.id !== employeeId,
+  );
+  fs.writeFile(
+    'src/data/employees.json',
+    JSON.stringify(filteredEmployees),
+    (err) => {
+      if (err) {
+        res.send('Cannot delete employee');
+      } else {
+        res.send('Employee deleted');
+      }
+    },
+  );
+});
+
 module.exports = router;
