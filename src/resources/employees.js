@@ -50,4 +50,24 @@ router.delete('/delete/:id', (req, res) => {
   );
 });
 
+router.put('/change/:id', (req, res) => {
+  const employeeId = req.params.id;
+  const newEmployee = req.body;
+  const foundEmployee = employees.find(
+    (employee) => employee.id === employeeId,
+  );
+  Object.keys(foundEmployee).forEach((key) => {
+    if (foundEmployee[key] !== newEmployee[key]) {
+      foundEmployee[key] = newEmployee[key];
+    }
+  });
+  fs.writeFile('src/data/employees.json', JSON.stringify(employees), (err) => {
+    if (err) {
+      res.send('Cannot change employee');
+    } else {
+      res.send('Employee changed');
+    }
+  });
+});
+
 module.exports = router;
