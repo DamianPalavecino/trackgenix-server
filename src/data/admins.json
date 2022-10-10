@@ -1,6 +1,26 @@
-{
-    "name": "esteban",
-    "lastName": "frare",
-    "email": "esteban.frare@radiumrocket.com"
-
-}
+[
+  {
+    "id": "1",
+    "firstName": "Rodney",
+    "lastName": "Saltrese",
+    "email": "rsaltrese0@umn.edu"
+  },
+  {
+    "id": "2",
+    "firstName": "Gardy",
+    "lastName": "Grombridge",
+    "email": "ggrombridge1@ezinearticles.com"
+  },
+  {
+    "id": "3",
+    "firstName": "Tabor",
+    "lastName": "Mahony",
+    "email": "tmahony2@loc.gov"
+  },
+  {
+    "id": "4",
+    "firstName": "Margot",
+    "lastName": "Farmiloe",
+    "email": "mfarmiloe3@examiner.com"
+  }
+]
