@@ -38,4 +38,17 @@ router.delete('/delete/:id', (req, res) => {
     }
   });
 });
+router.put('/edit/:id', (req, res) => {
+  const taskId = req.params.id;
+  const editedTask = req.body;
+  const filteredTasks = tasks.filter((task) => task.id !== taskId);
+  filteredTasks.push(editedTask);
+  fs.writeFile('src/data/tasks.json', JSON.stringify(filteredTasks), (err) => {
+    if (err) {
+      res.send('Cannot edit task.');
+    } else {
+      res.send('Task edited.');
+    }
+  });
+});
 module.exports = router;
