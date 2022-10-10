@@ -1,97 +1,97 @@
 [
     {
-        "name":"google stadia",
-        "id":"83984426",
-        "password":"apgOdpXFw",
+        "name": "google stadia",
+        "id": "83984426",
+        "password": "apgOdpXFw",
         "members": [
             {
-                "name":"octabio",
-                "id":"001",
-                "role":"PM"
-                },
-            {
-                "name":"wilson",
-                "id":"002",
-                "role":"QA"
+                "name": "octabio",
+                "id": "001",
+                "role": "PM"
             },
             {
-                "name":"amy",
-                "id":"003",
-                "role":"DEV"
+                "name": "wilson",
+                "id": "002",
+                "role": "QA"
             },
             {
-                "name":"irenne",
-                "id":"006",
-                "role":"DEV"
+                "name": "amy",
+                "id": "003",
+                "role": "DEV"
             },
             {
-                "name":"rambo",
-                "id":"007",
-                "role":"TL"
+                "name": "irenne",
+                "id": "006",
+                "role": "DEV"
+            },
+            {
+                "name": "rambo",
+                "id": "007",
+                "role": "TL"
             }
         ]
     },
     {
-        "name":"BET365 web",
-        "id":"38945426",
-        "password":"aqg457pXFw",
+        "name": "BET365 web",
+        "id": "38945426",
+        "password": "aqg457pXFw",
         "members": [
             {
-                "name":"jonas",
-                "id":"034",
-                "role":"PM"
-                },
-            {
-                "name":"kateryn",
-                "id":"078",
-                "role":"QA"
+                "name": "jonas",
+                "id": "034",
+                "role": "PM"
             },
             {
-                "name":"amy",
-                "id":"003",
-                "role":"DEV"
+                "name": "kateryn",
+                "id": "078",
+                "role": "QA"
             },
             {
-                "name":"agustin",
-                "id":"042",
-                "role":"DEV"
+                "name": "amy",
+                "id": "003",
+                "role": "DEV"
             },
             {
-                "name":"micaela",
-                "id":"017",
-                "role":"TL"
+                "name": "agustin",
+                "id": "042",
+                "role": "DEV"
+            },
+            {
+                "name": "micaela",
+                "id": "017",
+                "role": "TL"
             }
         ]
     },
     {
-        "name":"IBM database",
-        "id":"839qwer6",
-        "password":"ayubrpXFw",
+        "name": "IBM database",
+        "id": "839qwer6",
+        "password": "ayubrpXFw",
         "members": [
             {
-                "name":"wilson",
-                "id":"002",
-                "role":"PM"
-                },
-            {
-                "name":"raul",
-                "id":"009",
-                "role":"QA"
+                "name": "wilson",
+                "id": "002",
+                "role": "PM"
             },
             {
-                "name":"luis",
-                "id":"003",
-                "role":"DEV"
+                "name": "raul",
+                "id": "009",
+                "role": "QA"
             },
             {
-                "name":"irenne",
-                "id":"006",
-                "role":"DEV"
+                "name": "luis",
+                "id": "003",
+                "role": "DEV"
             },
             {
-                "name":"chumbo",
-                "id":"012",
-                "role":"TL"
+                "name": "irenne",
+                "id": "006",
+                "role": "DEV"
+            },
+            {
+                "name": "chumbo",
+                "id": "012",
+                "role": "TL"
             }
         ]
     }
