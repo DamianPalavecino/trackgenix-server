@@ -24,18 +24,5 @@
         "postalCode": "11000",
         "email": "rewwe@furl.net",
         "password": "pepepepe2"
-    },
-    {
-        "id": "3",
-        "firstName": "Berta",
-        "lastName": "Gomez",
-        "dni": "23232",
-        "birthDate": "02/11/1995",
-        "telephone": "789798",
-        "address": "asdkljasd 1038",
-        "region": "dfsdfsdfs 44",
-        "postalCode": "11000",
-        "email": "rewwe@furl.net",
-        "password": "pepepepe2"
     }
 ]
