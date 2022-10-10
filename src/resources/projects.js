@@ -29,4 +29,17 @@ router.post('/add', (req, res) => {
     }
   });
 });
+
+router.delete('/delete/:id', (req, res) => {
+  const projectId = req.params.id;
+  const filteredProjects = projects.filter((project) => project.id !== projectId);
+  fs.writeFile('src/data/projects.json', JSON.stringify(filteredProjects), (err) => {
+    if (err) {
+      res.send('Cannot delete project');
+    } else {
+      res.send('Project deleted');
+    }
+  });
+});
+
 module.exports = router;
