@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const projects = require('../data/projects.json');
 
 const router = express.Router();
@@ -17,4 +18,15 @@ router.get('/getById/:id', (req, res) => {
   }
 });
 
+router.post('/add', (req, res) => {
+  const newProject = req.body;
+  projects.push(newProject);
+  fs.writeFile('src/data/projects.json', JSON.stringify(projects), (err) => {
+    if (err) {
+      res.send('cannot save project');
+    } else {
+      res.send('project created');
+    }
+  });
+});
 module.exports = router;
