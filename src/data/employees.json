@@ -1,28 +1,41 @@
 [
     {
-      "id": "1",
-      "firstName": "Martie",
-      "lastName": "Antrack",
-      "dni": "83984426",
-      "birthDate": "02/24/1955",
-      "telephone": "4964167014",
-      "address": "Chuminga 1040",
-      "region": "Shuanghe",
-      "postalCode": "11000",
-      "email": "mantrack0@furl.net",
-      "password": "apgOdpXFw"
+        "id": "1",
+        "firstName": "Martie",
+        "lastName": "Antrack",
+        "dni": "83984426",
+        "birthDate": "02/24/1955",
+        "telephone": "4964167014",
+        "address": "Chuminga 1040",
+        "region": "Shuanghe",
+        "postalCode": "11000",
+        "email": "mantrack0@furl.net",
+        "password": "apgOdpXFw"
     },
     {
-      "id": "2",
-      "firstName": "Ricardo",
-      "lastName": "Gomez",
-      "dni": "23232",
-      "birthDate": "02/11/1995",
-      "telephone": "789798",
-      "address": "asdkljasd 1038",
-      "region": "dfsdfsdfs 44",
-      "postalCode": "11000",
-      "email": "rewwe@furl.net",
-      "password": "pepepepe2"
+        "id": "2",
+        "firstName": "Ricardo",
+        "lastName": "Gomez",
+        "dni": "23232",
+        "birthDate": "02/11/1995",
+        "telephone": "789798",
+        "address": "asdkljasd 1038",
+        "region": "dfsdfsdfs 44",
+        "postalCode": "11000",
+        "email": "rewwe@furl.net",
+        "password": "pepepepe2"
+    },
+    {
+        "id": "3",
+        "firstName": "Berta",
+        "lastName": "Gomez",
+        "dni": "23232",
+        "birthDate": "02/11/1995",
+        "telephone": "789798",
+        "address": "asdkljasd 1038",
+        "region": "dfsdfsdfs 44",
+        "postalCode": "11000",
+        "email": "rewwe@furl.net",
+        "password": "pepepepe2"
     }
-  ]
+]
