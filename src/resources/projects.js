@@ -42,4 +42,32 @@ router.delete('/delete/:id', (req, res) => {
   });
 });
 
+router.put('/change/:id', (req, res) => {
+  const projectId = req.params.id;
+  const newProject = req.body;
+  const foundProject = projects.find(
+    (project) => project.id === projectId,
+  );
+  const i = projects.findIndex((project) => project.id === projectId);
+  if (newProject.name) {
+    foundProject.name = newProject.name;
+  }
+  if (newProject.password) {
+    foundProject.password = newProject.password;
+  }
+  if (newProject.members) {
+    foundProject.members = newProject.members;
+  }
+  projects[i] = foundProject;
+  fs.writeFile('src/data/projects.json', JSON.stringify(projects), (err) => {
+    if (err) {
+      res.send('Cannot change project');
+    } else {
+      res.send('Project changed');
+    }
+  });
+});
+
 module.exports = router;
+
+// ordenar el json= shift + alt +f
