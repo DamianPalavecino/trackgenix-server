@@ -16,6 +16,24 @@ router.get('/getById/:id', (req, res) => {
     res.send('Task not found.');
   }
 });
+router.get('/filterByProject/:project', (req, res) => {
+  const taskProject = req.params.project;
+  const foundTasks = tasks.filter((task) => task.project === taskProject);
+  if (foundTasks) {
+    res.send(foundTasks);
+  } else {
+    res.send('No task was found in that project.');
+  }
+});
+router.get('/filterByStatus/:status', (req, res) => {
+  const taskStatus = req.params.status;
+  const foundTasks = tasks.filter((task) => task.status === taskStatus);
+  if (foundTasks) {
+    res.send(foundTasks);
+  } else {
+    res.send('No tas was found with that status.');
+  }
+});
 router.post('/add', (req, res) => {
   const newTask = req.body;
   tasks.push(newTask);
@@ -27,7 +45,7 @@ router.post('/add', (req, res) => {
     }
   });
 });
-router.delete('/delete/:id', (req, res) => {
+router.delete('/deleteById/:id', (req, res) => {
   const taskId = req.params.id;
   const filteredTask = tasks.filter((task) => task.id !== taskId);
   fs.writeFile('src/data/tasks.json', JSON.stringify(filteredTask), (err) => {
@@ -38,12 +56,17 @@ router.delete('/delete/:id', (req, res) => {
     }
   });
 });
-router.put('/edit/:id', (req, res) => {
+router.put('/editById/:id', (req, res) => {
   const taskId = req.params.id;
   const editedTask = req.body;
-  const filteredTasks = tasks.filter((task) => task.id !== taskId);
-  filteredTasks.push(editedTask);
-  fs.writeFile('src/data/tasks.json', JSON.stringify(filteredTasks), (err) => {
+  const foundTask = tasks.find((task) => task.id === taskId);
+  const keys = Object.keys(foundTask);
+  for (let i = 0; i < keys.length; i += 1) {
+    if (foundTask.key !== 'id') foundTask.key = editedTask.key;
+  }
+  const i = tasks.findIndex((task) => task.id === taskId);
+  tasks[i] = editedTask;
+  fs.writeFile('src/data/tasks.json', JSON.stringify(tasks), (err) => {
     if (err) {
       res.send('Cannot edit task.');
     } else {
