@@ -1,1 +1,84 @@
-[{"id":"1","firstName":"Martie","lastName":"Antrack","dni":"83984426","birthDate":"02/24/1955","telephone":"4964167014","address":"Chuminga 1040","region":"Shuanghe","postalCode":"11000","email":"mantrack0@furl.net","password":"apgOdpXFw","proyects":[{"name":"Mc Donalds","role":"developer"},{"name":"Burger King","role":"QA"}]},{"id":"2","firstName":"Juan","lastName":"González","dni":"83984426","birthDate":"02/05/98","telephone":"5566665","address":"Daleee 1040","region":"Porfaa","postalCode":"111222","email":"vamoaver@jaaa.net","password":"dsklhfjdsf8","proyects":[{"name":"Mc Donalds","role":"PM"},{"name":"Burger King","role":"QA"}]}]
+[
+  {
+    "id": "1",
+    "firstName": "Martie",
+    "lastName": "Antrack",
+    "dni": "3",
+    "birthDate": "02/24/1955",
+    "telephone": "4964167014",
+    "address": "Chuminga 1040",
+    "region": "Shuanghe",
+    "postalCode": "11000",
+    "email": "mantrack0@furl.net",
+    "password": "apgOdpXFw",
+    "projects": [
+      {
+        "projectId": "23",
+        "name": "Mc Donalds",
+        "role": "developer",
+        "rate": 90,
+        "hours": 3
+      },
+      {
+        "projectId": "24",
+        "name": "Burger King",
+        "role": "QA",
+        "rate": 80,
+        "hours": 3
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "firstName": "Pancho",
+    "lastName": "Ramirez",
+    "dni": "54652485",
+    "birthDate": "02/05/98",
+    "telephone": "5566665",
+    "address": "Daleee 1040",
+    "region": "Porfaa",
+    "postalCode": "111222",
+    "email": "vamoaver@jaaa.net",
+    "password": "dsklhfjdsf8",
+    "projects": [
+      {
+        "projectId": "23",
+        "name": "Mc Donalds",
+        "role": "PM",
+        "hours": 3,
+        "rate": 80
+      },
+      {
+        "projectId": "24",
+        "name": "Burger King",
+        "role": "QA",
+        "hours": 3,
+        "rate": 70
+      },
+      {
+        "projectId": "25",
+        "name": "La Pasiva",
+        "role": "QA",
+        "hours": 3,
+        "rate": 60
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "firstName": "Pedro",
+    "lastName": "Kauffman",
+    "dni": "565656",
+    "birthDate": "02/05/98",
+    "telephone": "5566665",
+    "address": "Daleee 1040",
+    "region": "Porfaa",
+    "postalCode": "111222",
+    "email": "vamoaver@jaaa.net",
+    "password": "dsklhfjdsf8",
+    "projects": [
+      { "projectId": "23", "name": "Mc Donalds", "rate": 90, "hours": 3 },
+      { "projectId": "24", "name": "Burger King", "rate": 20, "hours": 3 }
+    ]
+  }
+]
