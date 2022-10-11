@@ -12,9 +12,21 @@
     "email": "ggrombridge1@ezinearticles.com"
   },
   {
+    "id": "3",
+    "firstName": "Tabor",
+    "lastName": "Mahony",
+    "email": "tmahony2@loc.gov"
+  },
+  {
     "id": "4",
-    "firstName": "Margot",
-    "lastName": "Farmiloe",
-    "email": "mfarmiloe3@examiner.com"
+    "firstName": "Maria",
+    "lastName": "Failoe",
+    "email": "mfae3@examiner.com"
+  },
+  {
+    "id": "5",
+    "firstName": "Revkah",
+    "lastName": "Bannerman",
+    "email": "rbannerman4@quantcast.com"
   }
 ]
