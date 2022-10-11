@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "firstName": "Martie",
+        "firstName": "Marcelo",
         "lastName": "Antrack",
         "dni": "83984426",
         "birthDate": "02/24/1955",
@@ -10,10 +10,69 @@
         "region": "Shuanghe",
         "postalCode": "11000",
         "email": "mantrack0@furl.net",
-        "password": "apgOdpXFw"
+        "password": "apgOdpXFw",
+        "projects": [
+            {
+                "proyectId": "23",
+                "name": "Mc Donalds",
+                "role": "PM",
+                "hours": 3,
+                "rate": 80
+            },
+            {
+                "proyectId": "24",
+                "name": "Burger King",
+                "role": "QA",
+                "hours": 3,
+                "rate": 40
+            },
+            {
+                "proyectId": "25",
+                "name": "La Pasiva",
+                "role": "QA",
+                "hours": 3,
+                "rate": 30
+            }
+        ]
     },
     {
         "id": "2",
+        "firstName": "Martie",
+        "lastName": "Gomez",
+        "dni": "23232",
+        "birthDate": "02/11/1995",
+        "telephone": "789798",
+        "address": "asdkljasd 1038",
+        "region": "dfsdfsdfs 44",
+        "postalCode": "11000",
+        "email": "rewwe@furl.net",
+        "password": "pepepepe2",
+        "projects": [
+            {
+                "proyectId": "23",
+                "name": "Mc Donalds",
+                "role": "PM",
+                "hours": 3,
+                "rate": 80
+            },
+            {
+                "proyectId": "24",
+                "name": "Burger King",
+                "role": "QA",
+                "hours": 3,
+                "rate": 70
+            },
+            {
+                "proyectId": "25",
+                "name": "La Pasiva",
+                "role": "QA",
+                "hours": 3,
+                "rate": 60
+            }
+        ]
+    },
+    {
+        "id": "3",
         "firstName": "Ricardo",
         "lastName": "Gomez",
         "dni": "23232",
@@ -23,6 +82,29 @@
         "region": "dfsdfsdfs 44",
         "postalCode": "11000",
         "email": "rewwe@furl.net",
-        "password": "pepepepe2"
+        "password": "pepepepe2",
+        "projects": [
+            {
+                "proyectId": "23",
+                "name": "Mc Donalds",
+                "role": "PM",
+                "hours": 3,
+                "rate": 50
+            },
+            {
+                "proyectId": "24",
+                "name": "Burger King",
+                "role": "QA",
+                "hours": 3,
+                "rate": 70
+            },
+            {
+                "proyectId": "25",
+                "name": "La Pasiva",
+                "role": "QA",
+                "hours": 3,
+                "rate": 60
+            }
+        ]
     }
 ]
