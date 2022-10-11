@@ -7,17 +7,13 @@ const router = express.Router();
 router.delete('/delete/:id', (req, res) => {
   const adminId = req.params.id;
   const filteredadmins = admins.filter((admin) => admin.id !== adminId);
-  fs.writeFile(
-    'src/data/admins.json',
-    JSON.stringify(filteredadmins),
-    (err) => {
-      if (err) {
-        res.send('Cannot delete admin');
-      } else {
-        res.send('admin deleted');
-      }
-    },
-  );
+  fs.writeFile('src/data/admins.json', JSON.stringify(filteredadmins), (err) => {
+    if (err) {
+      res.send('Cannot delete admin');
+    } else {
+      res.send('admin deleted');
+    }
+  });
 });
 
 router.put('/change/:id', (req, res) => {
@@ -39,7 +35,7 @@ router.put('/change/:id', (req, res) => {
     if (err) {
       res.send('Cannot modify admin');
     } else {
-      res.send('Admin modify');
+      res.send('Admin modified');
     }
   });
 });
