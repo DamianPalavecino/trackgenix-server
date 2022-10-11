@@ -34,5 +34,11 @@
         "firstName": "Lola",
         "lastName": "Loluza",
         "email": "lololuza@ezinearticles.com"
+    },
+    {
+        "id": "6",
+        "firstName": "Roberta",
+        "lastName": "Roberts",
+        "email": "robrob@examiner.com"
     }
 ]

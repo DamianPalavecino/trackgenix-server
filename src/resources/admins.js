@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const admins = require('../data/admins.json');
 
 const router = express.Router();
@@ -15,6 +16,18 @@ router.get('/getById/:id', (req, res) => {
   } else {
     res.send('Cannot find admin');
   }
+});
+
+router.post('/add', (req, res) => {
+  const newAdmin = req.body;
+  admins.push(newAdmin);
+  fs.writeFile('src/data/admins.json', JSON.stringify(admins), (err) => {
+    if (err) {
+      res.send('Cannot add admin');
+    } else {
+      res.send('Admin created');
+    }
+  });
 });
 
 module.exports = router;
