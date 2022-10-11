@@ -42,48 +42,4 @@ router.delete('/delete/:id', (req, res) => {
   });
 });
 
-router.put('/change/:id', (req, res) => {
-  const projectId = req.params.id;
-  const newProject = req.body;
-  const foundProject = projects.find(
-    (project) => project.id === projectId,
-  );
-  const i = projects.findIndex((project) => project.id === projectId);
-  if (newProject.name) {
-    foundProject.name = newProject.name;
-  }
-  if (newProject.password) {
-    foundProject.password = newProject.password;
-  }
-  if (newProject.members) {
-    foundProject.members = newProject.members;
-  }
-  projects[i] = foundProject;
-  fs.writeFile('src/data/projects.json', JSON.stringify(projects), (err) => {
-    if (err) {
-      res.send('Cannot change project');
-    } else {
-      res.send('Project changed');
-    }
-  });
-});
-
-router.get('/getByRole/:role', (req, res) => {
-  const { role } = req.params;
-  const roleString = role;
-  const newArray = [];
-  projects.forEach((project) => {
-    project.members.forEach((members) => {
-      if (members.role === roleString) {
-        newArray.push(project);
-      }
-    });
-  });
-  if (newArray) {
-    res.send(newArray);
-  } else {
-    res.send('Role not found');
-  }
-});
-
 module.exports = router;
