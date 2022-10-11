@@ -68,6 +68,22 @@ router.put('/change/:id', (req, res) => {
   });
 });
 
-module.exports = router;
+router.get('/getByRole/:role', (req, res) => {
+  const { role } = req.params;
+  const roleString = role;
+  const newArray = [];
+  projects.forEach((project) => {
+    project.members.forEach((members) => {
+      if (members.role === roleString) {
+        newArray.push(project);
+      }
+    });
+  });
+  if (newArray) {
+    res.send(newArray);
+  } else {
+    res.send('Role not found');
+  }
+});
 
-// ordenar el json= shift + alt +f
+module.exports = router;
