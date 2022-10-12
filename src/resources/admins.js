@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.delete('/delete/:id', (req, res) => {
   const adminId = req.params.id;
-  const filteredadmins = admins.filter((admin) => admin.id !== adminId);
-  fs.writeFile('src/data/admins.json', JSON.stringify(filteredadmins), (err) => {
+  const filteredAdmins = admins.filter((admin) => admin.id !== adminId);
+  fs.writeFile('src/data/admins.json', JSON.stringify(filteredAdmins), (err) => {
     if (err) {
       res.send('Cannot delete admin');
     } else {
@@ -16,7 +16,7 @@ router.delete('/delete/:id', (req, res) => {
   });
 });
 
-router.put('/change/:id', (req, res) => {
+router.put('/edit/:id', (req, res) => {
   const adminId = req.params.id;
   const newAdmin = req.body;
   const foundAdmin = admins.find((admin) => admin.id === adminId);
