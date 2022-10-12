@@ -32,7 +32,7 @@ router.get('/filterByStatus/:status', (req, res) => {
   if (foundTasks) {
     res.send(foundTasks);
   } else {
-    res.send('No tas was found with that status.');
+    res.send('No task was found with that status.');
   }
 });
 
