@@ -18,7 +18,7 @@ router.get('/getById/:id', (req, res) => {
   }
 });
 
-router.post('/add', (req, res) => {
+router.post('/', (req, res) => {
   const newAdmin = req.body;
   admins.push(newAdmin);
   fs.writeFile('src/data/admins.json', JSON.stringify(admins), (err) => {
