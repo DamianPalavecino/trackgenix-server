@@ -12,6 +12,8 @@ router.get('/getByRate/:rate', (req, res) => {
     employee.projects.forEach((project) => {
       if (project.rate === rateNumber) {
         newArray.push(employee);
+      } else {
+        res.send('Employee does not exist');
       }
     });
   });
