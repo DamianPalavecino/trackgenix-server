@@ -4,11 +4,11 @@ const employees = require('../data/employees.json');
 
 const router = express.Router();
 
-router.get('/getAll', (req, res) => {
+router.get('/', (req, res) => {
   res.send(employees);
 });
 
-router.get('/getById/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const employeeId = req.params.id;
   const foundEmployee = employees.find(
     (employee) => employee.id === employeeId,
@@ -20,7 +20,7 @@ router.get('/getById/:id', (req, res) => {
   }
 });
 
-router.post('/add', (req, res) => {
+router.post('/', (req, res) => {
   const newEmployee = req.body;
   employees.push(newEmployee);
   fs.writeFile('src/data/employees.json', JSON.stringify(employees), (err) => {
@@ -32,7 +32,7 @@ router.post('/add', (req, res) => {
   });
 });
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const employeeId = req.params.id;
   const filteredEmployees = employees.filter(
     (employee) => employee.id !== employeeId,
