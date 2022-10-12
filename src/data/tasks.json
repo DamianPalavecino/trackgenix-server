@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
   {
     "id": "1",
@@ -28,3 +29,6 @@
     "status": "unfinished"
   }
 ]
+=======
+[{"id":"1","name":"Front-end Index","project":"Flowdesk","description":"Morbi ut quiero.","status":"finished"},{"id":"2","name":"Back-end Index","project":"Mewfivedesk","description":"Morbi ut quiero.","status":"unfinished"},{"id":"4","name":"Front-end Index","project":"Mewdesk","description":"Morbi ut quiero.","status":"unfinished"},{"id":"5","name":"Back-end Index","project":"Mewdesk","description":"Morbi ut quiero.","status":"unfinished"}]
+>>>>>>> cab96cacb0a3e456c98740f0c84880a9aace8386

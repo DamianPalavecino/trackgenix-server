@@ -17,7 +17,6 @@ router.get('/:id', (req, res) => {
     res.send('Task not found.');
   }
 });
-
 router.get('/filterByProject/:project', (req, res) => {
   const taskProject = req.params.project;
   const foundTasks = tasks.filter((task) => task.project === taskProject);
@@ -27,7 +26,6 @@ router.get('/filterByProject/:project', (req, res) => {
     res.send('No task was found in that project.');
   }
 });
-
 router.get('/filterByStatus/:status', (req, res) => {
   const taskStatus = req.params.status;
   const foundTasks = tasks.filter((task) => task.status === taskStatus);
@@ -80,5 +78,4 @@ router.put('/:id', (req, res) => {
     }
   });
 });
-
 module.exports = router;
