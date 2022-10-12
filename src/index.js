@@ -1,6 +1,7 @@
 import express from 'express';
 
 const admins = require('./data/admins.json');
+const adminsRouter = require('./resources/admins');
 
 const app = express();
 const employeeRouter = require('./resources/employees');
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.use('/employees', employeeRouter);
 
+app.use('/admins', adminsRouter);
 app.get('/', async (req, res) => {
   res.send('Hello World!');
 });
