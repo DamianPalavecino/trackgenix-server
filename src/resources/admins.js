@@ -18,17 +18,17 @@ router.delete('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const adminId = req.params.id;
-  const newadmin = req.body;
+  const newAdmin = req.body;
   const foundAdmin = admins.find((admin) => admin.id === adminId);
   const index = admins.findIndex((admin) => admin.id === adminId);
-  if (newadmin.firstName) {
-    foundAdmin.firstName = newadmin.firstName;
+  if (newAdmin.firstName) {
+    foundAdmin.firstName = newAdmin.firstName;
   }
-  if (newadmin.lastName) {
-    foundAdmin.lastName = newadmin.lastName;
+  if (newAdmin.lastName) {
+    foundAdmin.lastName = newAdmin.lastName;
   }
-  if (newadmin.email) {
-    foundAdmin.email = newadmin.email;
+  if (newAdmin.email) {
+    foundAdmin.email = newAdmin.email;
   }
   admins[index] = foundAdmin;
   fs.writeFile('src/data/admins.json', JSON.stringify(admins), (err) => {
