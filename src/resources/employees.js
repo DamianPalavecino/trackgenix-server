@@ -22,7 +22,7 @@ router.get('/getByRate/:rate', (req, res) => {
   }
 });
 
-router.put('/change/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const employeeId = req.params.id;
   const newEmployee = req.body;
   const foundEmployee = employees.find(
