@@ -4,11 +4,11 @@ const admins = require('../data/admins.json');
 
 const router = express.Router();
 
-router.get('/getAll', (req, res) => {
+router.get('/', (req, res) => {
   res.send(admins);
 });
 
-router.get('/getById/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const adminId = req.params.id;
   const adminFound = admins.find((admin) => admin.id === adminId);
   if (adminFound) {
