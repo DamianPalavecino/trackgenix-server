@@ -4,11 +4,11 @@ const projects = require('../data/projects.json');
 
 const router = express.Router();
 
-router.get('/getAll', (req, res) => {
+router.get('/', (req, res) => {
   res.send(projects);
 });
 
-router.get('/getById/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const projectId = req.params.id;
   const projectFound = projects.find((project) => project.id === projectId);
   if (projectFound) {
@@ -18,7 +18,7 @@ router.get('/getById/:id', (req, res) => {
   }
 });
 
-router.post('/add', (req, res) => {
+router.post('/', (req, res) => {
   const newProject = req.body;
   projects.push(newProject);
   fs.writeFile('src/data/projects.json', JSON.stringify(projects), (err) => {
@@ -30,7 +30,7 @@ router.post('/add', (req, res) => {
   });
 });
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const projectId = req.params.id;
   const filteredProjects = projects.filter((project) => project.id !== projectId);
   fs.writeFile('src/data/projects.json', JSON.stringify(filteredProjects), (err) => {
