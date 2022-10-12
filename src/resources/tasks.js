@@ -7,6 +7,7 @@ const tasks = require('../data/tasks.json');
 router.get('/', (req, res) => {
   res.send(tasks);
 });
+
 router.get('/:id', (req, res) => {
   const taskId = req.params.id;
   const foundTask = tasks.find((task) => task.id === taskId);
@@ -16,6 +17,7 @@ router.get('/:id', (req, res) => {
     res.send('Task not found.');
   }
 });
+
 router.get('/filterByProject/:project', (req, res) => {
   const taskProject = req.params.project;
   const foundTasks = tasks.filter((task) => task.project === taskProject);
@@ -25,6 +27,7 @@ router.get('/filterByProject/:project', (req, res) => {
     res.send('No task was found in that project.');
   }
 });
+
 router.get('/filterByStatus/:status', (req, res) => {
   const taskStatus = req.params.status;
   const foundTasks = tasks.filter((task) => task.status === taskStatus);
@@ -34,6 +37,7 @@ router.get('/filterByStatus/:status', (req, res) => {
     res.send('No tas was found with that status.');
   }
 });
+
 router.post('/', (req, res) => {
   const newTask = req.body;
   tasks.push(newTask);
@@ -45,6 +49,7 @@ router.post('/', (req, res) => {
     }
   });
 });
+
 router.delete('/:id', (req, res) => {
   const taskId = req.params.id;
   const filteredTask = tasks.filter((task) => task.id !== taskId);
@@ -56,6 +61,7 @@ router.delete('/:id', (req, res) => {
     }
   });
 });
+
 router.put('/:id', (req, res) => {
   const taskId = req.params.id;
   const editedTask = req.body;
@@ -74,4 +80,5 @@ router.put('/:id', (req, res) => {
     }
   });
 });
+
 module.exports = router;
