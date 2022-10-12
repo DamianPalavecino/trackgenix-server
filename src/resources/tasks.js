@@ -4,10 +4,10 @@ const fs = require('fs');
 const router = express.Router();
 const tasks = require('../data/tasks.json');
 
-router.get('/getAll', (req, res) => {
+router.get('/', (req, res) => {
   res.send(tasks);
 });
-router.get('/getById/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const taskId = req.params.id;
   const foundTask = tasks.find((task) => task.id === taskId);
   if (foundTask) {
@@ -34,7 +34,7 @@ router.get('/filterByStatus/:status', (req, res) => {
     res.send('No tas was found with that status.');
   }
 });
-router.post('/add', (req, res) => {
+router.post('/', (req, res) => {
   const newTask = req.body;
   tasks.push(newTask);
   fs.writeFile('src/data/tasks.json', JSON.stringify(tasks), (err) => {
@@ -45,7 +45,7 @@ router.post('/add', (req, res) => {
     }
   });
 });
-router.delete('/deleteById/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const taskId = req.params.id;
   const filteredTask = tasks.filter((task) => task.id !== taskId);
   fs.writeFile('src/data/tasks.json', JSON.stringify(filteredTask), (err) => {
@@ -56,7 +56,7 @@ router.delete('/deleteById/:id', (req, res) => {
     }
   });
 });
-router.put('/editById/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const taskId = req.params.id;
   const editedTask = req.body;
   const foundTask = tasks.find((task) => task.id === taskId);
