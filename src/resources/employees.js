@@ -15,7 +15,7 @@ router.get('/getByRate/:rate', (req, res) => {
       }
     });
   });
-  if (newArray.length !== 0) {
+  if (newArray.length > 0) {
     res.send(newArray);
   } else {
     res.send('Employee not found');
