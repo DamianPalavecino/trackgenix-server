@@ -3,6 +3,7 @@ import express from 'express';
 
 // use "require" to import JSON files
 const admins = require('./data/admins.json');
+const superAdmins = require('./data/admins.json');
 const adminsRouter = require('./resources/admins');
 const superAdminsRouter = require('./resources/super-admins');
 
@@ -19,6 +20,12 @@ app.get('/', async (req, res) => {
 app.get('/admins', (req, res) => {
   res.status(200).json({
     data: admins,
+  });
+});
+
+app.get('/super-admins', (req, res) => {
+  res.status(200).json({
+    data: superAdmins,
   });
 });
 
