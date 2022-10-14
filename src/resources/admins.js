@@ -4,6 +4,10 @@ const admins = require('../data/admins.json');
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+  res.send(admins);
+});
+
 router.delete('/:id', (req, res) => {
   const adminId = req.params.id;
   const filteredAdmins = admins.filter((admin) => admin.id !== adminId);
