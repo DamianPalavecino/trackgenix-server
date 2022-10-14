@@ -4,6 +4,32 @@ const superAdmins = require('../data/super-admins.json');
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+  res.send(superAdmins);
+});
+
+router.get('/:id', (req, res) => {
+  const superAdminId = req.params.id;
+  const superAdminFound = superAdmins.find((superAdmin) => superAdmin.id === superAdminId);
+  if (superAdminFound) {
+    res.send(superAdminFound);
+  } else {
+    res.send('Cannot find Super Admin');
+  }
+});
+
+router.post('/', (req, res) => {
+  const newsuperAdmin = req.body;
+  superAdmins.push(newsuperAdmin);
+  fs.writeFile('src/data/super-admins.json', JSON.stringify(superAdmins), (err) => {
+    if (err) {
+      res.send('Cannot add Super Admin');
+    } else {
+      res.send('Super Admin created');
+    }
+  });
+});
+
 router.delete('/:id', (req, res) => {
   const superAdminId = req.params.id;
   const foundSuperAdmins = superAdmins.find((superAdmin) => superAdmin.id === superAdminId);
