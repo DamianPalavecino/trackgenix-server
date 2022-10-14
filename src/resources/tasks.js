@@ -65,12 +65,20 @@ router.put('/:id', (req, res) => {
   const taskId = req.params.id;
   const editedTask = req.body;
   const foundTask = tasks.find((task) => task.id === taskId);
-  const keys = Object.keys(foundTask);
-  for (let i = 0; i < keys.length; i += 1) {
-    if (foundTask.key !== 'id') foundTask.key = editedTask.key;
+  if (editedTask.name) {
+    foundTask.name = editedTask.name;
+  }
+  if (editedTask.project) {
+    foundTask.project = editedTask.project;
+  }
+  if (editedTask.description) {
+    foundTask.description = editedTask.description;
+  }
+  if (editedTask.status) {
+    foundTask.status = editedTask.status;
   }
   const i = tasks.findIndex((task) => task.id === taskId);
-  tasks[i] = editedTask;
+  tasks[i] = foundTask;
   fs.writeFile('src/data/tasks.json', JSON.stringify(tasks), (err) => {
     if (err) {
       res.send('Cannot edit task.');
