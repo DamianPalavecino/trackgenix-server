@@ -1,0 +1,32 @@
+[
+    {
+      "id": "1",
+      "firstName": "Rodney",
+      "lastName": "Saltrese",
+      "email": "rsaltrese0@umn.edu"
+    },
+    {
+      "id": "2",
+      "firstName": "Gardy",
+      "lastName": "Grombridge",
+      "email": "ggrombridge1@ezinearticles.com"
+    },
+    {
+      "id": "3",
+      "firstName": "Tabor",
+      "lastName": "Mahony",
+      "email": "tmahony2@loc.gov"
+    },
+    {
+      "id": "4",
+      "firstName": "Maria",
+      "lastName": "Failoe",
+      "email": "mfae3@examiner.com"
+    },
+    {
+      "id": "5",
+      "firstName": "Revkah",
+      "lastName": "Bannerman",
+      "email": "rbannerman4@quantcast.com"
+    }
+  ]
