@@ -50,9 +50,10 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const taskId = req.params.id;
+  const foundTask = tasks.find((task) => task.id === taskId);
   const filteredTask = tasks.filter((task) => task.id !== taskId);
   fs.writeFile('src/data/tasks.json', JSON.stringify(filteredTask), (err) => {
-    if (err) {
+    if (err || !foundTask) {
       res.send('Cannot delete task.');
     } else {
       res.send('Task deleted.');
