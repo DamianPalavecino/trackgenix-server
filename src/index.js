@@ -15,10 +15,6 @@ app.use('/employees', employeeRouter);
 app.use('/admins', adminsRouter);
 app.use('/super-admins', superAdminsRouter);
 
-app.use('/employees', employeeRouter);
-
-app.use('/admins', adminsRouter);
-
 app.get('/', async (req, res) => {
   res.send('Hello World!');
 });
