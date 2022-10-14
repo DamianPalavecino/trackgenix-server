@@ -3,7 +3,7 @@ import express from 'express';
 const admins = require('./data/admins.json');
 const superAdmins = require('./data/super-admins.json');
 
-const superAdminsRouter = require('./data/admins.json');
+const superAdminsRouter = require('./resources/super-admins');
 const employeeRouter = require('./resources/employees');
 const adminsRouter = require('./resources/admins');
 const projectsRouter = require('./resources/projects');

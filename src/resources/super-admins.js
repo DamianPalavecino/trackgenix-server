@@ -6,14 +6,19 @@ const router = express.Router();
 
 router.delete('/:id', (req, res) => {
   const superAdminId = req.params.id;
-  const filteredsuperAdmins = superAdmins.filter((superAdmin) => superAdmin.id !== superAdminId);
-  fs.writeFile('src/data/superAdmins.json', JSON.stringify(filteredsuperAdmins), (err) => {
-    if (err) {
-      res.send('Cannot delete superAdmin');
-    } else {
-      res.send('superAdmin deleted');
-    }
-  });
+  const foundSuperAdmins = superAdmins.find((superAdmin) => superAdmin.id === superAdminId);
+  if (!foundSuperAdmins) {
+    res.send('Project not found');
+  } else {
+    const filteredsuperAdmins = superAdmins.filter((superAdmin) => superAdmin.id !== superAdminId);
+    fs.writeFile('src/data/superAdmins.json', JSON.stringify(filteredsuperAdmins), (err) => {
+      if (err) {
+        res.send('Cannot delete superAdmin');
+      } else {
+        res.send('superAdmin deleted');
+      }
+    });
+  }
 });
 
 router.put('/:id', (req, res) => {
