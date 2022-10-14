@@ -1,46 +1,50 @@
 const express = require('express');
 const fs = require('fs');
-
 const projects = require('../data/projects.json');
 
 const router = express.Router();
 
-router.get('/getById/:id', (req, res) => {
-  const projectId = req.params.id;
-  const foundProject = projects.find((project) => project.id === projectId);
-  if (foundProject) {
-    res.send(foundProject);
-  } else {
-    res.send('Project not found');
-  }
-});
-
-router.get('/getAll', (req, res) => {
+router.get('/', (req, res) => {
   res.send(projects);
 });
 
-router.post('/add', (req, res) => {
+router.get('/:id', (req, res) => {
+  const projectId = req.params.id;
+  const projectFound = projects.find((project) => project.id === projectId);
+  if (projectFound) {
+    res.send(projectFound);
+  } else {
+    res.send('project not found');
+  }
+});
+
+router.post('/', (req, res) => {
   const newProject = req.body;
   projects.push(newProject);
   fs.writeFile('src/data/projects.json', JSON.stringify(projects), (err) => {
     if (err) {
-      res.send('Cannot save new project');
+      res.send('cannot save project');
     } else {
-      res.send('Project create');
+      res.send('project created');
     }
   });
 });
 
-router.delete('/deleted/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const projectId = req.params.id;
-  const filteredProject = projects.filter((project) => project.id !== projectId);
-  fs.writeFile('src/data/projects.json', JSON.stringify(filteredProject), (err) => {
-    if (err) {
-      res.send('Cannot deleted Project');
-    } else {
-      res.send('Project deleted');
-    }
-  });
+  const foundProjects = projects.find((project) => project.id === projectId);
+  if (!foundProjects) {
+    res.send('Project not found');
+  } else {
+    const filteredProjects = projects.filter((project) => project.id !== projectId);
+    fs.writeFile('src/data/projects.json', JSON.stringify(filteredProjects), (err) => {
+      if (err) {
+        res.send('Cannot delete project');
+      } else {
+        res.send('Project deleted');
+      }
+    });
+  }
 });
 
 router.put('/edit/:id', (req, res) => {

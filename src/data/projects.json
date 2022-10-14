@@ -1,17 +1,5 @@
 [
   {
-    "name": "google stadia",
-    "id": "83984426",
-    "password": "apgOdpXFw",
-    "members": [
-      { "name": "octabio", "id": "001", "role": "PM" },
-      { "name": "wilson", "id": "002", "role": "QA" },
-      { "name": "amy", "id": "003", "role": "DEV" },
-      { "name": "irenne", "id": "006", "role": "DEV" },
-      { "name": "rambo", "id": "007", "role": "TL" }
-    ]
-  },
-  {
     "name": "BET365 web",
     "id": "38945426",
     "password": "aqg457pXFw",
@@ -33,20 +21,6 @@
       { "name": "luis", "id": "003", "role": "DEV" },
       { "name": "irenne", "id": "006", "role": "DEV" },
       { "name": "chumbo", "id": "012", "role": "TL" }
-    ]
-  },
-  {
-    "name": "project RAAAAAMBO",
-    "id": "555",
-    "password": "RMBO",
-    "members": [
-      { "name": "pedro", "id": "000", "role": "PM" },
-      { "name": "will", "id": "024", "role": "QA" },
-      { "name": "amill", "id": "025", "role": "DEV" },
-      { "name": "iren", "id": "026", "role": "DEV" },
-      { "name": "ram", "id": "027", "role": "TL" },
-      { "name": "Create with POSTMAN", "id": "6", "role": "QA" },
-      { "name": "NEW02", "id": "60", "role": "QA" }
     ]
   }
 ]
