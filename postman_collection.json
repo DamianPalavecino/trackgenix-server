@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "2a7619e0-6ea5-4a6e-b824-e4a29222bf0a",
+		"name": "postman_collections",
+		"description": "## Week-09 API collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23768454"
+	},
+	"item": [
+		{
+			"name": "projects",
+			"item": []
+		},
+		{
+			"name": "employees",
+			"item": []
+		},
+		{
+			"name": "admins",
+			"item": []
+		},
+		{
+			"name": "super-admins",
+			"item": []
+		},
+		{
+			"name": "tasks",
+			"item": []
+		}
+	]
+}

@@ -3,11 +3,11 @@ import express from 'express';
 const admins = require('./data/admins.json');
 const superAdmins = require('./data/super-admins.json');
 
-const superAdminsRouter = require('./resources/super-admins');
-const employeeRouter = require('./resources/employees');
-const taskRouter = require('./resources/tasks');
-const adminsRouter = require('./resources/admins');
-const projectsRouter = require('./resources/projects');
+const superAdminsRouter = require('./controllers/super-admins');
+const employeeRouter = require('./controllers/employees');
+const taskRouter = require('./controllers/tasks');
+const adminsRouter = require('./controllers/admins');
+const projectsRouter = require('./controllers/projects');
 
 const app = express();
 
@@ -19,7 +19,6 @@ app.use('/projects', projectsRouter);
 app.use('/admins', adminsRouter);
 app.use('/super-admins', superAdminsRouter);
 app.use('/employees', employeeRouter);
-app.use('/tasks', taskRouter);
 
 app.get('/', async (req, res) => {
   res.send('Hello World!');
