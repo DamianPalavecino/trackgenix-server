@@ -2,11 +2,10 @@ import Joi from 'joi';
 
 const validateCreation = (req, res, next) => {
   const employeeValidation = Joi.object({
-    id: Joi.number().required(),
     name: Joi.string().min(3).max(50).required(),
     lastName: Joi.string().min(3).max(50).required(),
-    phone: Joi.number().required(),
-    email: Joi.string().lowercase().required().email(),
+    phone: Joi.string().required(),
+    email: Joi.string().email().required(),
     password: Joi.string().min(8).required(),
   });
 

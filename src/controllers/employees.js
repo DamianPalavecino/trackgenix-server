@@ -116,7 +116,7 @@ const getAllEmployees = async (req, res) => {
   }
 };
 
-const getAllEmployeById = async (req, res) => {
+const getEmployeeById = async (req, res) => {
   try {
     const { id } = req.params;
     const employees = await Employees.findById(id);
@@ -134,7 +134,33 @@ const getAllEmployeById = async (req, res) => {
   }
 };
 
+const createEmployee = async (req, res) => {
+  try {
+    const employee = new Employees({
+      name: req.body.name,
+      lastName: req.body.lastName,
+      phone: req.body.phone,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    const result = await employee.save();
+    return res.status(201).json({
+      message: 'Employee successfully created',
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: 'An error occurred',
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
 export default {
   getAllEmployees,
-  getAllEmployeById,
+  getEmployeeById,
+  createEmployee,
 };

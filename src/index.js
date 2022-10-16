@@ -43,18 +43,16 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
-import projectRoutes from './routes/projects';
-import employeeRoutes from './models/employees';
+import router from './routes';
 
 const app = express();
+
 const port = 5000;
 
 app.use(express.json());
+app.use(router);
 
-app.use('/projects', projectRoutes);
-app.use('/employees', employeeRoutes);
-
-const MONGO_URL = ' mongodb+srv://RadiumB:RadiumB@cluster0.qtxpp68.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URL = 'mongodb+srv://RadiumB:Radium2022@cluster0.qtxpp68.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(
   MONGO_URL,
