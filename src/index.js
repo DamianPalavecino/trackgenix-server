@@ -52,7 +52,7 @@ const port = 5000;
 app.use(express.json());
 app.use(router);
 
-const MONGO_URL = 'mongodb+srv://RadiumB:Radium2022@cluster0.qtxpp68.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URL = 'mongodb+srv://RadiumB:Radium2022@cluster0.qtxpp68.mongodb.net/Test';
 
 mongoose.connect(
   MONGO_URL,
