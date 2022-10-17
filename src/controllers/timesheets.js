@@ -15,9 +15,10 @@ const createTimesheet = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.json({
-      message: 'An error ocurred',
-      error,
+    return res.status(400).json({
+      message: error,
+      data: undefined,
+      error: true,
     });
   }
 };
@@ -32,9 +33,29 @@ const getAllTimesheets = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.json({
-      message: 'An error ocurred',
-      error,
+    return res.status(404).json({
+      message: error,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
+const getTimesheetById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const timesheet = await Timesheets.findById(id);
+
+    return res.status(200).json({
+      message: 'Timesheet found',
+      data: timesheet,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: error,
+      data: undefined,
+      error: true,
     });
   }
 };
@@ -42,4 +63,5 @@ const getAllTimesheets = async (req, res) => {
 export default {
   createTimesheet,
   getAllTimesheets,
+  getTimesheetById,
 };
