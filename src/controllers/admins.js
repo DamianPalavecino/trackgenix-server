@@ -24,6 +24,24 @@ const getAllAdmins = async (req, res) => {
   }
 };
 
+const getAdminById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const admins = await Admins.findById(id);
+
+    return res.status(200).json({
+      message: 'Admin found',
+      data: admins,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
+      message: 'Admin not found',
+      error: true,
+    });
+  }
+};
 export default {
   getAllAdmins,
+  getAdminById,
 };
