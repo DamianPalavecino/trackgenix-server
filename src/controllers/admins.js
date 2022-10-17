@@ -1,69 +1,29 @@
-const express = require('express');
-const fs = require('fs');
-const admins = require('../data/admins.json');
+import Admins from '../models/Admins';
 
-const router = express.Router();
+const getAllAdmins = async (req, res) => {
+  try {
+    const admins = await Admins.find();
 
-router.get('/', (req, res) => {
-  res.send(admins);
-});
-
-router.delete('/:id', (req, res) => {
-  const adminId = req.params.id;
-  const filteredAdmins = admins.filter((admin) => admin.id !== adminId);
-  fs.writeFile('src/data/admins.json', JSON.stringify(filteredAdmins), (err) => {
-    if (err) {
-      res.send('Cannot delete admin');
-    } else {
-      res.send('admin deleted');
+    if (admins.length === 0) {
+      return res.status(404).json({
+        message: 'Admin not exist',
+        error: true,
+      });
     }
-  });
-});
 
-router.put('/:id', (req, res) => {
-  const adminId = req.params.id;
-  const newAdmin = req.body;
-  const foundAdmin = admins.find((admin) => admin.id === adminId);
-  const index = admins.findIndex((admin) => admin.id === adminId);
-  if (newAdmin.firstName) {
-    foundAdmin.firstName = newAdmin.firstName;
+    return res.status(200).json({
+      message: 'Admin Found',
+      data: admins,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: 'Error',
+      error: true,
+    });
   }
-  if (newAdmin.lastName) {
-    foundAdmin.lastName = newAdmin.lastName;
-  }
-  if (newAdmin.email) {
-    foundAdmin.email = newAdmin.email;
-  }
-  admins[index] = foundAdmin;
-  fs.writeFile('src/data/admins.json', JSON.stringify(admins), (err) => {
-    if (err) {
-      res.send('Cannot modify admin');
-    } else {
-      res.send('admin modified');
-    }
-  });
-});
+};
 
-router.get('/:id', (req, res) => {
-  const adminId = req.params.id;
-  const adminFound = admins.find((admin) => admin.id === adminId);
-  if (adminFound) {
-    res.send(adminFound);
-  } else {
-    res.send('Cannot find admin');
-  }
-});
-
-router.post('/', (req, res) => {
-  const newAdmin = req.body;
-  admins.push(newAdmin);
-  fs.writeFile('src/data/admins.json', JSON.stringify(admins), (err) => {
-    if (err) {
-      res.send('Cannot add admin');
-    } else {
-      res.send('Admin created');
-    }
-  });
-});
-
-module.exports = router;
+export default {
+  getAllAdmins,
+};
