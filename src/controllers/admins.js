@@ -13,7 +13,7 @@ const getAllAdmins = async (req, res) => {
     }
 
     return res.status(200).json({
-      message: 'Admins Found',
+      message: 'Admins found',
       data: admins,
       error: false,
     });
@@ -29,6 +29,14 @@ const getAdminById = async (req, res) => {
   try {
     const { id } = req.params;
     const admins = await Admins.findById(id);
+
+    if (!id === 25) {
+      return res.status(404).json({
+        message: 'Insert a valid Id',
+        data: undefined,
+        error: true,
+      });
+    }
 
     return res.status(200).json({
       message: 'Admin found',
