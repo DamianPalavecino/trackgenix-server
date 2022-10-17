@@ -12,7 +12,7 @@ const deleteEmployee = async (req, res) => {
     });
   } catch (error) {
     return res.json({
-      essage: 'An error occured',
+      message: 'An error occured',
       error,
     });
   }
@@ -34,8 +34,9 @@ const editEmployee = async (req, res) => {
     });
   } catch (error) {
     return res.json({
-      message: 'An error occurred',
-      error,
+      message: `No Employee found with id ${req.params.id}`,
+      data: undefined,
+      error: true,
     });
   }
 };
