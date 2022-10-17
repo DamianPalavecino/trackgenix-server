@@ -7,6 +7,7 @@ const getAllAdmins = async (req, res) => {
     if (admins.length === 0) {
       return res.status(404).json({
         message: 'There is no data to display',
+        data: undefined,
         error: true,
       });
     }
@@ -35,8 +36,8 @@ const getAdminById = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.json({
-      message: 'Admin not found',
+    return res.status(404).json({
+      message: `Admin not find ${error}`,
       error: true,
     });
   }

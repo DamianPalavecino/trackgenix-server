@@ -1,31 +1,248 @@
 {
 	"info": {
-		"_postman_id": "2a7619e0-6ea5-4a6e-b824-e4a29222bf0a",
-		"name": "postman_collections",
-		"description": "## Week-09 API collection",
+		"_postman_id": "88bd4759-b3de-4d97-93f4-3bfa16f91791",
+		"name": "TG-4: admin",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23768454"
+		"_exporter_id": "23764186"
 	},
 	"item": [
 		{
-			"name": "projects",
-			"item": []
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "465"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1d1-ol3cN0O9tnRvwBodtF+6QuueV+4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 21:04:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin Found\",\n    \"data\": [\n        {\n            \"_id\": \"634d69d77534a458ce3b14b9\",\n            \"name\": \"Michael\",\n            \"lastName\": \"Corleone\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertyuilvfghuil\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d715d1b969b83d3c495a2\",\n            \"name\": \"Carlos\",\n            \"lastName\": \"Brigante\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634dbf4c1b969b83d3c495a5\",\n            \"name\": \"Tony\",\n            \"lastName\": \"Montana\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+				}
+			]
 		},
 		{
-			"name": "employees",
-			"item": []
+			"name": "getById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/admins/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"admins",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/634d69d77534a458ce3b14b9",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634d69d77534a458ce3b14b9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "182"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b6-EUm2BpcHEkE2WY4HF1U2YNUxsY0\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 21:04:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin found\",\n    \"data\": {\n        \"_id\": \"634d69d77534a458ce3b14b9\",\n        \"name\": \"Michael\",\n        \"lastName\": \"Corleone\",\n        \"email\": \"imnygj0@umn.com\",\n        \"password\": \"ertyuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				}
+			]
 		},
 		{
-			"name": "admins",
-			"item": []
-		},
-		{
-			"name": "super-admins",
-			"item": []
-		},
-		{
-			"name": "tasks",
-			"item": []
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/admins/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"admins",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"name\": \"Tony\",\r\n            \"lastName\": \"Montana\",\r\n            \"email\": \"imnygj0@umn.com\",\r\n            \"password\": \"ertdd55852yuilvfghuil\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "200"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c8-EldYN3QkOAqarE7BY70Q6uM4/14\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 20:47:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin created successfully\",\n    \"data\": {\n        \"name\": \"Tony\",\n        \"lastName\": \"Montana\",\n        \"email\": \"imnygj0@umn.com\",\n        \"password\": \"ertdd55852yuilvfghuil\",\n        \"_id\": \"634dbf4c1b969b83d3c495a5\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				}
+			]
 		}
 	]
 }
