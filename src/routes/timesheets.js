@@ -4,6 +4,7 @@ import timesheetsControllers from '../controllers/timesheets';
 const router = express.Router();
 
 router
-  .post('/', timesheetsControllers.createTimesheet);
+  .post('/', timesheetsControllers.createTimesheet)
+  .get('/', timesheetsControllers.getAllTimesheets);
 
 export default router;
