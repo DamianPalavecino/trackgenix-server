@@ -1,31 +1,484 @@
 {
 	"info": {
-		"_postman_id": "2a7619e0-6ea5-4a6e-b824-e4a29222bf0a",
-		"name": "postman_collections",
-		"description": "## Week-09 API collection",
+		"_postman_id": "0a02d577-8a43-4ee7-8526-f01dd5fa17eb",
+		"name": "Employees",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23768454"
+		"_exporter_id": "23762217"
 	},
 	"item": [
 		{
-			"name": "projects",
-			"item": []
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/employees/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/employees/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "498"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f2-Grct1GnM7f+KAn9pXGgXSFCc08Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 01:49:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Employee found\",\n    \"data\": [\n        {\n            \"_id\": \"634c99a06a24d26e60d74908\",\n            \"name\": \"Laura\",\n            \"lastName\": \"Canoura\",\n            \"phone\": 9876543210,\n            \"email\": \"laucan@furl.net\",\n            \"password\": \"lalalala2\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634c9d51af79a6f290d7fc52\",\n            \"name\": \"Marcelo\",\n            \"lastName\": \"Antrack\",\n            \"phone\": 4964167014,\n            \"email\": \"mantrack0@furl.net\",\n            \"password\": \"apgOdpXFw\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634c9d75af79a6f290d7fc54\",\n            \"name\": \"Carla\",\n            \"lastName\": \"Gonzalez\",\n            \"phone\": 1234567890,\n            \"email\": \"cargon@furl.net\",\n            \"password\": \"pepepepe2\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+				},
+				{
+					"name": "getAll - No data found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/employees/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								""
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-FYVVS91wA7PaTSQfkZX7MskBdHk\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 22:28:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No employees found\",\n    \"error\": true\n}"
+				}
+			]
 		},
 		{
-			"name": "employees",
-			"item": []
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "getById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/employees/634c99a06a24d26e60d74908",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"634c99a06a24d26e60d74908"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "196"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c4-8Zer3jJBbuZKCoKCFJVOOuT3vWE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 02:28:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Employee found\",\n    \"data\": {\n        \"_id\": \"634c99a06a24d26e60d74908\",\n        \"name\": \"Laura\",\n        \"lastName\": \"Canoura\",\n        \"phone\": 9876543210,\n        \"email\": \"laucan@furl.net\",\n        \"password\": \"lalalala2\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "getById - Invalid Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/employees/634dd7c8bf92c8b37e29a98",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"634dd7c8bf92c8b37e29a98"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "37"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"25-bJ6ruByp7h7wKJZrA43IZpaO2fE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 23:18:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid ID\",\n    \"error\": true\n}"
+				}
+			]
 		},
 		{
-			"name": "admins",
-			"item": []
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/employees/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lorena\",\r\n    \"lastName\": \"Lorenz\",\r\n    \"phone\": 526985214,\r\n    \"email\": \"lorlor0@furl.net\",\r\n    \"password\": \"apgOdpXFw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/employees/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "211"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d3-/x8NbK/OjNF1TmLBWjRA1eOXY9s\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 02:08:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Employee successfully created\",\n    \"data\": {\n        \"name\": \"Lorena\",\n        \"lastName\": \"Lorenz\",\n        \"phone\": 526985214,\n        \"email\": \"lorlor0@furl.net\",\n        \"password\": \"apgOdpXFw\",\n        \"_id\": \"634cb916e14884c27aca1891\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "Create - required error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lastName\": \"Lorenz\",\r\n    \"phone\": 526985214,\r\n    \"email\": \"lorlor0@furl.net\",\r\n    \"password\": \"apgOdpXFw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/employees/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"43-OaDxnrottNTCOKehbMQck/2i+ws\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 02:08:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"name\\\" is required\",\n    \"error\": true\n}"
+				}
+			]
 		},
 		{
-			"name": "super-admins",
-			"item": []
-		},
-		{
-			"name": "tasks",
-			"item": []
+			"name": "Edit",
+			"request": {
+				"method": "PUT",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "Edited",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maria Laura\",\r\n    \"lastName\": \"Canoura\",\r\n    \"phone\": 9876543210,\r\n    \"email\": \"laucan@furl.net\",\r\n    \"password\": \"lalalala2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/employees/634c99a06a24d26e60d74908",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"634c99a06a24d26e60d74908"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "236"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ec-nOfXJJHQEdMzpaQ4a9ruZdFcP0I\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 19:53:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Employee widh id 634c99a06a24d26e60d74908 edited\",\n    \"data\": {\n        \"_id\": \"634c99a06a24d26e60d74908\",\n        \"name\": \"Maria Laura\",\n        \"lastName\": \"Canoura\",\n        \"phone\": 9876543210,\n        \"email\": \"laucan@furl.net\",\n        \"password\": \"lalalala2\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				}
+			]
 		}
 	]
 }
