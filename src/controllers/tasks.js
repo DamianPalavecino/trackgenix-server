@@ -19,22 +19,15 @@ const getAllTasks = async (req, res) => {
 const getTaskById = async (req, res) => {
   try {
     const { id } = req.params;
-    const tasks = await Tasks.findById(id);
+    const task = await Tasks.findById(id);
     return res.status(200).json({
       message: 'Task found',
-      data: tasks,
+      data: task,
       error: false,
     });
   } catch (error) {
-    if (error.name === 'CastError') {
-      return res.status(404).json({
-        message: `No task has '${req.params.id}' as an id`,
-        data: undefined,
-        error: true,
-      });
-    }
-    return res.json({
-      message: error.message,
+    return res.status(404).json({
+      message: `No task has '${req.params.id}' as an id`,
       data: undefined,
       error: true,
     });
@@ -59,9 +52,43 @@ const createTask = async (req, res) => {
     });
   }
 };
+const deleteTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Tasks.findByIdAndDelete(id);
+    return res.status(204).json();
+  } catch (error) {
+    return res.status(404).json({
+      message: `No task has '${req.params.id}' as an id`,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+const editTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedTask = req.body;
+    await Tasks.findByIdAndUpdate(id, updatedTask);
+    const result = await Tasks.findById(id);
+    return res.status(200).json({
+      message: 'Task edited successfully',
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: `No task has '${req.params.id}' as an id`,
+      data: undefined,
+      error: true,
+    });
+  }
+};
 
 export default {
   getAllTasks,
   getTaskById,
   createTask,
+  deleteTask,
+  editTask,
 };
