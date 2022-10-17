@@ -6,19 +6,19 @@ const getAllAdmins = async (req, res) => {
 
     if (admins.length === 0) {
       return res.status(404).json({
-        message: 'Admin not exist',
+        message: 'There is no data to display',
         error: true,
       });
     }
 
     return res.status(200).json({
-      message: 'Admin Found',
+      message: 'Admins Found',
       data: admins,
       error: false,
     });
   } catch (error) {
     return res.status(400).json({
-      message: 'Error',
+      message: 'An error occurried',
       error: true,
     });
   }
@@ -52,14 +52,14 @@ const createAdmin = async (req, res) => {
     });
 
     const result = await admin.save();
-    return res.status(200).json({
+    return res.status(201).json({
       message: 'Admin created successfully',
       data: result,
       error: false,
     });
   } catch (error) {
     return res.status(400).json({
-      message: 'An error occurried',
+      message: 'An error occurried, Admin not created',
       error: true,
     });
   }

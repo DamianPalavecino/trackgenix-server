@@ -3,14 +3,14 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const adminSchema = new Schema({
-  name: { type: String, required: true },
-  lastName: { type: String, required: true },
+  name: { type: String },
+  lastName: { type: String },
   email: {
     type: String,
     required: true,
     lowercase: true,
   },
-  password: { type: String, required: true },
+  password: { type: String },
 });
 
 export default mongoose.model('admin', adminSchema);
