@@ -1,90 +1,67 @@
-const express = require('express');
-const fs = require('fs');
+import Tasks from '../models/tasks';
 
-const router = express.Router();
-const tasks = require('../data/tasks.json');
+const getAllTasks = async (req, res) => {
+  try {
+    const tasks = await Tasks.find();
 
-router.get('/', (req, res) => {
-  res.send(tasks);
-});
-
-router.get('/:id', (req, res) => {
-  const taskId = req.params.id;
-  const foundTask = tasks.find((task) => task.id === taskId);
-  if (foundTask) {
-    res.send(foundTask);
-  } else {
-    res.send('Task not found.');
+    return res.status(200).json({
+      message: 'Tasks found',
+      data: tasks,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
+      message: 'An error occured',
+      error: true,
+    });
   }
-});
-router.get('/filterByProject/:project', (req, res) => {
-  const taskProject = req.params.project;
-  const foundTasks = tasks.filter((task) => task.project === taskProject);
-  if (foundTasks.length > 0) {
-    res.send(foundTasks);
-  } else {
-    res.send('No task was found in that project.');
-  }
-});
-router.get('/filterByStatus/:status', (req, res) => {
-  const taskStatus = req.params.status;
-  const foundTasks = tasks.filter((task) => task.status === taskStatus);
-  if (foundTasks.length > 0) {
-    res.send(foundTasks);
-  } else {
-    res.send('No task was found with that status.');
-  }
-});
-
-router.post('/', (req, res) => {
-  const newTask = req.body;
-  tasks.push(newTask);
-  fs.writeFile('src/data/tasks.json', JSON.stringify(tasks), (err) => {
-    if (err) {
-      res.send('Cannot add new task.');
-    } else {
-      res.send('Task added.');
+};
+const getTaskById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const tasks = await Tasks.findById(id);
+    return res.status(200).json({
+      message: 'Task found',
+      data: tasks,
+      error: false,
+    });
+  } catch (error) {
+    if (error.name === 'CastError') {
+      return res.status(404).json({
+        message: `No task has '${req.params.id}' as an id`,
+        data: undefined,
+        error: true,
+      });
     }
-  });
-});
+    return res.json({
+      message: error.message,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+const createTask = async (req, res) => {
+  try {
+    const task = new Tasks({
+      description: req.body.description,
+    });
+    const result = await task.save();
+    return res.status(201).json({
+      message: 'Task created successfully',
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
+      message: error.message,
+      data: undefined,
+      error: true,
+    });
+  }
+};
 
-router.delete('/:id', (req, res) => {
-  const taskId = req.params.id;
-  const foundTask = tasks.find((task) => task.id === taskId);
-  const filteredTask = tasks.filter((task) => task.id !== taskId);
-  fs.writeFile('src/data/tasks.json', JSON.stringify(filteredTask), (err) => {
-    if (err || !foundTask) {
-      res.send('Cannot delete task.');
-    } else {
-      res.send('Task deleted.');
-    }
-  });
-});
-
-router.put('/:id', (req, res) => {
-  const taskId = req.params.id;
-  const editedTask = req.body;
-  const foundTask = tasks.find((task) => task.id === taskId);
-  if (editedTask.name) {
-    foundTask.name = editedTask.name;
-  }
-  if (editedTask.project) {
-    foundTask.project = editedTask.project;
-  }
-  if (editedTask.description) {
-    foundTask.description = editedTask.description;
-  }
-  if (editedTask.status) {
-    foundTask.status = editedTask.status;
-  }
-  const i = tasks.findIndex((task) => task.id === taskId);
-  tasks[i] = foundTask;
-  fs.writeFile('src/data/tasks.json', JSON.stringify(tasks), (err) => {
-    if (err) {
-      res.send('Cannot edit task.');
-    } else {
-      res.send('Task edited.');
-    }
-  });
-});
-module.exports = router;
+export default {
+  getAllTasks,
+  getTaskById,
+  createTask,
+};
