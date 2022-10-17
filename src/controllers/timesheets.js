@@ -16,7 +16,7 @@ const createTimesheet = async (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
-      message: error,
+      message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
     });
@@ -34,7 +34,7 @@ const getAllTimesheets = async (req, res) => {
     });
   } catch (error) {
     return res.status(404).json({
-      message: error,
+      message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
     });
@@ -53,7 +53,7 @@ const getTimesheetById = async (req, res) => {
     });
   } catch (error) {
     return res.status(404).json({
-      message: error,
+      message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
     });
