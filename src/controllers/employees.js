@@ -111,7 +111,8 @@ const getAllEmployees = async (req, res) => {
   } catch (error) {
     return res.json({
       message: 'An error occurred',
-      error,
+      data: undefined,
+      error: true,
     });
   }
 };
@@ -129,7 +130,8 @@ const getEmployeeById = async (req, res) => {
   } catch (error) {
     return res.json({
       message: 'An error occurred',
-      error,
+      data: undefined,
+      error: true,
     });
   }
 };
@@ -151,7 +153,7 @@ const createEmployee = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.json({
       message: 'An error occurred',
       data: undefined,
       error: true,
