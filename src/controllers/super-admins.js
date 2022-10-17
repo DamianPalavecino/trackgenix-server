@@ -1,74 +1,65 @@
-const express = require('express');
-const fs = require('fs');
-const superAdmins = require('../data/super-admins.json');
+import SuperAdmins from '../models/super-admins';
 
-const router = express.Router();
+const getAllSuperAdmins = async (req, res) => {
+  try {
+    const superAdmin = await SuperAdmins.find();
 
-router.get('/', (req, res) => {
-  res.send(superAdmins);
-});
-
-router.get('/:id', (req, res) => {
-  const superAdminId = req.params.id;
-  const superAdminFound = superAdmins.find((superAdmin) => superAdmin.id === superAdminId);
-  if (superAdminFound) {
-    res.send(superAdminFound);
-  } else {
-    res.send('Cannot find Super Admin');
-  }
-});
-
-router.post('/', (req, res) => {
-  const newsuperAdmin = req.body;
-  superAdmins.push(newsuperAdmin);
-  fs.writeFile('src/data/super-admins.json', JSON.stringify(superAdmins), (err) => {
-    if (err) {
-      res.send('Cannot add Super Admin');
-    } else {
-      res.send('Super Admin created');
-    }
-  });
-});
-
-router.delete('/:id', (req, res) => {
-  const superAdminId = req.params.id;
-  const foundSuperAdmins = superAdmins.find((superAdmin) => superAdmin.id === superAdminId);
-  if (!foundSuperAdmins) {
-    res.send('Project not found');
-  } else {
-    const filteredsuperAdmins = superAdmins.filter((superAdmin) => superAdmin.id !== superAdminId);
-    fs.writeFile('src/data/superAdmins.json', JSON.stringify(filteredsuperAdmins), (err) => {
-      if (err) {
-        res.send('Cannot delete superAdmin');
-      } else {
-        res.send('superAdmin deleted');
-      }
+    return res.status(200).json({
+      message: 'Super admin found',
+      data: superAdmin,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
+      message: 'An error occurred',
+      error,
     });
   }
-});
+};
 
-router.put('/:id', (req, res) => {
-  const superAdminId = req.params.id;
-  const newSuperAdmin = req.body;
-  const foundSuperAdmin = superAdmins.find((superAdmin) => superAdmin.id === superAdminId);
-  const index = superAdmins.findIndex((superAdmin) => superAdmin.id === superAdminId);
-  if (newSuperAdmin.firstName) {
-    foundSuperAdmin.firstName = newSuperAdmin.firstName;
-  }
-  if (newSuperAdmin.lastName) {
-    foundSuperAdmin.lastName = newSuperAdmin.lastName;
-  }
-  if (newSuperAdmin.email) {
-    foundSuperAdmin.email = newSuperAdmin.email;
-  }
-  superAdmins[index] = foundSuperAdmin;
-  fs.writeFile('src/data/superAdmins.json', JSON.stringify(superAdmins), (err) => {
-    if (err) {
-      res.send('Cannot modify superAdmin');
-    } else {
-      res.send('superAdmin modified');
-    }
-  });
-});
+const getSuperAdminsId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const superAdmin = await SuperAdmins.findById(id);
 
-module.exports = router;
+    return res.status(200).json({
+      message: 'Super admin found',
+      data: superAdmin,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
+      message: 'An error occurred',
+      error,
+    });
+  }
+};
+
+const createSuperAdmin = async (req, res) => {
+  try {
+    const superAdmin = new SuperAdmins({
+      name: req.body.name,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    const result = await superAdmin.save();
+    return res.status(201).json({
+      message: 'Super admin created successfully',
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: 'An error occurred',
+      error,
+    });
+  }
+};
+
+export default {
+  getAllSuperAdmins,
+  getSuperAdminsId,
+  createSuperAdmin,
+};
