@@ -102,7 +102,7 @@
 					"body": "{\n    \"message\": \"Task found.\",\n    \"data\": {\n        \"_id\": \"634cc852dcf7773e3a1adc34\",\n        \"description\": \"Resolve merge conflicts\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
 				},
 				{
-					"name": "Error 404",
+					"name": "Error 404: ID never existed.",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
@@ -153,6 +153,59 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"The following ID: 'NONEXISTINGID123' does not match any task.\",\n    \"error\": false\n}"
+				},
+				{
+					"name": "Error 404: ID existed but was deleted.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/tasks/634d15a174b6773ae5a4b9f6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"tasks",
+								"634d15a174b6773ae5a4b9f6"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "95"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5f-XBvuSchBx4sPGmJpMCfWu25Eh5o\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:56:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"The following ID: '634d15a174b6773ae5a4b9f6' exist but was deleted.\",\n    \"error\": false\n}"
 				}
 			]
 		},

@@ -27,7 +27,14 @@ const getAllTasks = async (req, res) => {
 const getTaskById = async (req, res) => {
   try {
     const { id } = req.params;
-    const task = await TaskModel.findById(id).exec();
+    const task = await TaskModel.findById(id);
+    if (task === null) {
+      return res.status(404).json({
+        message: `The following ID: '${req.params.id}' exist but was deleted.`,
+        data: undefined,
+        error: false,
+      });
+    }
     return res.status(200).json({
       message: 'Task found.',
       data: task,
