@@ -90,9 +90,29 @@ const editTimesheetById = async (req, res) => {
   }
 };
 
+const deleteTimesheetById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Timesheets.findByIdAndDelete(id);
+
+    return res.status(204).json({
+      message: `Project with id ${id} deleted.`,
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: `An error occurred ${error}`,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
 export default {
   createTimesheet,
   getAllTimesheets,
   getTimesheetById,
   editTimesheetById,
+  deleteTimesheetById,
 };

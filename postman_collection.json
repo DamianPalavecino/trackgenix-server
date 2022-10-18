@@ -10,7 +10,7 @@
 			"name": "get",
 			"item": [
 				{
-					"name": "getAll",
+					"name": "getAllTimesheets",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -27,21 +27,21 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/timesheets/634c9b3a05f024a75fc28141",
+							"raw": "localhost:5000/timesheets/",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"timesheets",
-								"634c9b3a05f024a75fc28141"
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "getById",
+					"name": "getTimesheetById",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -72,7 +72,7 @@
 					"response": []
 				},
 				{
-					"name": "getById-failure case",
+					"name": "getTimesheetById-failure case",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -108,7 +108,7 @@
 			"name": "post",
 			"item": [
 				{
-					"name": "post",
+					"name": "createTimesheet",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -130,6 +130,110 @@
 							"path": [
 								"timesheets",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "put",
+			"item": [
+				{
+					"name": "editTimesheetById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"esto es un edit\",\r\n    \"date\": \"2020-01-01T00:00:00.000Z\",\r\n    \"task\": \"Edit a timesheet\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607b",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634cf1d139b6b801c3fc607b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editTimesheetById-failure case",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"esto es un edit a un id que no existe\",\r\n    \"date\": \"2020-01-01T00:00:00.000Z\",\r\n    \"task\": \"Edit a timesheet\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634cf1d139b6b801c3fc607"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "delete",
+			"item": [
+				{
+					"name": "deleteTimesheetById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607b",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634cf1d139b6b801c3fc607b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTimesheetById- failure case",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634cf1d139b6b801c3fc607"
 							]
 						}
 					},
