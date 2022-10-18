@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "New Request",
+			"name": "getAll",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -26,19 +26,20 @@
 			},
 			"response": [
 				{
-					"name": "New Request",
+					"name": "getAll",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/projects",
+							"raw": "http://localhost:5000/projects/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"projects"
+								"projects",
+								""
 							]
 						}
 					},
@@ -64,7 +65,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 17 Oct 2022 02:01:13 GMT"
+							"value": "Mon, 17 Oct 2022 02:06:41 GMT"
 						},
 						{
 							"key": "Connection",
@@ -77,14 +78,23 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"Project found\",\n    \"data\": [\n        {\n            \"_id\": \"634ca461f3301f472ed6f388\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 70,\n                    \"_id\": \"634ca461f3301f472ed6f389\"\n                },\n                {\n                    \"name\": \"Rondón\",\n                    \"role\": \"DEV\",\n                    \"rate\": 74,\n                    \"_id\": \"634ca461f3301f472ed6f38a\"\n                }\n            ],\n            \"name\": \"Cuadro futbol 2\",\n            \"startDate\": \"2022-05-12T00:00:00.000Z\",\n            \"endDate\": \"2022-12-20T00:00:00.000Z\",\n            \"description\": \"An old soccer team\",\n            \"clientName\": \"Damiani\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634cb08c1a187147decc8984\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 70,\n                    \"_id\": \"634cb08c1a187147decc8985\"\n                },\n                {\n                    \"name\": \"Rondón\",\n                    \"role\": \"DEV\",\n                    \"rate\": 75,\n                    \"_id\": \"634cb08c1a187147decc8986\"\n                }\n            ],\n            \"name\": \"Cuadro futbol 2\",\n            \"startDate\": \"2021-01-01T00:00:00.000Z\",\n            \"endDate\": \"2022-01-01T00:00:00.000Z\",\n            \"description\": \"A soccer team\",\n            \"clientName\": \"Ruglio\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
-				},
+				}
+			]
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
 				{
-					"name": "New Request",
+					"name": "getById",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f389",
+							"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f388",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -92,7 +102,61 @@
 							"port": "5000",
 							"path": [
 								"projects",
-								"634ca461f3301f472ed6f389"
+								"634ca461f3301f472ed6f388"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2c-DQzCAlX/S8QpiLtak1R+b5/kFoI\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 02:16:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Project not found\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "getById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f388",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634ca461f3301f472ed6f388"
 							]
 						}
 					},
@@ -110,15 +174,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "53"
+							"value": "414"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"35-x+ko8LUXo7d8jI9E7Kv7ijIBly4\""
+							"value": "W/\"19e-44gPJcOvbyTFDCkXROa1scqBd0I\""
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 17 Oct 2022 02:01:39 GMT"
+							"value": "Mon, 17 Oct 2022 02:17:47 GMT"
 						},
 						{
 							"key": "Connection",
@@ -130,25 +194,1031 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"Project found\",\n    \"data\": null,\n    \"error\": false\n}"
+					"body": "{\n    \"message\": \"Project found\",\n    \"data\": {\n        \"_id\": \"634ca461f3301f472ed6f388\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 70,\n                \"_id\": \"634ca461f3301f472ed6f389\"\n            },\n            {\n                \"name\": \"Rondón\",\n                \"role\": \"DEV\",\n                \"rate\": 74,\n                \"_id\": \"634ca461f3301f472ed6f38a\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 2\",\n        \"startDate\": \"2022-05-12T00:00:00.000Z\",\n        \"endDate\": \"2022-12-20T00:00:00.000Z\",\n        \"description\": \"An old soccer team\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "getById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/projects/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "148"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"94-HRNl4xFUBJiAv2lCc5iQAc4mXnM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 22:16:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"An error ocurred: CastError: Cast to ObjectId failed for value \\\"1\\\" (type string) at path \\\"_id\\\" for model \\\"Projects\\\"\",\n    \"error\": true\n}"
 				}
 			]
 		},
 		{
-			"name": "New Request",
+			"name": "create",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": []
 			},
-			"response": []
+			"response": [
+				{
+					"name": "create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employees\": [\r\n        {\r\n            \"name\": \"Salomón\",\r\n            \"role\": \"QA\",\r\n            \"rate\": 80\r\n        }\r\n    ],\r\n    \"name\": \"Cuadro futbol 4\",\r\n    \"startDate\": \"2020-01-01\",\r\n    \"endDate\": \"2020-01-01\",\r\n    \"description\": \"Harto\",\r\n    \"clientName\": \"Damiani\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "328"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"148-CuDpybbn6wHwTm8rzPMWe17CgOs\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 02:33:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Project created\",\n    \"data\": {\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634cbef7f61fae31296448b0\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 4\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2020-01-01T00:00:00.000Z\",\n        \"description\": \"Harto\",\n        \"clientName\": \"Damiani\",\n        \"_id\": \"634cbef7f61fae31296448af\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employees\": [\r\n        {\r\n            \"name\": \"Salomón\",\r\n            \"role\": \"QA\",\r\n            \"rate\": 80\r\n        }\r\n    ],\r\n    \"name\": \"Cuadro futbol 4\",\r\n    \"startDate\": \"2020-01-01\",\r\n    \"clientName\": \"Damiani\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-eOs7MQjVV9awmEqzwYFR6BB/gYw\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 02:34:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"endDate\\\" is required\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employees\": [\r\n        {\r\n            \"name\": \"Carmen\",\r\n            \"role\": \"DEV\",\r\n            \"rate\": 15\r\n        }\r\n    ],\r\n    \"name\": \"A ver\",\r\n    \"startDate\": \"2020-01-01\",\r\n    \"endDate\": \"2020-01-01\",\r\n    \"description\": \"It's a good proyect bro!\",\r\n    \"clientName\": \"Drake Bell\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								""
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'none'"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1765"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 18:09:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>TypeError: Cannot read properties of undefined (reading &#39;required&#39;)\n            <br> &nbsp; &nbsp;at validateCreation (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\src\\validations\\/projects.js:27:39)\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n            <br> &nbsp; &nbsp;at next (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\route.js:144:13)\n            <br> &nbsp; &nbsp;at Route.dispatch (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\route.js:114:3)\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n            <br> &nbsp; &nbsp;at C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:286:22\n            <br> &nbsp; &nbsp;at Function.process_params (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:348:12)\n            <br> &nbsp; &nbsp;at next (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:280:10)\n            <br> &nbsp; &nbsp;at Function.handle (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:175:3)\n            <br> &nbsp; &nbsp;at router (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:47:12)\n        </pre>\n    </body>\n</html>"
+				}
+			]
 		},
 		{
-			"name": "New Request",
+			"name": "delete",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": []
 			},
-			"response": []
+			"response": [
+				{
+					"name": "delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/projects/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "148"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"94-HRNl4xFUBJiAv2lCc5iQAc4mXnM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 03:56:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"An error ocurred: CastError: Cast to ObjectId failed for value \\\"1\\\" (type string) at path \\\"_id\\\" for model \\\"Projects\\\"\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/projects/634d0da064c07fd0e3aa2d96",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d0da064c07fd0e3aa2d96"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ff-bvkShfNtFEnBhixGBo3jCMfSoxU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 08:10:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/projects/634cb08c1a187147decc8984",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634cb08c1a187147decc8984"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"89-0/+foTwxgJXt49oKPXopZG8LyBk\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 08:16:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/projects/634d1173851379324705e076",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d1173851379324705e076"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 08:25:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "addEmployee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"name\": \"Eselque\",\r\n            \"role\": \"DEV\",\r\n            \"rate\": 40\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f388/assignEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"projects",
+						"634ca461f3301f472ed6f388",
+						"assignEmployee"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "addEmployee",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Eselque\",\r\n    \"role\": \"DEV\",\r\n    \"rate\": 40\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f388/assignEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634ca461f3301f472ed6f388",
+								"assignEmployee"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "418"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a2-aLGloZvN+Z2rsD996qcsCQjCL5g\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 05:38:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Employee is added\",\n    \"data\": {\n        \"_id\": \"634ca461f3301f472ed6f388\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 70,\n                \"_id\": \"634ca461f3301f472ed6f389\"\n            },\n            {\n                \"name\": \"Rondón\",\n                \"role\": \"DEV\",\n                \"rate\": 74,\n                \"_id\": \"634ca461f3301f472ed6f38a\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 2\",\n        \"startDate\": \"2022-05-12T00:00:00.000Z\",\n        \"endDate\": \"2022-12-20T00:00:00.000Z\",\n        \"description\": \"An old soccer team\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Suarez\",\r\n    \"role\": \"QA\",\r\n    \"rate\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf/assignEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d6fee260e0ee548943dbf",
+								"assignEmployee"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "623"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26f-YMFLA4VUv2ViCrT75ufGx41zOIs\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 16:37:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Employee is added\",\n    \"data\": {\n        \"_id\": \"634d6fee260e0ee548943dbf\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634d1052010b0c589a0b8da1\"\n            },\n            {\n                \"name\": \"Penaldo\",\n                \"role\": \"DEV\",\n                \"rate\": 10,\n                \"_id\": \"634d7f4f83b49230e309f2bc\"\n            },\n            {\n                \"name\": \"Mbappe\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d81e564d69504ae0b9598\"\n            },\n            {\n                \"name\": \"Haaland\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d833bdfc83496a23b60d8\"\n            },\n            {\n                \"name\": \"Messi\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d84b3540ba38c0e5632f1\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 7\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2021-01-01T00:00:00.000Z\",\n        \"description\": \"Se hace\",\n        \"clientName\": \"O no\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ceppelini\",\r\n    \"role\": \"QA\",\r\n    \"rate\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf/assignEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d6fee260e0ee548943dbf",
+								"assignEmployee"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "847"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34f-R/any+1ucDQ3Xu/9eczfPMMDfQE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 16:39:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Employee is added\",\n    \"data\": {\n        \"_id\": \"634d6fee260e0ee548943dbf\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634d1052010b0c589a0b8da1\"\n            },\n            {\n                \"name\": \"Penaldo\",\n                \"role\": \"DEV\",\n                \"rate\": 10,\n                \"_id\": \"634d7f4f83b49230e309f2bc\"\n            },\n            {\n                \"name\": \"Mbappe\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d81e564d69504ae0b9598\"\n            },\n            {\n                \"name\": \"Haaland\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d833bdfc83496a23b60d8\"\n            },\n            {\n                \"name\": \"Messi\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d84b3540ba38c0e5632f1\"\n            },\n            {\n                \"name\": \"Suarez\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d84ed861927ed272ac5c4\"\n            },\n            {\n                \"name\": \"Canobbio\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d8530861927ed272ac5d2\"\n            },\n            {\n                \"name\": \"Ceppelini\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d855135b3f6d5f3905280\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 7\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2021-01-01T00:00:00.000Z\",\n        \"description\": \"Se hace\",\n        \"clientName\": \"O no\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "addEmployee",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"name\": \"Amorevieta\",\r\n        \"role\": \"DEV\",\r\n        \"rate\": 17\r\n    },\r\n    {\r\n        \"name\": \"Ramiro Ponce\",\r\n        \"role\": \"TL\",\r\n        \"rate\": 50\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634d924e260e0ee548943dc7/assignEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d924e260e0ee548943dc7",
+								"assignEmployee"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1047"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"417-hfAovLd/MlmJGNJHetH7zaP3OQU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 17:44:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Employee is added\",\n    \"data\": {\n        \"_id\": \"634d924e260e0ee548943dc7\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634d1052010b0c589a0b8da1\"\n            },\n            {\n                \"name\": \"TieneElBalón\",\n                \"role\": \"QA\",\n                \"rate\": 10,\n                \"_id\": \"634d8b94b658e9f745a06034\"\n            },\n            {\n                \"name\": \"TieneElBalón\",\n                \"role\": \"QA\",\n                \"rate\": 10,\n                \"_id\": \"634d8be2b658e9f745a06037\"\n            },\n            {\n                \"name\": \"Gianccomo\",\n                \"role\": \"DEV\",\n                \"rate\": 20,\n                \"_id\": \"634d8be2b658e9f745a06038\"\n            },\n            {\n                \"name\": \"TieneElBalón\",\n                \"role\": \"QA\",\n                \"rate\": 10,\n                \"_id\": \"634d9370517dedec8c9163d3\"\n            },\n            {\n                \"name\": \"Pedro gonzález\",\n                \"role\": \"TL\",\n                \"rate\": 30,\n                \"_id\": \"634d9370517dedec8c9163d4\"\n            },\n            {\n                \"name\": \"Amorevieta\",\n                \"role\": \"DEV\",\n                \"rate\": 17,\n                \"_id\": \"634d94457659dcfdf4c3fcbe\"\n            },\n            {\n                \"name\": \"Ramiro Ponce\",\n                \"role\": \"TL\",\n                \"rate\": 50,\n                \"_id\": \"634d94457659dcfdf4c3fcbf\"\n            },\n            {\n                \"name\": \"Amorevieta\",\n                \"role\": \"DEV\",\n                \"rate\": 17,\n                \"_id\": \"634d9475763dfe61b544f483\"\n            },\n            {\n                \"name\": \"Ramiro Ponce\",\n                \"role\": \"TL\",\n                \"rate\": 50,\n                \"_id\": \"634d9475763dfe61b544f484\"\n            }\n        ],\n        \"name\": \"Proyecto Alien\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2021-01-01T00:00:00.000Z\",\n        \"description\": \"ysbbbb\",\n        \"clientName\": \"AY QUE TIRA\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "updateProject",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Probando con Vale y Luis\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"projects",
+						"634cbef7f61fae31296448af"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updateProject",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cuadro fútbol 5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634cbef7f61fae31296448af"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "494"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ee-rtcafpbhiWfLvSDPnDzXlcoOFjs\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 07:08:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634ca461f3301f472ed6f388\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 70,\n                \"_id\": \"634ca461f3301f472ed6f389\"\n            },\n            {\n                \"name\": \"Rondón\",\n                \"role\": \"DEV\",\n                \"rate\": 74,\n                \"_id\": \"634ca461f3301f472ed6f38a\"\n            },\n            {\n                \"name\": \"Eselque\",\n                \"role\": \"DEV\",\n                \"rate\": 40,\n                \"_id\": \"634cea725f040d2ca803fde5\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 2\",\n        \"startDate\": \"2022-05-12T00:00:00.000Z\",\n        \"endDate\": \"2022-12-20T00:00:00.000Z\",\n        \"description\": \"An old soccer team\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "updateProject",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Probando con Vale y Luis\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634cbef7f61fae31296448af"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "495"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ef-Ej009dlP1qRuNocvfdhp5UbW84E\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 07:09:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634ca461f3301f472ed6f388\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 70,\n                \"_id\": \"634ca461f3301f472ed6f389\"\n            },\n            {\n                \"name\": \"Rondón\",\n                \"role\": \"DEV\",\n                \"rate\": 74,\n                \"_id\": \"634ca461f3301f472ed6f38a\"\n            },\n            {\n                \"name\": \"Eselque\",\n                \"role\": \"DEV\",\n                \"rate\": 40,\n                \"_id\": \"634cea725f040d2ca803fde5\"\n            }\n        ],\n        \"name\": \"Cuadro fútbol 5\",\n        \"startDate\": \"2022-05-12T00:00:00.000Z\",\n        \"endDate\": \"2022-12-20T00:00:00.000Z\",\n        \"description\": \"An old soccer team\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "updateProject",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ahora sí\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634cbef7f61fae31296448af"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "331"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"14b-0hyR+dHW29H8/AkiQ5jJ8EbnCgM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 07:13:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634cbef7f61fae31296448af\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634cbef7f61fae31296448b0\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 4\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2020-01-01T00:00:00.000Z\",\n        \"description\": \"Harto\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "updateProject",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ahora?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634cbef7f61fae31296448af"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "322"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"142-5Zn5W1/XHloYte3lFkL+/lcCvjo\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Oct 2022 07:32:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634cbef7f61fae31296448af\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634cbef7f61fae31296448b0\"\n            }\n        ],\n        \"name\": \"Ahora?\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2020-01-01T00:00:00.000Z\",\n        \"description\": \"Harto\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				}
+			]
 		}
 	]
 }

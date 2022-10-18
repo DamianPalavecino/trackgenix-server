@@ -38,7 +38,7 @@ const getAllProjects = async (req, res) => {
   try {
     const projects = await Projects.find();
 
-    if (projects.length === 0) {
+    if (projects.length <= 0 || projects === null) {
       return res.status(404).json({
         message: 'There are no projects to show',
         data: undefined,
