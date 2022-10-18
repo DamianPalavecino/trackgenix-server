@@ -7,14 +7,38 @@
 	},
 	"item": [
 		{
-			"name": "get",
-			"item": [
+			"name": "getAllTimesheets",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Test 28\",\r\n    \"date\": \"2020-01-01\",\r\n    \"task\": \"Create a timesheet\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/timesheets/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"timesheets",
+						""
+					]
+				}
+			},
+			"response": [
 				{
-					"name": "getAllTimesheets",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
+					"name": "200 - request success",
+					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -38,45 +62,45 @@
 							]
 						}
 					},
-					"response": []
-				},
-				{
-					"name": "getTimesheetById",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"Test 30\",\r\n    \"date\": \"2020-01-01\",\r\n    \"task\": \"Create a timesheet\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
 						},
-						"url": {
-							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607b",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"timesheets",
-								"634cf1d139b6b801c3fc607b"
-							]
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "588"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24c-jZLEULSHuLH2FBAjUetEPmrh424\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 04:38:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
 						}
-					},
-					"response": []
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheets found\",\n    \"data\": [\n        {\n            \"_id\": \"634e0c19182f75e0de81907c\",\n            \"description\": \"edited my friend\",\n            \"date\": \"2020-01-01T00:00:00.000Z\",\n            \"task\": \"Edit a timesheet zzz\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634e0c8a182f75e0de81907f\",\n            \"description\": \"Test 2\",\n            \"date\": \"2000-01-01T00:00:00.000Z\",\n            \"task\": \"Create a timesheet 2\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634e0dd4182f75e0de819084\",\n            \"description\": \"edited my friend\",\n            \"date\": \"2020-01-01T00:00:00.000Z\",\n            \"task\": \"Edit a timesheet\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634e29b9512b4f42e592eebb\",\n            \"description\": \"Test 31\",\n            \"date\": \"2020-01-01T00:00:00.000Z\",\n            \"task\": \"Create a timesheet\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
 				},
 				{
-					"name": "getTimesheetById- nonexistent id failure",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
+					"name": "404 - empty DB",
+					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -89,32 +113,269 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/timesheets/634c9b3a05f024a75fc2814",
+							"raw": "localhost:5000/timesheets/",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"timesheets",
-								"634c9b3a05f024a75fc2814"
+								""
 							]
 						}
 					},
-					"response": []
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "41"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"29-W5osdpHo9pQWV0IYKdtKIzBTOGE\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 04:40:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Empty database\",\n    \"error\": true\n}"
 				}
 			]
 		},
 		{
-			"name": "post",
-			"item": [
+			"name": "getTimesheetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/timesheets/634c99d1b58485e75255dcc5",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"timesheets",
+						"634c99d1b58485e75255dcc5"
+					]
+				}
+			},
+			"response": [
 				{
-					"name": "createTimesheet",
-					"request": {
+					"name": "200 - request success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/timesheets/634e2ead256f01bd92f2c345",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634e2ead256f01bd92f2c345"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "178"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b2-qoVjy2XUpdyO0AY96rlsVuN+GQk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 04:50:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheet found\",\n    \"data\": {\n        \"_id\": \"634e2ead256f01bd92f2c345\",\n        \"description\": \"Test 1\",\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"task\": \"Create a timesheet\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "404 - deleted ID from DB",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607b",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634cf1d139b6b801c3fc607b"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "93"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5d-G33NuF07jqYMgDUphmtQpNWMWec\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:52:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheet ID: 634cf1d139b6b801c3fc607b does not exist on database.\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "404 - nonexistent ID on DB",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/timesheets/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-ZqXqj1pAJqPgJgCt+66w5hVPfc4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:59:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheet ID: 1 does not exist on database.\",\n    \"error\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "createTimesheet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Test 31\",\r\n    \"date\": \"2020-01-01\",\r\n    \"task\": \"Create a timesheet\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/timesheets/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"timesheets",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 - create succes",
+					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"Test 31\",\r\n    \"date\": \"2020-01-01\",\r\n    \"task\": \"Create a timesheet\"\r\n}",
+							"raw": "{\r\n    \"description\": \"Test 1\",\r\n    \"date\": \"2020-01-01\",\r\n    \"task\": \"Create a timesheet\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -133,16 +394,50 @@
 							]
 						}
 					},
-					"response": []
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "180"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b4-+t6qh2+flFoW3R7N2vPUwXhCp0Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 04:42:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheet created\",\n    \"data\": {\n        \"description\": \"Test 1\",\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"task\": \"Create a timesheet\",\n        \"_id\": \"634e2ead256f01bd92f2c345\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
 				},
 				{
-					"name": "createTimesheet- undefined key validation failure",
-					"request": {
+					"name": "400 - required key not defined",
+					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"Test 31\",\r\n    \"date\": \"2020-01-01\"\r\n}",
+							"raw": "{\r\n    \"description\": \"Test 3\",\r\n    \"date\": \"1980-01-01\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -161,21 +456,50 @@
 							]
 						}
 					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "put",
-			"item": [
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"43-eY2qJvbgSEFxxXh7viWrb7jy95g\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 04:46:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"task\\\" is required\",\n    \"error\": true\n}"
+				},
 				{
-					"name": "editTimesheetById",
-					"request": {
-						"method": "PUT",
+					"name": "400 - future date invalid",
+					"originalRequest": {
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"esto es un edit\",\r\n    \"date\": \"2020-01-01T00:00:00.000Z\",\r\n    \"task\": \"Edit a timesheet\"\r\n}",
+							"raw": "{\r\n    \"description\": \"Test 4\",\r\n    \"date\": \"2025-01-01\",\r\n    \"task\": \"Create a future timesheet\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -183,27 +507,61 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607b",
+							"raw": "localhost:5000/timesheets/",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"timesheets",
-								"634cf1d139b6b801c3fc607b"
+								""
 							]
 						}
 					},
-					"response": []
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "114"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"72-EVnTZNKGbp9KziXookRE6FwxOFw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 04:49:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"date\\\" must be less than or equal to \\\"2022-10-18T03:00:00.000Z\\\"\",\n    \"error\": true\n}"
 				},
 				{
-					"name": "editTimesheetById- nonexistent id failure",
-					"request": {
-						"method": "PUT",
+					"name": "400 - key value in req.body not defined on schema",
+					"originalRequest": {
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"esto es un edit a un id que no existe\",\r\n    \"date\": \"2020-01-01T00:00:00.000Z\",\r\n    \"task\": \"Edit a timesheet\"\r\n}",
+							"raw": "{\r\n    \"description\": \"Test 4\",\r\n    \"date\": \"1950-01-01\",\r\n    \"task\": \"Create a future timesheet\",\r\n    \"blablabla\": \"non defined value\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -211,61 +569,571 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607",
+							"raw": "localhost:5000/timesheets/",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"timesheets",
-								"634cf1d139b6b801c3fc607"
+								""
 							]
 						}
 					},
-					"response": []
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "75"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4b-AjQ5JUljDOK3ZeOf56fFhWUddZM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 04:55:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"blablabla\\\" is not allowed\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "400 - empty key value",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Test 4\",\r\n    \"date\": \"1950-01-01\",\r\n    \"task\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/timesheets/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "82"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"52-Ko93kMJeq55b4El0XK7O7jDshBM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 04:57:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"task\\\" is not allowed to be empty\",\n    \"error\": true\n}"
 				}
 			]
 		},
 		{
-			"name": "delete",
-			"item": [
+			"name": "editTimesheetById",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"\",\r\n    \"date\": \"2020-01-01T00:00:00.000Z\",\r\n    \"task\": \"Edit a timesheet\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/timesheets/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"timesheets",
+						""
+					]
+				}
+			},
+			"response": [
 				{
-					"name": "deleteTimesheetById",
-					"request": {
-						"method": "DELETE",
+					"name": "201 - edit success (all key values)",
+					"originalRequest": {
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"edited my friend\",\r\n    \"date\": \"2020-01-01\",\r\n    \"task\": \"Edit a timesheet zzz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607b",
+							"raw": "localhost:5000/timesheets/634e2f99e17839d7c88a5bde",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"timesheets",
-								"634cf1d139b6b801c3fc607b"
+								"634e2f99e17839d7c88a5bde"
 							]
 						}
 					},
-					"response": []
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "191"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bf-FMjFf44xv2Abkz3qnJh40XiwB0M\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:19:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheet edited\",\n    \"data\": {\n        \"_id\": \"634e2f99e17839d7c88a5bde\",\n        \"description\": \"edited my friend\",\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"task\": \"Edit a timesheet zzz\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
 				},
 				{
-					"name": "deleteTimesheetById- nonexistent id failure",
-					"request": {
-						"method": "DELETE",
+					"name": "201 - edit (one separate key value)",
+					"originalRequest": {
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"edited again my friend\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607",
+							"raw": "localhost:5000/timesheets/634e2f99e17839d7c88a5bde",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"timesheets",
-								"634cf1d139b6b801c3fc607"
+								"634e2f99e17839d7c88a5bde"
 							]
 						}
 					},
-					"response": []
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "197"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c5-8G8ZFKCsLXxpwhYeGzsa8a69QJQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:20:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheet edited\",\n    \"data\": {\n        \"_id\": \"634e2f99e17839d7c88a5bde\",\n        \"description\": \"edited again my friend\",\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"task\": \"Edit a timesheet zzz\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "400 - undefined key on Schema",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description1234\": \"this is also an edit\",\r\n    \"date\": \"2020-01-01T00:00:00.000Z\",\r\n    \"task\": \"Edit a timesheet\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/timesheets/634e2f99e17839d7c88a5bde",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634e2f99e17839d7c88a5bde"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "81"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"51-bXRoHaTLQslMN7YJNv8YBuZCE6I\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:10:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"description1234\\\" is not allowed\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "400 - empty key value",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"\",\r\n    \"date\": \"2020-01-01\",\r\n    \"task\": \"Edit a timesheet\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/timesheets/634e2f99e17839d7c88a5bde",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634e2f99e17839d7c88a5bde"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "89"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"59-LebYueQO1nniD7AOCZkbjchpE24\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:11:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"description\\\" is not allowed to be empty\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "404 - nonexistent ID on DB",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"this is also an edit\",\r\n    \"date\": \"2020-01-01T00:00:00.000Z\",\r\n    \"task\": \"Edit a timesheet\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/timesheets/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-ZqXqj1pAJqPgJgCt+66w5hVPfc4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:09:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheet ID: 1 does not exist on database.\",\n    \"error\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "deleteTimesheetById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/timesheets/634cf1d139b6b801c3fc607b",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"timesheets",
+						"634cf1d139b6b801c3fc607b"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "204 - delete success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/timesheets/634e3617dc9c72b0a9af8a99",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"634e3617dc9c72b0a9af8a99"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d7-azBeEnujVtNBgsRsymx+o+bl4C8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:14:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "404 - nonexistent ID on DB",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/timesheets/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"timesheets",
+								"1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-ZqXqj1pAJqPgJgCt+66w5hVPfc4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 05:14:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Timesheet ID: 1 does not exist on database.\",\n    \"error\": true\n}"
 				}
 			]
 		}

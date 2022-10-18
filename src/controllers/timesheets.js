@@ -15,8 +15,8 @@ const createTimesheet = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
-      message: `An error ocurred: ${error}`,
+    return res.status(500).json({
+      message: `An error ocurred: ${error.message}`,
       data: undefined,
       error: true,
     });
@@ -29,7 +29,7 @@ const getAllTimesheets = async (req, res) => {
 
     if (timesheets.length <= 0) {
       return res.status(404).json({
-        message: 'No timesheets found',
+        message: 'Empty database',
         data: undefined,
         error: true,
       });
@@ -40,8 +40,8 @@ const getAllTimesheets = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
-      message: `An error ocurred: ${error}`,
+    return res.status(500).json({
+      message: `An error ocurred: ${error.message}`,
       data: undefined,
       error: true,
     });
@@ -53,15 +53,29 @@ const getTimesheetById = async (req, res) => {
     const { id } = req.params;
     const timesheet = await Timesheets.findById(id);
 
+    if (timesheet === null) {
+      res.status(404).json({
+        message: `Timesheet ID: ${req.params.id} existed on database but was deleted.`,
+        data: undefined,
+        error: true,
+      });
+    }
     return res.status(200).json({
       message: 'Timesheet found',
       data: timesheet,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
-      message: `An error ocurred: ${error}`,
-      data: undefined,
+    if (error.name === 'CastError') {
+      return res.status(404).json({
+        message: `Timesheet ID: ${req.params.id} does not exist on database.`,
+        data: undefined,
+        error: true,
+      });
+    }
+    return res.status(500).json({
+      message: `An error ocurred: ${error.message}`,
+      date: undefined,
       error: true,
     });
   }
@@ -75,16 +89,22 @@ const editTimesheetById = async (req, res) => {
       { ...req.body },
       { new: true },
     );
-
-    return res.status(200).json({
-      message: `Project with id ${id} edited.`,
+    return res.status(201).json({
+      message: 'Timesheet edited',
       data: result,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
-      message: `An error occurred ${error}`,
-      data: undefined,
+    if (error.name === 'CastError') {
+      return res.status(404).json({
+        message: `Timesheet ID: ${req.params.id} does not exist on database.`,
+        date: undefined,
+        error: true,
+      });
+    }
+    return res.status(500).json({
+      message: `An error ocurred: ${error}`,
+      date: undefined,
       error: true,
     });
   }
@@ -96,12 +116,19 @@ const deleteTimesheetById = async (req, res) => {
     const result = await Timesheets.findByIdAndDelete(id);
 
     return res.status(204).json({
-      message: `Project with id ${id} deleted.`,
+      message: 'Timesheet deleted',
       data: result,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
+    if (error.name === 'CastError') {
+      return res.status(404).json({
+        message: `Timesheet ID: ${req.params.id} does not exist on database.`,
+        date: undefined,
+        error: true,
+      });
+    }
+    return res.status(500).json({
       message: `An error occurred ${error}`,
       data: undefined,
       error: true,

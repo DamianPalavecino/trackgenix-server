@@ -5,10 +5,10 @@ import timesheetsValidation from '../validations/timesheets';
 const router = express.Router();
 
 router
-  .post('/', timesheetsValidation.validateCreationAndUpdate, timesheetsControllers.createTimesheet)
+  .post('/', timesheetsValidation.validateCreation, timesheetsControllers.createTimesheet)
   .get('/', timesheetsControllers.getAllTimesheets)
   .get('/:id', timesheetsControllers.getTimesheetById)
-  .put('/:id', timesheetsValidation.validateCreationAndUpdate, timesheetsControllers.editTimesheetById)
+  .put('/:id', timesheetsValidation.validateUpdate, timesheetsControllers.editTimesheetById)
   .delete('/:id', timesheetsControllers.deleteTimesheetById);
 
 export default router;
