@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import { now } from 'mongoose';
 
-const validateCreation = (req, res, next) => {
+const validateCreationAndUpdate = (req, res, next) => {
   const timesheetValidation = Joi.object({
     description: Joi.string().min(3).max(50).required(),
     date: Joi.date().max(now().toDateString()).required(),
@@ -21,5 +21,5 @@ const validateCreation = (req, res, next) => {
 };
 
 export default {
-  validateCreation,
+  validateCreationAndUpdate,
 };
