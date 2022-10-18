@@ -145,7 +145,24 @@
 			"name": "getById",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/employees/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": [
 				{
@@ -154,14 +171,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/employees/634c99a06a24d26e60d74908",
+							"raw": "localhost:5000/employees/634dd7c8bf92dc8b37e29a98",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"employees",
-								"634c99a06a24d26e60d74908"
+								"634dd7c8bf92dc8b37e29a98"
 							]
 						}
 					},
@@ -179,15 +196,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "196"
+							"value": "202"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"c4-8Zer3jJBbuZKCoKCFJVOOuT3vWE\""
+							"value": "W/\"ca-6gJ1kAFX5jKvhBYy+LwYd9uEgVQ\""
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 17 Oct 2022 02:28:08 GMT"
+							"value": "Tue, 18 Oct 2022 20:26:27 GMT"
 						},
 						{
 							"key": "Connection",
@@ -199,7 +216,60 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"Employee found\",\n    \"data\": {\n        \"_id\": \"634c99a06a24d26e60d74908\",\n        \"name\": \"Laura\",\n        \"lastName\": \"Canoura\",\n        \"phone\": 9876543210,\n        \"email\": \"laucan@furl.net\",\n        \"password\": \"lalalala2\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+					"body": "{\n    \"message\": \"Employee found\",\n    \"data\": {\n        \"_id\": \"634dd7c8bf92dc8b37e29a98\",\n        \"name\": \"Maria Laura\",\n        \"lastName\": \"Canoura\",\n        \"phone\": 9876543210,\n        \"email\": \"laucan@furl.net\",\n        \"password\": \"lalalala2\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "getById - Deleted Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/employees/634dd7f2bf92dc8b37e29a9a",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"634dd7f2bf92dc8b37e29a9a"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "37"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"25-bJ6ruByp7h7wKJZrA43IZpaO2fE\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 20:12:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid ID\",\n    \"error\": true\n}"
 				},
 				{
 					"name": "getById - Invalid Id",
@@ -240,7 +310,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 17 Oct 2022 23:18:55 GMT"
+							"value": "Tue, 18 Oct 2022 20:32:23 GMT"
 						},
 						{
 							"key": "Connection",
@@ -406,77 +476,6 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"There was an error: \\\"name\\\" is required\",\n    \"error\": true\n}"
-				}
-			]
-		},
-		{
-			"name": "Edit",
-			"request": {
-				"method": "PUT",
-				"header": []
-			},
-			"response": [
-				{
-					"name": "Edited",
-					"originalRequest": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Maria Laura\",\r\n    \"lastName\": \"Canoura\",\r\n    \"phone\": 9876543210,\r\n    \"email\": \"laucan@furl.net\",\r\n    \"password\": \"lalalala2\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:5000/employees/634c99a06a24d26e60d74908",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"employees",
-								"634c99a06a24d26e60d74908"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "236"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"ec-nOfXJJHQEdMzpaQ4a9ruZdFcP0I\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 17 Oct 2022 19:53:53 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Employee widh id 634c99a06a24d26e60d74908 edited\",\n    \"data\": {\n        \"_id\": \"634c99a06a24d26e60d74908\",\n        \"name\": \"Maria Laura\",\n        \"lastName\": \"Canoura\",\n        \"phone\": 9876543210,\n        \"email\": \"laucan@furl.net\",\n        \"password\": \"lalalala2\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
 				}
 			]
 		}

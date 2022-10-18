@@ -13,7 +13,7 @@ const getAllEmployees = async (req, res) => {
     }
 
     return res.status(200).json({
-      message: 'Employee found',
+      message: 'Employees found',
       data: employees,
       error: false,
     });
@@ -31,15 +31,29 @@ const getEmployeeById = async (req, res) => {
     const { id } = req.params;
     const employees = await Employees.findById(id);
 
+    if (employees === null) {
+      res.status(404).json({
+        message: 'Invalid ID',
+        data: undefined,
+        error: true,
+      });
+    }
     return res.status(200).json({
       message: 'Employee found',
       data: employees,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
-      message: 'Invalid ID',
-      data: undefined,
+    if (error.name === 'CastError') {
+      return res.status(404).json({
+        message: 'Invalid ID',
+        data: undefined,
+        error: true,
+      });
+    }
+    return res.status(500).json({
+      message: `An error ocurred: ${error.message}`,
+      date: undefined,
       error: true,
     });
   }
