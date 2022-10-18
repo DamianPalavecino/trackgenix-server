@@ -21,6 +21,12 @@ const getSuperAdminsId = async (req, res) => {
   try {
     const { id } = req.params;
     const superAdmin = await SuperAdmins.findById(id);
+    if (!superAdmin) {
+      return res.status(404).json({
+        meesage: 'Super admin dont exist',
+        error: true,
+      });
+    }
 
     return res.status(200).json({
       message: 'Super admin found',
@@ -58,8 +64,50 @@ const createSuperAdmin = async (req, res) => {
   }
 };
 
+const deletedSuperAdmin = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await SuperAdmins.findByIdAndDelete(id);
+
+    return res.status(204).json({
+      message: `Project with id ${id} deleted.`,
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
+      message: 'An error occurred',
+      error,
+    });
+  }
+};
+
+const editedSuperAdmin = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await SuperAdmins.findByIdAndUpdate(
+      { _id: id },
+      { ...req.body },
+      { new: true },
+    );
+
+    return res.status(201).json({
+      message: `Project with id${id} edited.`,
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
+      message: 'An error occurred.',
+      error,
+    });
+  }
+};
+
 export default {
   getAllSuperAdmins,
   getSuperAdminsId,
   createSuperAdmin,
+  deletedSuperAdmin,
+  editedSuperAdmin,
 };

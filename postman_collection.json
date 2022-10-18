@@ -21,7 +21,450 @@
 		},
 		{
 			"name": "super-admins",
-			"item": []
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/super-admins",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"super-admins"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/super-admins",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"super-admins"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1167"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48f-rGBZ5F41z8THytAt8vk+wXFr35g\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 22:39:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Super admin found\",\n    \"data\": [\n        {\n            \"_id\": \"634ca7313ba44bede1863022\",\n            \"name\": \"Juancizco\",\n            \"lastName\": \"Papadopulus\",\n            \"email\": \"juan@papa.com\",\n            \"password\": \"2023\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d66d4508e6b134af0ade4\",\n            \"name\": \"Lio\",\n            \"lastName\": \"Mesi\",\n            \"email\": \"champions@fut.com\",\n            \"password\": \"2020\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d72eaa3ee84030759c308\",\n            \"name\": \"ELBICHO\",\n            \"lastName\": \"CR7\",\n            \"email\": \"champions@fut.com\",\n            \"password\": \"2022\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d79430e4d452e827183e4\",\n            \"name\": \"Luisito\",\n            \"lastName\": \"LaCalle\",\n            \"email\": \"lo@100to.com\",\n            \"password\": \"1678\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d795e0e4d452e827183e6\",\n            \"name\": \"Perro\",\n            \"lastName\": \"Primo\",\n            \"email\": \"elmas@quetose.com\",\n            \"password\": \"420\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d9526236d6330928b5fe3\",\n            \"name\": \"Sergio\",\n            \"lastName\": \"Puglia\",\n            \"email\": \"gordito@gmail.com\",\n            \"password\": \"12359\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f089b0862572ab92d58df\",\n            \"name\": \"Camilo\",\n            \"lastName\": \"Puglia\",\n            \"email\": \"camilo@gmail.com\",\n            \"password\": \"1515\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f0d30d29802e8d6dc07e5\",\n            \"name\": \"Karim\",\n            \"lastName\": \"Benzema\",\n            \"email\": \"Krim@.com\",\n            \"password\": \"2025\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f281aca551819ef903f75\",\n            \"name\": \"LaMar\",\n            \"lastName\": \"EstabaSerena\",\n            \"email\": \"srena@estaba.com\",\n            \"password\": \"laMar\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/super-admins/634ca8d90049f0d97594ba66",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"super-admins",
+								"634ca8d90049f0d97594ba66"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/super-admins/634ca8d90049f0d97594ba66",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"super-admins",
+										"634ca8d90049f0d97594ba66"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-W/vlJG1mJ4whTr4WR7ht0S5oqiQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 22:40:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meesage\": \"Super admin dont exist\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/super-admins/634f281aca551819ef903f75",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"super-admins",
+										"634f281aca551819ef903f75"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-lou8GvGoYmF72mUQA60CkISieW8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 22:41:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Super admin found\",\n    \"data\": {\n        \"_id\": \"634f281aca551819ef903f75\",\n        \"name\": \"LaMar\",\n        \"lastName\": \"EstabaSerena\",\n        \"email\": \"srena@estaba.com\",\n        \"password\": \"laMar\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"LaMar\",\r\n    \"lastName\": \"EstabaSerena\",\r\n    \"email\": \"srena@estaba.com\",\r\n    \"password\": \"laMar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/super-admins",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"super-admins"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"LaMar\",\r\n    \"lastName\": \"EstabaSerena\",\r\n    \"email\": \"srena@estaba.com\",\r\n    \"password\": \"laMar\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/super-admins",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"super-admins"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-rMCs2K2ns6W+k2pbX64q2cFAPlc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 22:26:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Super admin created successfully\",\n    \"data\": {\n        \"name\": \"LaMar\",\n        \"lastName\": \"EstabaSerena\",\n        \"email\": \"srena@estaba.com\",\n        \"password\": \"laMar\",\n        \"_id\": \"634f281aca551819ef903f75\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "deleted",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/super-admins/634f11fb3e83a6092f8999a9",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"super-admins",
+								"634f11fb3e83a6092f8999a9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/super-admins/634f11fb3e83a6092f8999a9",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"super-admins",
+										"634f11fb3e83a6092f8999a9"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dc-fUZCnjnDN9Z9/AJm51Zh1Sn6egE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 22:22:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"name\":\"Karim\",\"lastName\":\"Benzema\",\"email\":\"Krim@.com\",\"password\":\"2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/super-admins/634f0d30d29802e8d6dc07e5",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"super-admins",
+								"634f0d30d29802e8d6dc07e5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"name\":\"Karim\",\"lastName\":\"Benzema\",\"email\":\"Krim@.com\",\"password\":\"2025\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/super-admins/634f0d30d29802e8d6dc07e5",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"super-admins",
+										"634f0d30d29802e8d6dc07e5"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "199"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c7-MC3y3o7564frBSTy1s3Lj20YxA8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 22:25:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project with id634f0d30d29802e8d6dc07e5 edited.\",\n    \"data\": {\n        \"_id\": \"634f0d30d29802e8d6dc07e5\",\n        \"name\": \"Karim\",\n        \"lastName\": \"Benzema\",\n        \"email\": \"Krim@.com\",\n        \"password\": \"2025\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "tasks",
