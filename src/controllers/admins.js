@@ -3,6 +3,16 @@ import Admins from '../models/Admins';
 const getAllAdmins = async (req, res) => {
   try {
     const admins = await Admins.find();
+    const params = req.query;
+
+    if (Object.keys(params).length > 0) {
+      const adminFiltered = await Admins.find(req.query);
+      return res.status(200).json({
+        message: 'Admin found',
+        data: adminFiltered,
+        error: false,
+      });
+    }
 
     if (admins.length === 0) {
       return res.status(404).json({
