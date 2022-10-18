@@ -1,33 +1,48 @@
-import Tasks from '../models/tasks';
+import TaskModel from '../models/tasks';
 
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await Tasks.find();
-
+    const tasks = await TaskModel.find();
+    if (tasks.length <= 0) {
+      return res.status(404).json({
+        message: 'No tasks found, empty DB.',
+        data: undefined,
+        error: false,
+      });
+    }
     return res.status(200).json({
-      message: 'Tasks found',
+      message: 'Tasks found.',
       data: tasks,
       error: false,
     });
   } catch (error) {
-    return res.json({
-      message: 'An error occured',
+    return res.status(500).json({
+      message: `An error occured: ${error.message}`,
+      data: undefined,
       error: true,
     });
   }
 };
+
 const getTaskById = async (req, res) => {
   try {
     const { id } = req.params;
-    const task = await Tasks.findById(id);
+    const task = await TaskModel.findById(id).exec();
     return res.status(200).json({
-      message: 'Task found',
+      message: 'Task found.',
       data: task,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
-      message: `No task has '${req.params.id}' as an id`,
+    if (error.name === 'CastError') {
+      return res.status(404).json({
+        message: `The following ID: '${req.params.id}' does not match any task.`,
+        data: undefined,
+        error: false,
+      });
+    }
+    return res.status(500).json({
+      message: `An error occured: ${error.message}`,
       data: undefined,
       error: true,
     });
@@ -35,18 +50,18 @@ const getTaskById = async (req, res) => {
 };
 const createTask = async (req, res) => {
   try {
-    const task = new Tasks({
+    const task = new TaskModel({
       description: req.body.description,
     });
     const result = await task.save();
     return res.status(201).json({
-      message: 'Task created successfully',
+      message: 'Task created successfully.',
       data: result,
       error: false,
     });
   } catch (error) {
-    return res.json({
-      message: error.message,
+    return res.status(500).json({
+      message: `An error occured: ${error.message}`,
       data: undefined,
       error: true,
     });
@@ -55,11 +70,22 @@ const createTask = async (req, res) => {
 const deleteTask = async (req, res) => {
   try {
     const { id } = req.params;
-    await Tasks.findByIdAndDelete(id);
-    return res.status(204).json();
+    const result = await TaskModel.findByIdAndDelete(id);
+    return res.status(204).json({
+      message: 'Task deleted successfully.',
+      data: result,
+      error: false,
+    });
   } catch (error) {
-    return res.status(404).json({
-      message: `No task has '${req.params.id}' as an id`,
+    if (error.name === 'CastError') {
+      return res.status(404).json({
+        message: `The following ID: '${req.params.id}' does not match any task.`,
+        data: undefined,
+        error: false,
+      });
+    }
+    return res.status(500).json({
+      message: `An error occured: ${error.message}`,
       data: undefined,
       error: true,
     });
@@ -68,23 +94,31 @@ const deleteTask = async (req, res) => {
 const editTask = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedTask = req.body;
-    await Tasks.findByIdAndUpdate(id, updatedTask);
-    const result = await Tasks.findById(id);
-    return res.status(200).json({
-      message: 'Task edited successfully',
+    const result = await TaskModel.findByIdAndUpdate(
+      { _id: id },
+      { ...req.body },
+      { new: true },
+    );
+    return res.status(201).json({
+      message: 'Task edited successfully.',
       data: result,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
-      message: `No task has '${req.params.id}' as an id`,
+    if (error.name === 'CastError') {
+      return res.status(404).json({
+        message: `The following ID: '${req.params.id}' does not match any task.`,
+        data: undefined,
+        error: false,
+      });
+    }
+    return res.status(500).json({
+      message: `An error occured: ${error.message}`,
       data: undefined,
       error: true,
     });
   }
 };
-
 export default {
   getAllTasks,
   getTaskById,
