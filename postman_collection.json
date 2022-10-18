@@ -1,31 +1,264 @@
 {
 	"info": {
-		"_postman_id": "2a7619e0-6ea5-4a6e-b824-e4a29222bf0a",
-		"name": "postman_collections",
-		"description": "## Week-09 API collection",
+		"_postman_id": "8f5bd6d7-8b37-482f-b77f-400794adc373",
+		"name": "postman collections",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23768454"
+		"_exporter_id": "23762473"
 	},
 	"item": [
 		{
-			"name": "projects",
-			"item": []
+			"name": "put",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "succes",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"ramon\",\r\n\"lastName\": \"gomez\",\r\n\"email\": \"ramon@umn.com\",\r\n\"password\": \"ramonsito55852yuilvfghuil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/634dd699fd04f0365c5969e0",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634dd699fd04f0365c5969e0"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "216"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d8-fe4oqnf8dKRiHlWRseG0gLXNSps\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 02:20:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin id  634dd699fd04f0365c5969e0 edited\",\n    \"data\": {\n        \"_id\": \"634dd699fd04f0365c5969e0\",\n        \"name\": \"ramon\",\n        \"lastName\": \"gomez\",\n        \"email\": \"ramon@umn.com\",\n        \"password\": \"ramonsito55852yuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "error",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"ramon\",\r\n\"lastName\": \"gomez\",\r\n\"email\": \"ramon@umn.com\",\r\n\"password\": \"ramonsito55852yuilvfghuil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/634dd699fd04f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634dd699fd04f"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "65"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"41-72Fnrso4G8CF6gFVch4/EAc4rko\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 02:22:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No admin with '634dd699fd04f' as an id\",\n    \"error\": true\n}"
+				}
+			]
 		},
 		{
-			"name": "employees",
-			"item": []
-		},
-		{
-			"name": "admins",
-			"item": []
-		},
-		{
-			"name": "super-admins",
-			"item": []
-		},
-		{
-			"name": "tasks",
-			"item": []
+			"name": "delete",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "succes",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/634dd6a5fd04f0365c5969e2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634dd6a5fd04f0365c5969e2"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 02:26:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "error",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/634dd6a5fd04f036",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634dd6a5fd04f036"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "68"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"44-99DmUQVmEpwDt5rUV8oCfkIOVyI\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 02:26:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No admin with '634dd6a5fd04f036' as an id\",\n    \"error\": true\n}"
+				}
+			]
 		}
 	]
 }

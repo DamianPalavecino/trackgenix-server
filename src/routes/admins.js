@@ -5,6 +5,6 @@ import adminValidations from '../validations/admins';
 const router = express.Router();
 
 router
-  .put('/', adminValidations.validateEdition, adminsControllers.editAdmin)
-  .delete('/', adminsControllers.deleteAdmin);
+  .put('/:id', adminValidations.validateEdition, adminsControllers.editAdmin)
+  .delete('/:id', adminsControllers.deleteAdmin);
 export default router;
