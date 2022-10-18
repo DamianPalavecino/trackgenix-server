@@ -65,6 +65,59 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"Admin Found\",\n    \"data\": [\n        {\n            \"_id\": \"634d69d77534a458ce3b14b9\",\n            \"name\": \"Michael\",\n            \"lastName\": \"Corleone\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertyuilvfghuil\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d715d1b969b83d3c495a2\",\n            \"name\": \"Carlos\",\n            \"lastName\": \"Brigante\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634dbf4c1b969b83d3c495a5\",\n            \"name\": \"Tony\",\n            \"lastName\": \"Montana\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+				},
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								""
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"36-4V2Z6BORN9sHDwNccSrxMlL08Lw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 15:17:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There is no data to display\",\n    \"error\": true\n}"
 				}
 			]
 		},
@@ -159,6 +212,130 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"Admin found\",\n    \"data\": {\n        \"_id\": \"634d69d77534a458ce3b14b9\",\n        \"name\": \"Michael\",\n        \"lastName\": \"Corleone\",\n        \"email\": \"imnygj0@umn.com\",\n        \"password\": \"ertyuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/634ec3b7ef58b4a5306a221dd",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634ec3b7ef58b4a5306a221dd"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "166"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a6-KpDNJZpDHof7mrIFa5wcphewJ9E\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 15:18:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin not find CastError: Cast to ObjectId failed for value \\\"634ec3b7ef58b4a5306a221dd\\\" (type string) at path \\\"_id\\\" for model \\\"admin\\\"\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/pepe pecas pica papas con un pico",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"pepe pecas pica papas con un pico"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "174"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ae-m/KpJvNINEW9hxXwX2OHut/6Wtg\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 15:19:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin not find CastError: Cast to ObjectId failed for value \\\"pepe pecas pica papas con un pico\\\" (type string) at path \\\"_id\\\" for model \\\"admin\\\"\",\n    \"error\": true\n}"
 				}
 			]
 		},
@@ -241,6 +418,68 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"Admin created successfully\",\n    \"data\": {\n        \"name\": \"Tony\",\n        \"lastName\": \"Montana\",\n        \"email\": \"imnygj0@umn.com\",\n        \"password\": \"ertdd55852yuilvfghuil\",\n        \"_id\": \"634dbf4c1b969b83d3c495a5\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"name\": \"Michael\",\r\n            \"lastName\": \"Corleone\",\r\n            \"password\": \"ertdd55852yuilvfghuil\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "64"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"40-0zB2k0FUn9I1GLNhlu0E4bwpQfk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Oct 2022 15:19:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"An error occurried, Admin not created\",\n    \"error\": true\n}"
 				}
 			]
 		}
