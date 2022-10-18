@@ -3,10 +3,42 @@ import TaskModel from '../models/tasks';
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await TaskModel.find();
+    const params = req.query;
+    const keys = Object.keys(params);
     if (tasks.length <= 0) {
       return res.status(404).json({
         message: 'No tasks found, empty DB.',
         data: undefined,
+        error: false,
+      });
+    }
+    if (keys.length > 0) {
+      const foundTask = await TaskModel.find(params);
+      const findInvalidKeys = keys.filter((key) => key !== 'description');
+      if (findInvalidKeys.length > 0) {
+        return res.status(400).json({
+          message: 'Invalid params.',
+          data: undefined,
+          error: true,
+        });
+      }
+      if (foundTask.length <= 0) {
+        return res.status(404).json({
+          message: 'Params does not match any task.',
+          data: undefined,
+          error: true,
+        });
+      }
+      if (foundTask.length > 1) {
+        return res.status(200).json({
+          message: 'Tasks found',
+          data: foundTask,
+          error: false,
+        });
+      }
+      return res.status(200).json({
+        message: 'Task found',
+        data: foundTask,
         error: false,
       });
     }
