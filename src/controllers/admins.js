@@ -8,13 +8,14 @@ const editAdmin = async (req, res) => {
       { ...req.body },
       { new: true },
     );
+
     return res.status(201).json({
       message: `Admin id  ${id} edited`,
       data: result,
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.status(404).json({
       message: 'Admin not edited',
       error: true,
     });
