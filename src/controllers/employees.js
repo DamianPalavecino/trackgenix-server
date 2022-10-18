@@ -4,7 +4,6 @@ const deleteEmployee = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await Employees.findByIdAndDelete(id);
-
     return res.status(200).json({
       message: `Employee with id ${id} deleted`,
       data: result,
@@ -12,8 +11,8 @@ const deleteEmployee = async (req, res) => {
     });
   } catch (error) {
     return res.json({
-      message: 'An error occured',
-      error,
+      message: `Server error: ${error}`,
+      error: true,
     });
   }
 };
@@ -34,7 +33,7 @@ const editEmployee = async (req, res) => {
     });
   } catch (error) {
     return res.json({
-      message: `No Employee found with id ${req.params.id}`,
+      message: `Server error: ${error}`,
       data: undefined,
       error: true,
     });

@@ -21,6 +21,4 @@ const validateEdition = (req, res, next) => {
   return next();
 };
 
-export default {
-  validateEdition,
-};
+export default validateEdition;
