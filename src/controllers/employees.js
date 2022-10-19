@@ -44,15 +44,8 @@ const getEmployeeById = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    if (error.name === 'CastError') {
-      return res.status(404).json({
-        message: 'Invalid ID',
-        data: undefined,
-        error: true,
-      });
-    }
-    return res.status(500).json({
-      message: `An error ocurred: ${error.message}`,
+    return res.json({
+      message: `An error ocurred: ${error}`,
       date: undefined,
       error: true,
     });
