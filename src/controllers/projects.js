@@ -10,6 +10,7 @@ const createProject = async (req, res) => {
       clientName: req.body.clientName,
       description: req.body.description,
     });
+
     const result = project.save((error, dataProject) => {
       if (error) {
         return res.status.json({
@@ -18,6 +19,7 @@ const createProject = async (req, res) => {
           error: true,
         });
       }
+
       return res.status(201).json({
         message: 'Project created',
         data: dataProject,
@@ -36,23 +38,54 @@ const createProject = async (req, res) => {
 
 const getAllProjects = async (req, res) => {
   try {
-    const projects = await Projects.find();
+    const projectsAll = await Projects.find();
+    const queryParams = Object.keys(req.query);
+    const find = await Projects.find(req.query);
+    const keysProjects = ['name', 'employees', 'startDate', 'endDate', 'description', 'clientName'];
+    let includes = true;
 
-    if (projects.length <= 0 || projects === null) {
-      return res.status(404).json({
-        message: 'There are no projects to show',
+    if (queryParams.length < 0) {
+      if (projectsAll.length <= 0 || projectsAll === null) {
+        return res.status(404).json({
+          message: 'There are no projects to show',
+          data: undefined,
+          error: true,
+        });
+      }
+      return res.status(200).json({
+        message: 'Project found',
+        data: projectsAll,
+        error: false,
+      });
+    }
+
+    queryParams.forEach((element) => {
+      if (!keysProjects.includes(element)) {
+        includes = false;
+      }
+      return includes;
+    });
+    if (!includes) {
+      return res.status(400).json({
+        message: 'Parameters are incorrect',
         data: undefined,
         error: true,
       });
     }
-
-    return res.status(200).json({
-      message: 'Project found',
-      data: projects,
-      error: false,
+    if (find.length > 0) {
+      return res.status(200).json({
+        message: 'Project found',
+        data: find,
+        error: false,
+      });
+    }
+    return res.status(404).json({
+      message: 'Project not found',
+      data: undefined,
+      error: true,
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.json({
       message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
@@ -65,13 +98,21 @@ const getProjectById = async (req, res) => {
     const { id } = req.params;
     const project = await Projects.findById(id);
 
+    if (!project) {
+      return res.status(404).json({
+        message: 'Project by id not found',
+        data: undefined,
+        error: true,
+      });
+    }
+
     return res.status(200).json({
       message: 'Project found',
       data: project,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
+    return res.status.json({
       message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
@@ -82,9 +123,25 @@ const getProjectById = async (req, res) => {
 const deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
+    const findById = await Projects.findById(id);
+
+    if (!id) {
+      res.status(400).json({
+        message: 'Missing id parameter',
+        data: undefined,
+        error: true,
+      });
+    }
+
+    if (!findById) {
+      return res.status(404).json({
+        message: 'Project not exist',
+        data: undefined,
+        error: true,
+      });
+    }
 
     await Projects.deleteOne({ _id: id });
-
     return res.status(204).json();
   } catch (error) {
     return res.status(404).json({
@@ -99,14 +156,27 @@ const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedProject = req.body;
-
-    await Projects.findByIdAndUpdate(id, updatedProject);
-
     const project = await Projects.findById(id);
+    const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
+
+    if (!id) {
+      res.status(400).json({
+        message: 'Missing id parameter',
+        data: undefined,
+        error: true,
+      });
+    }
+    if (!project) {
+      res.status(400).json({
+        message: 'Project does not exist',
+        data: undefined,
+        error: true,
+      });
+    }
 
     return res.status(200).json({
       message: 'Project is changed',
-      data: project,
+      data: result,
       error: false,
     });
   } catch (error) {
@@ -122,17 +192,35 @@ const addEmployee = async (req, res) => {
   try {
     const { id } = req.params;
     const newEmployee = req.body;
-    await Projects.findByIdAndUpdate({ _id: id }, {
-      $addToSet: {
-        employees: newEmployee,
-      },
-    });
-
     const project = await Projects.findById(id);
+    const addEmployeedProject = await Projects.findByIdAndUpdate(
+      { _id: id },
+      {
+        $addToSet: {
+          employees: newEmployee,
+        },
+      },
+      { new: true },
+    );
+    if (!id) {
+      res.status(400).json({
+        message: 'Missing id parameter',
+        data: undefined,
+        error: true,
+      });
+    }
+
+    if (!project) {
+      res.status(400).json({
+        message: 'Project does not exist',
+        data: undefined,
+        error: true,
+      });
+    }
 
     return res.status(201).json({
       message: 'Employee is added',
-      data: project,
+      data: addEmployeedProject,
       error: false,
     });
   } catch (error) {
