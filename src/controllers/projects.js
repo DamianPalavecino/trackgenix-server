@@ -1,5 +1,23 @@
 import Projects from '../models/Projects';
 
+const missingId = (res) => res.status(400).json({
+  message: 'Missing id parameter',
+  data: undefined,
+  error: true,
+});
+
+const error400 = (res, msg) => res.status(400).json({
+  message: msg,
+  data: undefined,
+  error: true,
+});
+
+const error404 = (res, msg) => res.status(404).json({
+  message: msg,
+  data: undefined,
+  error: true,
+});
+
 const createProject = async (req, res) => {
   try {
     const project = new Projects({
@@ -46,14 +64,10 @@ const getAllProjects = async (req, res) => {
 
     if (queryParams.length < 0) {
       if (projectsAll.length <= 0 || projectsAll === null) {
-        return res.status(404).json({
-          message: 'There are no projects to show',
-          data: undefined,
-          error: true,
-        });
+        return error404(res, 'There are no projects to show');
       }
       return res.status(200).json({
-        message: 'Project found',
+        message: 'Projects found',
         data: projectsAll,
         error: false,
       });
@@ -65,12 +79,9 @@ const getAllProjects = async (req, res) => {
       }
       return includes;
     });
+
     if (!includes) {
-      return res.status(400).json({
-        message: 'Parameters are incorrect',
-        data: undefined,
-        error: true,
-      });
+      return error400(res, 'Parameters are incorrect');
     }
     if (find.length > 0) {
       return res.status(200).json({
@@ -79,11 +90,7 @@ const getAllProjects = async (req, res) => {
         error: false,
       });
     }
-    return res.status(404).json({
-      message: 'Project not found',
-      data: undefined,
-      error: true,
-    });
+    return error404(res, 'Project not found');
   } catch (error) {
     return res.json({
       message: `An error ocurred: ${error}`,
@@ -96,14 +103,15 @@ const getAllProjects = async (req, res) => {
 const getProjectById = async (req, res) => {
   try {
     const { id } = req.params;
+
+    if (!id) {
+      return missingId(res);
+    }
+
     const project = await Projects.findById(id);
 
     if (!project) {
-      return res.status(404).json({
-        message: 'Project by id not found',
-        data: undefined,
-        error: true,
-      });
+      return error404(res, 'Project by id not found');
     }
 
     return res.status(200).json({
@@ -123,32 +131,21 @@ const getProjectById = async (req, res) => {
 const deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const findById = await Projects.findById(id);
 
     if (!id) {
-      return res.status(400).json({
-        message: 'Missing id parameter',
-        data: undefined,
-        error: true,
-      });
+      return missingId(res);
     }
 
+    const findById = await Projects.findById(id);
+
     if (!findById) {
-      return res.status(404).json({
-        message: 'Project not exist',
-        data: undefined,
-        error: true,
-      });
+      return error404(res, 'Project not exist');
     }
 
     await Projects.deleteOne({ _id: id });
     return res.status(204).json();
   } catch (error) {
-    return res.status(404).json({
-      message: `An error ocurred: ${error}`,
-      data: undefined,
-      error: true,
-    });
+    return error404(res, `An error ocurred: ${error}`);
   }
 };
 
@@ -157,30 +154,18 @@ const updateProject = async (req, res) => {
     const { id } = req.params;
     const updatedProject = req.body;
 
-    if (id === null) {
-      return res.status(400).json({
-        message: 'Missing id parameter',
-        data: undefined,
-        error: true,
-      });
+    if (!id) {
+      return missingId(res);
     }
 
     if (Object.entries(updatedProject).length === 0 || !updatedProject) {
-      return res.status(400).json({
-        message: 'Edited project is empty',
-        data: undefined,
-        error: true,
-      });
+      return error400(res, 'Edited project is empty');
     }
     const project = await Projects.findById(id);
     const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
 
     if (!project) {
-      return res.status(400).json({
-        message: 'Project does not exist',
-        data: undefined,
-        error: true,
-      });
+      return error400(res, 'Project does not exist');
     }
 
     return res.status(200).json({
@@ -189,11 +174,7 @@ const updateProject = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
-      message: `An error ocurred: ${error}`,
-      data: undefined,
-      error: true,
-    });
+    return error404(res, `An error ocurred: ${error}`);
   }
 };
 
@@ -203,11 +184,7 @@ const addEmployee = async (req, res) => {
     const newEmployee = req.body;
 
     if (!id) {
-      return res.status(400).json({
-        message: 'Missing id parameter',
-        data: undefined,
-        error: true,
-      });
+      return missingId(res);
     }
 
     const project = await Projects.findById(id);
@@ -222,11 +199,7 @@ const addEmployee = async (req, res) => {
     );
 
     if (!project) {
-      return res.status(400).json({
-        message: 'Project does not exist',
-        data: undefined,
-        error: true,
-      });
+      return error400(res, 'Project does not exist');
     }
 
     return res.status(201).json({
