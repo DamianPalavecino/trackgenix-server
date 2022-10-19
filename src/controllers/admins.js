@@ -4,6 +4,23 @@ const editAdmin = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedAdmin = req.body;
+
+    if (id === null) {
+      return res.status(400).json({
+        message: 'no id parameter',
+        data: undefined,
+        error: true,
+      });
+    }
+
+    if (Object.entries(editAdmin).length === 0) {
+      return res.status(400).json({
+        message: 'Edited admin is empty',
+        data: undefined,
+        error: true,
+      });
+    }
+
     await Admins.findByIdAndUpdate(id, updatedAdmin);
     const result = await Admins.findById(id);
 

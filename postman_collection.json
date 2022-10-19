@@ -9,8 +9,28 @@
 		{
 			"name": "put",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/admins/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"admins",
+						""
+					]
+				}
 			},
 			"response": [
 				{
@@ -142,8 +162,19 @@
 		{
 			"name": "delete",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/admins/634dd699fd04f0365c5969e0",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"admins",
+						"634dd699fd04f0365c5969e0"
+					]
+				}
 			},
 			"response": [
 				{
