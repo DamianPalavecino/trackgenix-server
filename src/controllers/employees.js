@@ -4,6 +4,13 @@ const deleteEmployee = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await Employees.findByIdAndDelete(id);
+    if (!result) {
+      return res.status(404).json({
+        message: 'Employee not found',
+        data: undefined,
+        error: true,
+      });
+    }
     return res.status(200).json({
       message: `Employee with id ${id} deleted`,
       data: result,
