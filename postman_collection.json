@@ -156,6 +156,130 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"No admin with '634dd699fd04f' as an id\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "succes all fileds",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"omar\",\r\n    \"lastName\": \"el armenio\",\r\n    \"email\": \"kebap@gmail.com\",\r\n    \"password\": \"tabule55852yuilvfghuil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/634ec42cef58b4a5306a2222",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634ec42cef58b4a5306a2222"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "219"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"db-jx8oPViIIwDmFUfGByQlUXrSYwI\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 19 Oct 2022 21:48:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin id  634ec42cef58b4a5306a2222 edited\",\n    \"data\": {\n        \"_id\": \"634ec42cef58b4a5306a2222\",\n        \"name\": \"omar\",\n        \"lastName\": \"el armenio\",\n        \"email\": \"kebap@gmail.com\",\n        \"password\": \"tabule55852yuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "succes just 1 field",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"mohammed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/634ec42cef58b4a5306a2222",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634ec42cef58b4a5306a2222"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "223"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"df-VSgzE7VtgpJFlrCBaI2uBVnvh2U\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 19 Oct 2022 21:53:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin id  634ec42cef58b4a5306a2222 edited\",\n    \"data\": {\n        \"_id\": \"634ec42cef58b4a5306a2222\",\n        \"name\": \"mohammed\",\n        \"lastName\": \"el armenio\",\n        \"email\": \"kebap@gmail.com\",\n        \"password\": \"tabule55852yuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
 				}
 			]
 		},
@@ -288,6 +412,59 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"No admin with '634dd6a5fd04f036' as an id\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "try to delete a deleted id",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/admins/635073bbb0384916ebc9d18f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"635073bbb0384916ebc9d18f"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a-dk/ek+LetMsUH9jodtEah51q5Dw\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 19 Oct 2022 22:27:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin not found\",\n    \"error\": true\n}"
 				}
 			]
 		}
