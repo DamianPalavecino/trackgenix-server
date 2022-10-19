@@ -110,6 +110,13 @@ const deleteTask = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await TaskModel.findByIdAndDelete(id);
+    if (result === null) {
+      return res.status(404).json({
+        message: `The following ID: '${req.params.id}' does not match any task.`,
+        data: undefined,
+        error: false,
+      });
+    }
     return res.status(204).json({
       message: 'Task deleted successfully.',
       data: result,

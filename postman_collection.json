@@ -899,6 +899,59 @@
 					"body": "{\n    \"message\": \"The following ID: 'NONEXISTINGID123' does not match any task.\",\n    \"error\": false\n}"
 				},
 				{
+					"name": "Error 404: Delete task already deleted.",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/tasks/634f2bc7a08f2ed340be45e0",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"tasks",
+								"634f2bc7a08f2ed340be45e0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "97"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"61-DWPnVMgxaKZ+mD1saw9WRtMCstg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 19 Oct 2022 22:35:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"The following ID: '634f2bc7a08f2ed340be45e0' does not match any task.\",\n    \"error\": false\n}"
+				},
+				{
 					"name": "Error when missing ID param: shows 404 but shouldn't be.",
 					"originalRequest": {
 						"method": "DELETE",
