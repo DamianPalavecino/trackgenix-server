@@ -157,7 +157,7 @@ const updateProject = async (req, res) => {
     const { id } = req.params;
     const updatedProject = req.body;
 
-    if (!id) {
+    if (id === null) {
       return res.status(400).json({
         message: 'Missing id parameter',
         data: undefined,
@@ -201,6 +201,15 @@ const addEmployee = async (req, res) => {
   try {
     const { id } = req.params;
     const newEmployee = req.body;
+
+    if (!id) {
+      return res.status(400).json({
+        message: 'Missing id parameter',
+        data: undefined,
+        error: true,
+      });
+    }
+
     const project = await Projects.findById(id);
     const addEmployeedProject = await Projects.findByIdAndUpdate(
       { _id: id },
@@ -211,13 +220,6 @@ const addEmployee = async (req, res) => {
       },
       { new: true },
     );
-    if (!id) {
-      return res.status(400).json({
-        message: 'Missing id parameter',
-        data: undefined,
-        error: true,
-      });
-    }
 
     if (!project) {
       return res.status(400).json({
@@ -233,7 +235,7 @@ const addEmployee = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
+    return res.json({
       message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,

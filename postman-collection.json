@@ -12,15 +12,25 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f389",
+					"raw": "http://localhost:5000/projects?name=Project1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"projects",
-						"634ca461f3301f472ed6f389"
+						"projects"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Project1"
+						},
+						{
+							"key": "description",
+							"value": "ysbbbb",
+							"disabled": true
+						}
 					]
 				}
 			},
@@ -753,7 +763,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/projects/1",
+					"raw": "http://localhost:5000/projects/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -761,7 +771,7 @@
 					"port": "5000",
 					"path": [
 						"projects",
-						"1"
+						""
 					]
 				}
 			},
@@ -1710,7 +1720,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Probando con Vale y Luis\"\r\n}",
+					"raw": "{\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1718,7 +1728,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+					"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1726,7 +1736,7 @@
 					"port": "5000",
 					"path": [
 						"projects",
-						"634cbef7f61fae31296448af"
+						"634d6fee260e0ee548943dbf"
 					]
 				}
 			},
@@ -1982,6 +1992,199 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634cbef7f61fae31296448af\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634cbef7f61fae31296448b0\"\n            }\n        ],\n        \"name\": \"Ahora?\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2020-01-01T00:00:00.000Z\",\n        \"description\": \"Harto\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "updateProject",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d6fee260e0ee548943dbf"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"32-LsSWGLFpG0Dwh0DKymLatRCmPDs\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 19 Oct 2022 01:52:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Edited project is empty\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "updateProject",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d6fee260e0ee548943dbf"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"32-LsSWGLFpG0Dwh0DKymLatRCmPDs\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 19 Oct 2022 02:11:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Edited project is empty\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "updateProject",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Hola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								""
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'none'"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "148"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 19 Oct 2022 02:48:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>Cannot PUT /projects/</pre>\n    </body>\n</html>"
 				}
 			]
 		}
