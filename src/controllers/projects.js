@@ -165,7 +165,7 @@ const updateProject = async (req, res) => {
       });
     }
 
-    if (Object.entries(updatedProject).length === 0) {
+    if (Object.entries(updatedProject).length === 0 || !updatedProject) {
       return res.status(400).json({
         message: 'Edited project is empty',
         data: undefined,
