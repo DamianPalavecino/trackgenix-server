@@ -126,7 +126,7 @@ const deleteProject = async (req, res) => {
     const findById = await Projects.findById(id);
 
     if (!id) {
-      res.status(400).json({
+      return res.status(400).json({
         message: 'Missing id parameter',
         data: undefined,
         error: true,
@@ -156,18 +156,27 @@ const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedProject = req.body;
-    const project = await Projects.findById(id);
-    const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
 
     if (!id) {
-      res.status(400).json({
+      return res.status(400).json({
         message: 'Missing id parameter',
         data: undefined,
         error: true,
       });
     }
+
+    if (Object.entries(updatedProject).length === 0) {
+      return res.status(400).json({
+        message: 'Edited project is empty',
+        data: undefined,
+        error: true,
+      });
+    }
+    const project = await Projects.findById(id);
+    const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
+
     if (!project) {
-      res.status(400).json({
+      return res.status(400).json({
         message: 'Project does not exist',
         data: undefined,
         error: true,
@@ -203,7 +212,7 @@ const addEmployee = async (req, res) => {
       { new: true },
     );
     if (!id) {
-      res.status(400).json({
+      return res.status(400).json({
         message: 'Missing id parameter',
         data: undefined,
         error: true,
@@ -211,7 +220,7 @@ const addEmployee = async (req, res) => {
     }
 
     if (!project) {
-      res.status(400).json({
+      return res.status(400).json({
         message: 'Project does not exist',
         data: undefined,
         error: true,
