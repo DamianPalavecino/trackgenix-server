@@ -173,7 +173,7 @@ const updateProject = async (req, res) => {
     }
 
     return res.status(200).json({
-      message: 'Project is changed',
+      message: 'Project has been changed',
       data: result,
       error: false,
     });
@@ -207,7 +207,7 @@ const addEmployee = async (req, res) => {
     }
 
     return res.status(201).json({
-      message: 'Employee is added',
+      message: 'Employee has been added',
       data: addEmployeedProject,
       error: false,
     });
