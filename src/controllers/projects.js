@@ -62,7 +62,7 @@ const getAllProjects = async (req, res) => {
     const keysProjects = ['name', 'employees', 'startDate', 'endDate', 'description', 'clientName'];
     let includes = true;
 
-    if (queryParams.length < 0) {
+    if (queryParams.length <= 0) {
       if (projectsAll.length <= 0 || projectsAll === null) {
         return error404(res, 'There are no projects to show');
       }
