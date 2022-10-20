@@ -83,7 +83,7 @@ const getAllProjects = async (req, res) => {
 
     if (find.length > 0) {
       return res.status(200).json({
-        message: 'Project found',
+        message: find.length === 1 ? 'Project found' : 'Projects found',
         data: find,
         error: false,
       });
