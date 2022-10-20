@@ -145,7 +145,11 @@ const deleteProject = async (req, res) => {
     await Projects.deleteOne({ _id: id });
     return res.status(204).json();
   } catch (error) {
-    return error404(res, `An error ocurred: ${error}`);
+    return res.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
   }
 };
 
