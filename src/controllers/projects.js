@@ -178,7 +178,11 @@ const updateProject = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return error404(res, `An error ocurred: ${error}`);
+    return res.status.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
   }
 };
 
