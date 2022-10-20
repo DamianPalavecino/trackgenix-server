@@ -1,5 +1,7 @@
 import Timesheets from '../models/Timesheets';
 
+const { ObjectId } = require('mongoose').Types;
+
 const missingId = async (req, res) => res.status(400).json({
   message: 'Missing id parameter',
   data: undefined,
@@ -98,6 +100,8 @@ const getAllTimesheets = async (req, res) => {
 const getTimesheetById = async (req, res) => {
   try {
     const { id } = req.params;
+    if (!ObjectId.isValid(id)) return error404(res, 'Invalid ID');
+
     const timesheet = await Timesheets.findById(id);
 
     return res.status(200).json({
@@ -106,13 +110,19 @@ const getTimesheetById = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return error404(res, 'No timesheet found with the requested ID');
+    return res.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
   }
 };
 
 const editTimesheetById = async (req, res) => {
   try {
     const { id } = req.params;
+    if (!ObjectId.isValid(id)) return error404(res, 'Invalid ID');
+
     const updatedTimesheet = req.body;
 
     if (Object.entries(updatedTimesheet).length === 0 || !updatedTimesheet) {
@@ -126,13 +136,19 @@ const editTimesheetById = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return error404(res, 'No timesheet found with the requested ID');
+    return res.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
   }
 };
 
 const deleteTimesheetById = async (req, res) => {
   try {
     const { id } = req.params;
+    if (!ObjectId.isValid(id)) return error404(res, 'Invalid ID');
+
     const findById = await Timesheets.findById(id);
 
     if (!findById) return error404(res, 'Timesheet does not exist');
