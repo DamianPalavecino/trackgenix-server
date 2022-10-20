@@ -1,113 +1,213 @@
-const express = require('express');
-const fs = require('fs');
-const projects = require('../data/projects.json');
+import Projects from '../models/Projects';
 
-const router = express.Router();
-
-router.get('/', (req, res) => {
-  res.send(projects);
+const missingId = (res) => res.status(400).json({
+  message: 'Missing id parameter',
+  data: undefined,
+  error: true,
 });
 
-router.get('/:id', (req, res) => {
-  const projectId = req.params.id;
-  const projectFound = projects.find((project) => project.id === projectId);
-  if (projectFound) {
-    res.send(projectFound);
-  } else {
-    res.send('project not found');
+const error400 = (res, msg) => res.status(400).json({
+  message: msg,
+  data: undefined,
+  error: true,
+});
+
+const error404 = (res, msg) => res.status(404).json({
+  message: msg,
+  data: undefined,
+  error: true,
+});
+
+const createProject = async (req, res) => {
+  try {
+    const project = new Projects({
+      employees: req.body.employees,
+      name: req.body.name,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      clientName: req.body.clientName,
+      description: req.body.description,
+    });
+
+    const result = project.save((error, dataProject) => {
+      if (error) {
+        return res.status.json({
+          message: error,
+          data: undefined,
+          error: true,
+        });
+      }
+
+      return res.status(201).json({
+        message: 'Project created',
+        data: dataProject,
+        error: false,
+      });
+    });
+    return result;
+  } catch (error) {
+    return res.status.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
   }
-});
+};
 
-router.post('/', (req, res) => {
-  const newProject = req.body;
-  projects.push(newProject);
-  fs.writeFile('src/data/projects.json', JSON.stringify(projects), (err) => {
-    if (err) {
-      res.send('cannot save project');
-    } else {
-      res.send('project created');
+const getAllProjects = async (req, res) => {
+  try {
+    const projectsAll = await Projects.find();
+    const queryParams = Object.keys(req.query);
+    const find = await Projects.find(req.query);
+    const keysProjects = ['name', 'employees', 'startDate', 'endDate', 'description', 'clientName'];
+    let includes = true;
+
+    if (queryParams.length <= 0) {
+      if (projectsAll.length <= 0 || projectsAll === null) {
+        return error404(res, 'There are no projects to show');
+      }
+      return res.status(200).json({
+        message: 'Projects found',
+        data: projectsAll,
+        error: false,
+      });
     }
-  });
-});
 
-router.delete('/:id', (req, res) => {
-  const projectId = req.params.id;
-  const foundProjects = projects.find((project) => project.id === projectId);
-  if (!foundProjects) {
-    res.send('Project not found');
-  } else {
-    const filteredProjects = projects.filter((project) => project.id !== projectId);
-    fs.writeFile('src/data/projects.json', JSON.stringify(filteredProjects), (err) => {
-      if (err) {
-        res.send('Cannot delete project');
-      } else {
-        res.send('Project deleted');
+    queryParams.forEach((element) => {
+      if (!keysProjects.includes(element)) {
+        includes = false;
       }
+      return includes;
     });
-  }
-});
+    if (!includes) return error400(res, 'Parameters are incorrect');
 
-router.put('/edit/:id', (req, res) => {
-  const projectId = req.params.id;
-  const newProject = req.body;
-  const foundProject = projects.find(
-    (project) => project.id === projectId,
-  );
-  const i = projects.findIndex((project) => project.id === projectId);
-  if (newProject.name) {
-    foundProject.name = newProject.name;
-  }
-  if (newProject.password) {
-    foundProject.password = newProject.password;
-  }
-  if (newProject.id) {
-    foundProject.id = newProject.id;
-  }
-  projects[i] = foundProject;
-  fs.writeFile('src/data/projects.json', JSON.stringify(projects), (err) => {
-    if (err) {
-      res.send('Cannot edit project');
-    } else {
-      res.send('Employee edited');
+    if (find.length > 0) {
+      return res.status(200).json({
+        message: find.length === 1 ? 'Project found' : 'Projects found',
+        data: find,
+        error: false,
+      });
     }
-  });
-});
-
-router.put('/addE/:id', (req, res) => {
-  const projectId = req.params.id;
-  const newEmployee = req.body;
-  const foundProject = projects.find(
-    (project) => project.id === projectId,
-  );
-  const { members } = foundProject;
-  if (members.find((member) => member.id === newEmployee.id)) {
-    res.send('Employee already exist');
-  } else {
-    foundProject.members.push(newEmployee);
-    fs.writeFile('src/data/projects.json', JSON.stringify(projects), (err) => {
-      if (err) {
-        res.send('Cannot add employee');
-      } else {
-        res.status(200).send({ message: 'Employee added' });
-      }
+    return error404(res, 'Project not found');
+  } catch (error) {
+    return res.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
     });
   }
-});
+};
 
-router.get('/getByRole/:role', (req, res) => {
-  const { role } = req.params;
-  const newArray = [];
-  projects.forEach((project) => {
-    project.members.forEach((member) => {
-      if (member.role === role) {
-        newArray.push(project);
-      }
+const getProjectById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) return missingId(res);
+
+    const project = await Projects.findById(id);
+    if (!project) return error404(res, 'Project by id not found');
+
+    return res.status(200).json({
+      message: 'Project found',
+      data: project,
+      error: false,
     });
-  });
-  if (newArray) {
-    res.send(newArray);
-  } else {
-    res.send('Employee not found');
+  } catch (error) {
+    return res.status.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
   }
-});
-module.exports = router;
+};
+
+const deleteProject = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) return missingId(res);
+
+    const findById = await Projects.findById(id);
+    if (!findById) return error404(res, 'Project not exist');
+
+    await Projects.deleteOne({ _id: id });
+
+    return res.status(204).json();
+  } catch (error) {
+    return res.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
+const updateProject = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedProject = req.body;
+
+    if (!id) return missingId(res);
+
+    if (Object.entries(updatedProject).length === 0 || !updatedProject) {
+      return error400(res, 'Edited project is empty');
+    }
+    const project = await Projects.findById(id);
+    const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
+
+    if (!project) return error404(res, 'Project does not exist');
+
+    return res.status(200).json({
+      message: 'Project has been changed',
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.status.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
+const addEmployee = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const newEmployee = req.body;
+
+    if (!id) return missingId(res);
+
+    const project = await Projects.findById(id);
+    const addEmployeedProject = await Projects.findByIdAndUpdate(
+      { _id: id },
+      {
+        $addToSet: {
+          employees: newEmployee,
+        },
+      },
+      { new: true },
+    );
+
+    if (!project) return error400(res, 'Project does not exist');
+
+    return res.status(201).json({
+      message: 'Employee has been added',
+      data: addEmployeedProject,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
+      message: `An error ocurred: ${error}`,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
+export default {
+  createProject,
+  getAllProjects,
+  getProjectById,
+  deleteProject,
+  addEmployee,
+  updateProject,
+};
