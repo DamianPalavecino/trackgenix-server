@@ -1,5 +1,23 @@
 import Timesheets from '../models/Timesheets';
 
+const missingId = async (req, res) => res.status(400).json({
+  message: 'Missing id parameter',
+  data: undefined,
+  error: true,
+});
+
+const error400 = (res, msg) => res.status(400).json({
+  message: msg,
+  data: undefined,
+  error: true,
+});
+
+const error404 = (res, msg) => res.status(404).json({
+  message: msg,
+  data: undefined,
+  error: true,
+});
+
 const createTimesheet = async (req, res) => {
   try {
     const timesheet = new Timesheets({
@@ -8,15 +26,25 @@ const createTimesheet = async (req, res) => {
       task: req.body.task,
     });
 
-    const result = await timesheet.save();
-    return res.status(201).json({
-      message: 'Timesheet created',
-      data: result,
-      error: false,
+    const result = timesheet.save((error, dataTimesheet) => {
+      if (error) {
+        return res.status.json({
+          message: error,
+          data: undefined,
+          error: true,
+        });
+      }
+
+      return res.status(201).json({
+        message: 'Timesheet created',
+        data: dataTimesheet,
+        error: false,
+      });
     });
+    return result;
   } catch (error) {
-    return res.status(500).json({
-      message: `An error ocurred: ${error.message}`,
+    return res.status.json({
+      message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
     });
@@ -25,23 +53,42 @@ const createTimesheet = async (req, res) => {
 
 const getAllTimesheets = async (req, res) => {
   try {
-    const timesheets = await Timesheets.find();
+    const allTimesheets = await Timesheets.find();
+    const queryParams = Object.keys(req.query);
+    const queryTimesheets = await Timesheets.find(req.query);
+    const keys = ['description', 'date', 'task'];
+    let includes = true;
 
-    if (timesheets.length <= 0) {
-      return res.status(404).json({
-        message: 'Empty database',
-        data: undefined,
-        error: true,
+    if (queryParams.length <= 0) {
+      if (allTimesheets.length <= 0 || allTimesheets === null) {
+        return error404(res, 'No timesheets in the database');
+      }
+      return res.status(200).json({
+        message: 'Timesheets found',
+        data: allTimesheets,
+        error: false,
       });
     }
-    return res.status(200).json({
-      message: 'Timesheets found',
-      data: timesheets,
-      error: false,
+
+    queryParams.forEach((element) => {
+      if (!keys.includes(element)) {
+        includes = false;
+      }
+      return includes;
     });
+
+    if (!includes) return error400(res, 'Parameters are incorrect');
+    if (queryTimesheets.length > 0) {
+      return res.status(200).json({
+        message: queryTimesheets.length === 1 ? 'Timesheet found' : 'Timesheets found',
+        data: queryTimesheets,
+        error: false,
+      });
+    }
+    return error404(res, 'No matches');
   } catch (error) {
-    return res.status(500).json({
-      message: `An error ocurred: ${error.message}`,
+    return res.json({
+      message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
     });
@@ -53,83 +100,48 @@ const getTimesheetById = async (req, res) => {
     const { id } = req.params;
     const timesheet = await Timesheets.findById(id);
 
-    if (timesheet === null) {
-      res.status(404).json({
-        message: `Timesheet ID: ${req.params.id} existed on database but was deleted.`,
-        data: undefined,
-        error: true,
-      });
-    }
     return res.status(200).json({
       message: 'Timesheet found',
       data: timesheet,
       error: false,
     });
   } catch (error) {
-    if (error.name === 'CastError') {
-      return res.status(404).json({
-        message: `Timesheet ID: ${req.params.id} does not exist on database.`,
-        data: undefined,
-        error: true,
-      });
-    }
-    return res.status(500).json({
-      message: `An error ocurred: ${error.message}`,
-      date: undefined,
-      error: true,
-    });
+    return error404(res, 'No timesheet found with the requested ID');
   }
 };
 
 const editTimesheetById = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await Timesheets.findByIdAndUpdate(
-      { _id: id },
-      { ...req.body },
-      { new: true },
-    );
-    return res.status(201).json({
+    const updatedTimesheet = req.body;
+
+    if (Object.entries(updatedTimesheet).length === 0 || !updatedTimesheet) {
+      return error400(res, 'Edited timesheet is empty');
+    }
+    const result = await Timesheets.findByIdAndUpdate(id, updatedTimesheet, { new: true });
+
+    return res.status(200).json({
       message: 'Timesheet edited',
       data: result,
       error: false,
     });
   } catch (error) {
-    if (error.name === 'CastError') {
-      return res.status(404).json({
-        message: `Timesheet ID: ${req.params.id} does not exist on database.`,
-        date: undefined,
-        error: true,
-      });
-    }
-    return res.status(500).json({
-      message: `An error ocurred: ${error}`,
-      date: undefined,
-      error: true,
-    });
+    return error404(res, 'No timesheet found with the requested ID');
   }
 };
 
 const deleteTimesheetById = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await Timesheets.findByIdAndDelete(id);
+    const findById = await Timesheets.findById(id);
 
-    return res.status(204).json({
-      message: 'Timesheet deleted',
-      data: result,
-      error: false,
-    });
+    if (!findById) return error404(res, 'Timesheet does not exist');
+
+    await Timesheets.deleteOne({ _id: id });
+    return res.status(204).json();
   } catch (error) {
-    if (error.name === 'CastError') {
-      return res.status(404).json({
-        message: `Timesheet ID: ${req.params.id} does not exist on database.`,
-        date: undefined,
-        error: true,
-      });
-    }
-    return res.status(500).json({
-      message: `An error occurred ${error}`,
+    return res.json({
+      message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
     });
@@ -142,4 +154,5 @@ export default {
   getTimesheetById,
   editTimesheetById,
   deleteTimesheetById,
+  missingId,
 };
