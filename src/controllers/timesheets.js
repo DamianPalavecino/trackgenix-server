@@ -73,6 +73,7 @@ const getAllTimesheets = async (req, res) => {
     }
 
     queryParams.forEach((element) => {
+      element.toLowerCase();
       if (!keys.includes(element)) {
         includes = false;
       }
@@ -100,9 +101,11 @@ const getAllTimesheets = async (req, res) => {
 const getTimesheetById = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!ObjectId.isValid(id)) return error404(res, 'Invalid ID');
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
     const timesheet = await Timesheets.findById(id);
+
+    if (!timesheet) return error404(res, 'Timesheet ID not found on database');
 
     return res.status(200).json({
       message: 'Timesheet found',
@@ -128,7 +131,10 @@ const editTimesheetById = async (req, res) => {
     if (Object.entries(updatedTimesheet).length === 0 || !updatedTimesheet) {
       return error400(res, 'Edited timesheet is empty');
     }
+
     const result = await Timesheets.findByIdAndUpdate(id, updatedTimesheet, { new: true });
+
+    if (!result) return error404(res, 'Timesheet ID not found on database');
 
     return res.status(200).json({
       message: 'Timesheet edited',
