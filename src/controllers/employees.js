@@ -1,4 +1,4 @@
-import Employees from '../models/employees';
+import Employees from '../models/Employees';
 
 const deleteEmployee = async (req, res) => {
   try {
