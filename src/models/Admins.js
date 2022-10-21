@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const adminSchema = new Schema({
-  name: { type: String, require: true },
-  lastName: { type: String, require: true },
+  name: { type: String, require: true, lowercase: true },
+  lastName: { type: String, require: true, lowercase: true },
   email: {
     type: String,
     required: true,

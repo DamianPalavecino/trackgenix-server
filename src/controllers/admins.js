@@ -1,5 +1,7 @@
 import Admins from '../models/Admins';
 
+const { ObjectId } = require('mongoose').Types;
+
 const getAllAdmins = async (req, res) => {
   try {
     const allAdmins = await Admins.find();
@@ -51,7 +53,7 @@ const getAllAdmins = async (req, res) => {
       error: true,
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.json({
       message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
@@ -62,6 +64,14 @@ const getAllAdmins = async (req, res) => {
 const getAdminById = async (req, res) => {
   try {
     const { id } = req.params;
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({
+        message: 'Invail ID',
+        data: undefined,
+        error: true,
+      });
+    }
+
     const admins = await Admins.findById(id);
 
     if (!id) {
@@ -77,8 +87,8 @@ const getAdminById = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
-      message: `Admin not found ${error}`,
+    return res.json({
+      message: `An error ocurred: ${error}`,
       error: true,
     });
   }
@@ -100,8 +110,8 @@ const createAdmin = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
-      message: 'An error occurried, Admin not created',
+    return res.json({
+      message: 'An error occurred, Admin not created',
       error: true,
     });
   }

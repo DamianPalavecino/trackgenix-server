@@ -1,486 +1,956 @@
 {
 	"info": {
-		"_postman_id": "88bd4759-b3de-4d97-93f4-3bfa16f91791",
-		"name": "TG-4: Admin",
+		"_postman_id": "3271638c-4e00-4536-aeba-45b02a921347",
+		"name": "Postman Collections",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23764186"
 	},
 	"item": [
 		{
-			"name": "getAll",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": [
+			"name": "Projects",
+			"item": [
 				{
-					"name": "getAll",
-					"originalRequest": {
+					"name": "getAll - Projects",
+					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/admins?name=Tony",
+							"raw": "http://localhost:5000/projects?name=Project1",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"admins"
+								"projects"
 							],
 							"query": [
 								{
 									"key": "name",
-									"value": "Tony"
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "187"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"bb-n4C7yKuT4t2kzJXb9vSDpiOZDfI\""
-						},
-						{
-							"key": "Date",
-							"value": "Fri, 21 Oct 2022 06:36:41 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Admin found\",\n    \"data\": [\n        {\n            \"_id\": \"634ec422ef58b4a5306a2220\",\n            \"name\": \"Tony\",\n            \"lastName\": \"Montana\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
-				},
-				{
-					"name": "getAll",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:5000/admins?name=Carlos",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"admins"
-							],
-							"query": [
+									"value": "Project1"
+								},
 								{
-									"key": "name",
-									"value": "Carlos"
+									"key": "description",
+									"value": "ysbbbb",
+									"disabled": true
 								}
 							]
 						}
 					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "776"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"308-WofPDwPKYzfNBF/vuiiEZ6jxQu8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 02:06:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project found\",\n    \"data\": [\n        {\n            \"_id\": \"634ca461f3301f472ed6f388\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 70,\n                    \"_id\": \"634ca461f3301f472ed6f389\"\n                },\n                {\n                    \"name\": \"Rondón\",\n                    \"role\": \"DEV\",\n                    \"rate\": 74,\n                    \"_id\": \"634ca461f3301f472ed6f38a\"\n                }\n            ],\n            \"name\": \"Cuadro futbol 2\",\n            \"startDate\": \"2022-05-12T00:00:00.000Z\",\n            \"endDate\": \"2022-12-20T00:00:00.000Z\",\n            \"description\": \"An old soccer team\",\n            \"clientName\": \"Damiani\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634cb08c1a187147decc8984\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 70,\n                    \"_id\": \"634cb08c1a187147decc8985\"\n                },\n                {\n                    \"name\": \"Rondón\",\n                    \"role\": \"DEV\",\n                    \"rate\": 75,\n                    \"_id\": \"634cb08c1a187147decc8986\"\n                }\n            ],\n            \"name\": \"Cuadro futbol 2\",\n            \"startDate\": \"2021-01-01T00:00:00.000Z\",\n            \"endDate\": \"2022-01-01T00:00:00.000Z\",\n            \"description\": \"A soccer team\",\n            \"clientName\": \"Ruglio\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
 						},
 						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?description=ysbbbb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "description",
+											"value": "ysbbbb"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"464-z3rqe/Pr9pbDyZOBJ2Lemf0Ry/U\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 21:47:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project found\",\n    \"data\": [\n        {\n            \"_id\": \"634d924e260e0ee548943dc7\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 80,\n                    \"_id\": \"634d1052010b0c589a0b8da1\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8b94b658e9f745a06034\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8be2b658e9f745a06037\"\n                },\n                {\n                    \"name\": \"Gianccomo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634d8be2b658e9f745a06038\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d9370517dedec8c9163d3\"\n                },\n                {\n                    \"name\": \"Pedro gonzález\",\n                    \"role\": \"TL\",\n                    \"rate\": 30,\n                    \"_id\": \"634d9370517dedec8c9163d4\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d94457659dcfdf4c3fcbe\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d94457659dcfdf4c3fcbf\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d9475763dfe61b544f483\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d9475763dfe61b544f484\"\n                },\n                {\n                    \"name\": \"Paupérrimo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634dd8bf18a2ecf397af7573\"\n                }\n            ],\n            \"name\": \"Proyecto Alien\",\n            \"startDate\": \"2020-01-01T00:00:00.000Z\",\n            \"endDate\": \"2021-01-01T00:00:00.000Z\",\n            \"description\": \"ysbbbb\",\n            \"clientName\": \"AY QUE TIRA\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
 						},
 						{
-							"key": "Content-Length",
-							"value": "42"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=Cuadro+futbol+7&description=ysbbbb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Cuadro+futbol+7"
+										},
+										{
+											"key": "description",
+											"value": "ysbbbb"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"465-ldzxWDf/A3k9+MsSZXs2qTWtYMs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 21:54:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project found\",\n    \"data\": [\n        {\n            \"_id\": \"634d924e260e0ee548943dc7\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 80,\n                    \"_id\": \"634d1052010b0c589a0b8da1\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8b94b658e9f745a06034\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8be2b658e9f745a06037\"\n                },\n                {\n                    \"name\": \"Gianccomo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634d8be2b658e9f745a06038\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d9370517dedec8c9163d3\"\n                },\n                {\n                    \"name\": \"Pedro gonzález\",\n                    \"role\": \"TL\",\n                    \"rate\": 30,\n                    \"_id\": \"634d9370517dedec8c9163d4\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d94457659dcfdf4c3fcbe\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d94457659dcfdf4c3fcbf\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d9475763dfe61b544f483\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d9475763dfe61b544f484\"\n                },\n                {\n                    \"name\": \"Paupérrimo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634dd8bf18a2ecf397af7573\"\n                }\n            ],\n            \"name\": \"Cuadro futbol 7\",\n            \"startDate\": \"2020-01-01T00:00:00.000Z\",\n            \"endDate\": \"2021-01-01T00:00:00.000Z\",\n            \"description\": \"ysbbbb\",\n            \"clientName\": \"AY QUE TIRA\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
 						},
 						{
-							"key": "ETag",
-							"value": "W/\"2a-dk/ek+LetMsUH9jodtEah51q5Dw\""
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=Cuadro+futbol+7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Cuadro+futbol+7"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2219"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8ab-neNz4zzlNyHSC5jaO3BHqBcIIes\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 21:55:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project found\",\n    \"data\": [\n        {\n            \"_id\": \"634d6fee260e0ee548943dbf\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 80,\n                    \"_id\": \"634d1052010b0c589a0b8da1\"\n                },\n                {\n                    \"name\": \"Penaldo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 10,\n                    \"_id\": \"634d7f4f83b49230e309f2bc\"\n                },\n                {\n                    \"name\": \"Mbappe\",\n                    \"role\": \"QA\",\n                    \"rate\": 50,\n                    \"_id\": \"634d81e564d69504ae0b9598\"\n                },\n                {\n                    \"name\": \"Haaland\",\n                    \"role\": \"QA\",\n                    \"rate\": 50,\n                    \"_id\": \"634d833bdfc83496a23b60d8\"\n                },\n                {\n                    \"name\": \"Messi\",\n                    \"role\": \"QA\",\n                    \"rate\": 50,\n                    \"_id\": \"634d84b3540ba38c0e5632f1\"\n                },\n                {\n                    \"name\": \"Suarez\",\n                    \"role\": \"QA\",\n                    \"rate\": 50,\n                    \"_id\": \"634d84ed861927ed272ac5c4\"\n                },\n                {\n                    \"name\": \"Canobbio\",\n                    \"role\": \"QA\",\n                    \"rate\": 50,\n                    \"_id\": \"634d8530861927ed272ac5d2\"\n                },\n                {\n                    \"name\": \"Ceppelini\",\n                    \"role\": \"QA\",\n                    \"rate\": 50,\n                    \"_id\": \"634d855135b3f6d5f3905280\"\n                },\n                {\n                    \"name\": \"Lozano\",\n                    \"role\": \"QA\",\n                    \"rate\": 30,\n                    \"_id\": \"634d85967b44271a6e105b35\"\n                },\n                {\n                    \"name\": \"Cavani\",\n                    \"role\": \"DEV\",\n                    \"rate\": 10,\n                    \"_id\": \"634d86b858e580e7a370d92a\"\n                },\n                {\n                    \"name\": \"Cáceres\",\n                    \"role\": \"DEV\",\n                    \"rate\": 30,\n                    \"_id\": \"634d874b1d6919c83fe53247\"\n                },\n                {\n                    \"name\": \"Cáceres\",\n                    \"role\": \"DEV\",\n                    \"rate\": 30,\n                    \"_id\": \"634d87c55cee17688c6dc8d5\"\n                }\n            ],\n            \"name\": \"Cuadro futbol 7\",\n            \"startDate\": \"2020-01-01T00:00:00.000Z\",\n            \"endDate\": \"2021-01-01T00:00:00.000Z\",\n            \"description\": \"Se hace\",\n            \"clientName\": \"O no\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d924e260e0ee548943dc7\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 80,\n                    \"_id\": \"634d1052010b0c589a0b8da1\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8b94b658e9f745a06034\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8be2b658e9f745a06037\"\n                },\n                {\n                    \"name\": \"Gianccomo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634d8be2b658e9f745a06038\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d9370517dedec8c9163d3\"\n                },\n                {\n                    \"name\": \"Pedro gonzález\",\n                    \"role\": \"TL\",\n                    \"rate\": 30,\n                    \"_id\": \"634d9370517dedec8c9163d4\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d94457659dcfdf4c3fcbe\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d94457659dcfdf4c3fcbf\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d9475763dfe61b544f483\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d9475763dfe61b544f484\"\n                },\n                {\n                    \"name\": \"Paupérrimo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634dd8bf18a2ecf397af7573\"\n                }\n            ],\n            \"name\": \"Cuadro futbol 7\",\n            \"startDate\": \"2020-01-01T00:00:00.000Z\",\n            \"endDate\": \"2021-01-01T00:00:00.000Z\",\n            \"description\": \"ysbbbb\",\n            \"clientName\": \"AY QUE TIRA\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
 						},
 						{
-							"key": "Date",
-							"value": "Fri, 21 Oct 2022 06:35:54 GMT"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-DQzCAlX/S8QpiLtak1R+b5/kFoI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 22:00:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project not found\",\n    \"error\": true\n}"
 						},
 						{
-							"key": "Connection",
-							"value": "keep-alive"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?asd=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "asd",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-NGiUu8SPEUkjkrfeTx1KM+scI5U\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 23:01:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Param does not exist\",\n    \"error\": true\n}"
 						},
 						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-gbJyYYeJbC/qoVAtv3MeqXKMs34\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 23:40:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"At least one parameter does not exist\",\n    \"error\": false\n}"
+						},
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-TB8/1bw+DZO1Sv+8vlGC3KJh4fA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 23:40:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project found\",\n    \"data\": [],\n    \"error\": false\n}"
+						},
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-DQzCAlX/S8QpiLtak1R+b5/kFoI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 00:10:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project not found\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=1&asda=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "1"
+										},
+										{
+											"key": "asda",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-n98p0pK9pv/suJOhq/1EaRJWOF0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 00:10:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Parameters are incorrect\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=Cuadro+futbol+7&description=ysbbbb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Cuadro+futbol+7"
+										},
+										{
+											"key": "description",
+											"value": "ysbbbb"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"465-ldzxWDf/A3k9+MsSZXs2qTWtYMs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 00:11:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project found\",\n    \"data\": [\n        {\n            \"_id\": \"634d924e260e0ee548943dc7\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 80,\n                    \"_id\": \"634d1052010b0c589a0b8da1\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8b94b658e9f745a06034\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8be2b658e9f745a06037\"\n                },\n                {\n                    \"name\": \"Gianccomo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634d8be2b658e9f745a06038\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d9370517dedec8c9163d3\"\n                },\n                {\n                    \"name\": \"Pedro gonzález\",\n                    \"role\": \"TL\",\n                    \"rate\": 30,\n                    \"_id\": \"634d9370517dedec8c9163d4\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d94457659dcfdf4c3fcbe\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d94457659dcfdf4c3fcbf\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d9475763dfe61b544f483\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d9475763dfe61b544f484\"\n                },\n                {\n                    \"name\": \"Paupérrimo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634dd8bf18a2ecf397af7573\"\n                }\n            ],\n            \"name\": \"Cuadro futbol 7\",\n            \"startDate\": \"2020-01-01T00:00:00.000Z\",\n            \"endDate\": \"2021-01-01T00:00:00.000Z\",\n            \"description\": \"ysbbbb\",\n            \"clientName\": \"AY QUE TIRA\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+						},
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects?name=Project1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Project1"
+										},
+										{
+											"key": "description",
+											"value": "ysbbbb",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46b-RzM1qub5H5nw17JIrc+Cyz+vyes\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 01:10:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project found\",\n    \"data\": [\n        {\n            \"_id\": \"634f42d0409f09628b8a1479\",\n            \"employees\": [\n                {\n                    \"name\": \"Salomón\",\n                    \"role\": \"QA\",\n                    \"rate\": 80,\n                    \"_id\": \"634d1052010b0c589a0b8da1\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8b94b658e9f745a06034\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d8be2b658e9f745a06037\"\n                },\n                {\n                    \"name\": \"Gianccomo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634d8be2b658e9f745a06038\"\n                },\n                {\n                    \"name\": \"TieneElBalón\",\n                    \"role\": \"QA\",\n                    \"rate\": 10,\n                    \"_id\": \"634d9370517dedec8c9163d3\"\n                },\n                {\n                    \"name\": \"Pedro gonzález\",\n                    \"role\": \"TL\",\n                    \"rate\": 30,\n                    \"_id\": \"634d9370517dedec8c9163d4\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d94457659dcfdf4c3fcbe\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d94457659dcfdf4c3fcbf\"\n                },\n                {\n                    \"name\": \"Amorevieta\",\n                    \"role\": \"DEV\",\n                    \"rate\": 17,\n                    \"_id\": \"634d9475763dfe61b544f483\"\n                },\n                {\n                    \"name\": \"Ramiro Ponce\",\n                    \"role\": \"TL\",\n                    \"rate\": 50,\n                    \"_id\": \"634d9475763dfe61b544f484\"\n                },\n                {\n                    \"name\": \"Paupérrimo\",\n                    \"role\": \"DEV\",\n                    \"rate\": 20,\n                    \"_id\": \"634dd8bf18a2ecf397af7573\"\n                }\n            ],\n            \"name\": \"Project1\",\n            \"startDate\": \"2020-01-01T00:00:00.000Z\",\n            \"endDate\": \"2021-01-01T00:00:00.000Z\",\n            \"description\": \"Projecto de inversiones\",\n            \"clientName\": \"Client1\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Admin not found\",\n    \"error\": true\n}"
+					]
 				},
 				{
-					"name": "getAll",
-					"originalRequest": {
+					"name": "getById - Projects",
+					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/admins/",
+							"raw": "http://localhost:5000/projects/",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"admins",
+								"projects",
 								""
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "465"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"1d1-ol3cN0O9tnRvwBodtF+6QuueV+4\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 17 Oct 2022 21:04:29 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Admin Found\",\n    \"data\": [\n        {\n            \"_id\": \"634d69d77534a458ce3b14b9\",\n            \"name\": \"Michael\",\n            \"lastName\": \"Corleone\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertyuilvfghuil\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d715d1b969b83d3c495a2\",\n            \"name\": \"Carlos\",\n            \"lastName\": \"Brigante\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634dbf4c1b969b83d3c495a5\",\n            \"name\": \"Tony\",\n            \"lastName\": \"Montana\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
-				},
-				{
-					"name": "getAll",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:5000/admins/",
-							"host": [
-								"localhost"
+							"name": "getById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f388",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634ca461f3301f472ed6f388"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-DQzCAlX/S8QpiLtak1R+b5/kFoI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 02:16:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
 							],
-							"port": "5000",
-							"path": [
-								"admins",
-								""
-							]
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project not found\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "getById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f388",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634ca461f3301f472ed6f388"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "414"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19e-44gPJcOvbyTFDCkXROa1scqBd0I\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 02:17:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project found\",\n    \"data\": {\n        \"_id\": \"634ca461f3301f472ed6f388\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 70,\n                \"_id\": \"634ca461f3301f472ed6f389\"\n            },\n            {\n                \"name\": \"Rondón\",\n                \"role\": \"DEV\",\n                \"rate\": 74,\n                \"_id\": \"634ca461f3301f472ed6f38a\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 2\",\n        \"startDate\": \"2022-05-12T00:00:00.000Z\",\n        \"endDate\": \"2022-12-20T00:00:00.000Z\",\n        \"description\": \"An old soccer team\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "getById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"94-HRNl4xFUBJiAv2lCc5iQAc4mXnM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 22:16:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"An error ocurred: CastError: Cast to ObjectId failed for value \\\"1\\\" (type string) at path \\\"_id\\\" for model \\\"Projects\\\"\",\n    \"error\": true\n}"
 						}
-					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "54"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"36-4V2Z6BORN9sHDwNccSrxMlL08Lw\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 18 Oct 2022 15:17:57 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"There is no data to display\",\n    \"error\": true\n}"
-				}
-			]
-		},
-		{
-			"name": "getById",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:5000/admins/",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"admins",
-						""
 					]
-				}
-			},
-			"response": [
-				{
-					"name": "getAll",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:5000/admins/634d69d77534a458ce3b14b9",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"admins",
-								"634d69d77534a458ce3b14b9"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "182"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"b6-EUm2BpcHEkE2WY4HF1U2YNUxsY0\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 17 Oct 2022 21:04:45 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Admin found\",\n    \"data\": {\n        \"_id\": \"634d69d77534a458ce3b14b9\",\n        \"name\": \"Michael\",\n        \"lastName\": \"Corleone\",\n        \"email\": \"imnygj0@umn.com\",\n        \"password\": \"ertyuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
 				},
 				{
-					"name": "getAll",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:5000/admins/634ec3b7ef58b4a5306a221dd",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"admins",
-								"634ec3b7ef58b4a5306a221dd"
-							]
-						}
-					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "166"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"a6-KpDNJZpDHof7mrIFa5wcphewJ9E\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 18 Oct 2022 15:18:34 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Admin not find CastError: Cast to ObjectId failed for value \\\"634ec3b7ef58b4a5306a221dd\\\" (type string) at path \\\"_id\\\" for model \\\"admin\\\"\",\n    \"error\": true\n}"
-				},
-				{
-					"name": "getAll",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:5000/admins/pepe pecas pica papas con un pico",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"admins",
-								"pepe pecas pica papas con un pico"
-							]
-						}
-					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "174"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"ae-m/KpJvNINEW9hxXwX2OHut/6Wtg\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 18 Oct 2022 15:19:06 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Admin not find CastError: Cast to ObjectId failed for value \\\"pepe pecas pica papas con un pico\\\" (type string) at path \\\"_id\\\" for model \\\"admin\\\"\",\n    \"error\": true\n}"
-				}
-			]
-		},
-		{
-			"name": "create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/admins/",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"admins",
-						""
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "create",
-					"originalRequest": {
+					"name": "create - Projects",
+					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "        {\r\n            \"name\": \"Tony\",\r\n            \"lastName\": \"Montana\",\r\n            \"email\": \"imnygj0@umn.com\",\r\n            \"password\": \"ertdd55852yuilvfghuil\"\r\n        }",
+							"raw": "{\r\n    \"employees\": [\r\n        {\r\n            \"name\": \"Carmen\",\r\n            \"role\": \"DEV\",\r\n            \"rate\": 15\r\n        }\r\n    ],\r\n    \"name\": \"A ver\",\r\n    \"startDate\": \"2020-01-01\",\r\n    \"endDate\": \"2020-01-01\",\r\n    \"description\": \"It's a good proyect bro!\",\r\n    \"clientName\": \"Drake Bell\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -488,61 +958,1486 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/admins/",
+							"raw": "http://localhost:5000/projects/",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"admins",
+								"projects",
 								""
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"employees\": [\r\n        {\r\n            \"name\": \"Salomón\",\r\n            \"role\": \"QA\",\r\n            \"rate\": 80\r\n        }\r\n    ],\r\n    \"name\": \"Cuadro futbol 4\",\r\n    \"startDate\": \"2020-01-01\",\r\n    \"endDate\": \"2020-01-01\",\r\n    \"description\": \"Harto\",\r\n    \"clientName\": \"Damiani\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "328"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"148-CuDpybbn6wHwTm8rzPMWe17CgOs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 02:33:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project created\",\n    \"data\": {\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634cbef7f61fae31296448b0\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 4\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2020-01-01T00:00:00.000Z\",\n        \"description\": \"Harto\",\n        \"clientName\": \"Damiani\",\n        \"_id\": \"634cbef7f61fae31296448af\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
 						},
 						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"employees\": [\r\n        {\r\n            \"name\": \"Salomón\",\r\n            \"role\": \"QA\",\r\n            \"rate\": 80\r\n        }\r\n    ],\r\n    \"name\": \"Cuadro futbol 4\",\r\n    \"startDate\": \"2020-01-01\",\r\n    \"clientName\": \"Damiani\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-eOs7MQjVV9awmEqzwYFR6BB/gYw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 02:34:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"endDate\\\" is required\",\n    \"error\": true\n}"
 						},
 						{
-							"key": "Content-Length",
-							"value": "200"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"c8-EldYN3QkOAqarE7BY70Q6uM4/14\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 17 Oct 2022 20:47:08 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"employees\": [\r\n        {\r\n            \"name\": \"Carmen\",\r\n            \"role\": \"DEV\",\r\n            \"rate\": 15\r\n        }\r\n    ],\r\n    \"name\": \"A ver\",\r\n    \"startDate\": \"2020-01-01\",\r\n    \"endDate\": \"2020-01-01\",\r\n    \"description\": \"It's a good proyect bro!\",\r\n    \"clientName\": \"Drake Bell\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										""
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'none'"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1765"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 18:09:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>TypeError: Cannot read properties of undefined (reading &#39;required&#39;)\n            <br> &nbsp; &nbsp;at validateCreation (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\src\\validations\\/projects.js:27:39)\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n            <br> &nbsp; &nbsp;at next (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\route.js:144:13)\n            <br> &nbsp; &nbsp;at Route.dispatch (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\route.js:114:3)\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n            <br> &nbsp; &nbsp;at C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:286:22\n            <br> &nbsp; &nbsp;at Function.process_params (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:348:12)\n            <br> &nbsp; &nbsp;at next (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:280:10)\n            <br> &nbsp; &nbsp;at Function.handle (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:175:3)\n            <br> &nbsp; &nbsp;at router (C:\\Users\\Juan Andrés\\Desktop\\BaSP-A2022-Etapa2\\capi-b-trackgenix-server\\node_modules\\express\\lib\\router\\index.js:47:12)\n        </pre>\n    </body>\n</html>"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Admin created successfully\",\n    \"data\": {\n        \"name\": \"Tony\",\n        \"lastName\": \"Montana\",\n        \"email\": \"imnygj0@umn.com\",\n        \"password\": \"ertdd55852yuilvfghuil\",\n        \"_id\": \"634dbf4c1b969b83d3c495a5\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+					]
 				},
 				{
-					"name": "create",
-					"originalRequest": {
-						"method": "POST",
+					"name": "delete - Projects",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/projects/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"94-HRNl4xFUBJiAv2lCc5iQAc4mXnM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 03:56:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"An error ocurred: CastError: Cast to ObjectId failed for value \\\"1\\\" (type string) at path \\\"_id\\\" for model \\\"Projects\\\"\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/634d0da064c07fd0e3aa2d96",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634d0da064c07fd0e3aa2d96"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ff-bvkShfNtFEnBhixGBo3jCMfSoxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 08:10:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/634cb08c1a187147decc8984",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634cb08c1a187147decc8984"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"89-0/+foTwxgJXt49oKPXopZG8LyBk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 08:16:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/634d1173851379324705e076",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634d1173851379324705e076"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 08:25:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/projects/634d73ca260e0ee548943dc3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634d73ca260e0ee548943dc3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"94-HRNl4xFUBJiAv2lCc5iQAc4mXnM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 00:20:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"An error ocurred: CastError: Cast to ObjectId failed for value \\\"1\\\" (type string) at path \\\"_id\\\" for model \\\"Projects\\\"\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "addEmployee - Projects",
+					"request": {
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "        {\r\n            \"name\": \"Michael\",\r\n            \"lastName\": \"Corleone\",\r\n            \"password\": \"ertdd55852yuilvfghuil\"\r\n        }",
+							"raw": "\r\n{\r\n    \"name\": \"Paupérrimo\",\r\n    \"rate\": 20\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634d924e260e0ee548943dc7/assignEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d924e260e0ee548943dc7",
+								"assignEmployee"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "addEmployee",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Eselque\",\r\n    \"role\": \"DEV\",\r\n    \"rate\": 40\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634ca461f3301f472ed6f388/assignEmployee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634ca461f3301f472ed6f388",
+										"assignEmployee"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "418"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a2-aLGloZvN+Z2rsD996qcsCQjCL5g\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 05:38:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee is added\",\n    \"data\": {\n        \"_id\": \"634ca461f3301f472ed6f388\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 70,\n                \"_id\": \"634ca461f3301f472ed6f389\"\n            },\n            {\n                \"name\": \"Rondón\",\n                \"role\": \"DEV\",\n                \"rate\": 74,\n                \"_id\": \"634ca461f3301f472ed6f38a\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 2\",\n        \"startDate\": \"2022-05-12T00:00:00.000Z\",\n        \"endDate\": \"2022-12-20T00:00:00.000Z\",\n        \"description\": \"An old soccer team\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Suarez\",\r\n    \"role\": \"QA\",\r\n    \"rate\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf/assignEmployee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634d6fee260e0ee548943dbf",
+										"assignEmployee"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "623"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26f-YMFLA4VUv2ViCrT75ufGx41zOIs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 16:37:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee is added\",\n    \"data\": {\n        \"_id\": \"634d6fee260e0ee548943dbf\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634d1052010b0c589a0b8da1\"\n            },\n            {\n                \"name\": \"Penaldo\",\n                \"role\": \"DEV\",\n                \"rate\": 10,\n                \"_id\": \"634d7f4f83b49230e309f2bc\"\n            },\n            {\n                \"name\": \"Mbappe\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d81e564d69504ae0b9598\"\n            },\n            {\n                \"name\": \"Haaland\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d833bdfc83496a23b60d8\"\n            },\n            {\n                \"name\": \"Messi\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d84b3540ba38c0e5632f1\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 7\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2021-01-01T00:00:00.000Z\",\n        \"description\": \"Se hace\",\n        \"clientName\": \"O no\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ceppelini\",\r\n    \"role\": \"QA\",\r\n    \"rate\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf/assignEmployee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634d6fee260e0ee548943dbf",
+										"assignEmployee"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "847"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34f-R/any+1ucDQ3Xu/9eczfPMMDfQE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 16:39:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee is added\",\n    \"data\": {\n        \"_id\": \"634d6fee260e0ee548943dbf\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634d1052010b0c589a0b8da1\"\n            },\n            {\n                \"name\": \"Penaldo\",\n                \"role\": \"DEV\",\n                \"rate\": 10,\n                \"_id\": \"634d7f4f83b49230e309f2bc\"\n            },\n            {\n                \"name\": \"Mbappe\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d81e564d69504ae0b9598\"\n            },\n            {\n                \"name\": \"Haaland\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d833bdfc83496a23b60d8\"\n            },\n            {\n                \"name\": \"Messi\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d84b3540ba38c0e5632f1\"\n            },\n            {\n                \"name\": \"Suarez\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d84ed861927ed272ac5c4\"\n            },\n            {\n                \"name\": \"Canobbio\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d8530861927ed272ac5d2\"\n            },\n            {\n                \"name\": \"Ceppelini\",\n                \"role\": \"QA\",\n                \"rate\": 50,\n                \"_id\": \"634d855135b3f6d5f3905280\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 7\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2021-01-01T00:00:00.000Z\",\n        \"description\": \"Se hace\",\n        \"clientName\": \"O no\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "addEmployee",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\": \"Amorevieta\",\r\n        \"role\": \"DEV\",\r\n        \"rate\": 17\r\n    },\r\n    {\r\n        \"name\": \"Ramiro Ponce\",\r\n        \"role\": \"TL\",\r\n        \"rate\": 50\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634d924e260e0ee548943dc7/assignEmployee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634d924e260e0ee548943dc7",
+										"assignEmployee"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1047"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"417-hfAovLd/MlmJGNJHetH7zaP3OQU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 17:44:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee is added\",\n    \"data\": {\n        \"_id\": \"634d924e260e0ee548943dc7\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634d1052010b0c589a0b8da1\"\n            },\n            {\n                \"name\": \"TieneElBalón\",\n                \"role\": \"QA\",\n                \"rate\": 10,\n                \"_id\": \"634d8b94b658e9f745a06034\"\n            },\n            {\n                \"name\": \"TieneElBalón\",\n                \"role\": \"QA\",\n                \"rate\": 10,\n                \"_id\": \"634d8be2b658e9f745a06037\"\n            },\n            {\n                \"name\": \"Gianccomo\",\n                \"role\": \"DEV\",\n                \"rate\": 20,\n                \"_id\": \"634d8be2b658e9f745a06038\"\n            },\n            {\n                \"name\": \"TieneElBalón\",\n                \"role\": \"QA\",\n                \"rate\": 10,\n                \"_id\": \"634d9370517dedec8c9163d3\"\n            },\n            {\n                \"name\": \"Pedro gonzález\",\n                \"role\": \"TL\",\n                \"rate\": 30,\n                \"_id\": \"634d9370517dedec8c9163d4\"\n            },\n            {\n                \"name\": \"Amorevieta\",\n                \"role\": \"DEV\",\n                \"rate\": 17,\n                \"_id\": \"634d94457659dcfdf4c3fcbe\"\n            },\n            {\n                \"name\": \"Ramiro Ponce\",\n                \"role\": \"TL\",\n                \"rate\": 50,\n                \"_id\": \"634d94457659dcfdf4c3fcbf\"\n            },\n            {\n                \"name\": \"Amorevieta\",\n                \"role\": \"DEV\",\n                \"rate\": 17,\n                \"_id\": \"634d9475763dfe61b544f483\"\n            },\n            {\n                \"name\": \"Ramiro Ponce\",\n                \"role\": \"TL\",\n                \"rate\": 50,\n                \"_id\": \"634d9475763dfe61b544f484\"\n            }\n        ],\n        \"name\": \"Proyecto Alien\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2021-01-01T00:00:00.000Z\",\n        \"description\": \"ysbbbb\",\n        \"clientName\": \"AY QUE TIRA\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "updateProject - Projects",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"634d6fee260e0ee548943dbf"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "updateProject",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cuadro fútbol 5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634cbef7f61fae31296448af"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "494"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ee-rtcafpbhiWfLvSDPnDzXlcoOFjs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 07:08:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634ca461f3301f472ed6f388\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 70,\n                \"_id\": \"634ca461f3301f472ed6f389\"\n            },\n            {\n                \"name\": \"Rondón\",\n                \"role\": \"DEV\",\n                \"rate\": 74,\n                \"_id\": \"634ca461f3301f472ed6f38a\"\n            },\n            {\n                \"name\": \"Eselque\",\n                \"role\": \"DEV\",\n                \"rate\": 40,\n                \"_id\": \"634cea725f040d2ca803fde5\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 2\",\n        \"startDate\": \"2022-05-12T00:00:00.000Z\",\n        \"endDate\": \"2022-12-20T00:00:00.000Z\",\n        \"description\": \"An old soccer team\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "updateProject",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Probando con Vale y Luis\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634cbef7f61fae31296448af"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "495"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ef-Ej009dlP1qRuNocvfdhp5UbW84E\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 07:09:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634ca461f3301f472ed6f388\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 70,\n                \"_id\": \"634ca461f3301f472ed6f389\"\n            },\n            {\n                \"name\": \"Rondón\",\n                \"role\": \"DEV\",\n                \"rate\": 74,\n                \"_id\": \"634ca461f3301f472ed6f38a\"\n            },\n            {\n                \"name\": \"Eselque\",\n                \"role\": \"DEV\",\n                \"rate\": 40,\n                \"_id\": \"634cea725f040d2ca803fde5\"\n            }\n        ],\n        \"name\": \"Cuadro fútbol 5\",\n        \"startDate\": \"2022-05-12T00:00:00.000Z\",\n        \"endDate\": \"2022-12-20T00:00:00.000Z\",\n        \"description\": \"An old soccer team\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "updateProject",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ahora sí\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634cbef7f61fae31296448af"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "331"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14b-0hyR+dHW29H8/AkiQ5jJ8EbnCgM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 07:13:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634cbef7f61fae31296448af\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634cbef7f61fae31296448b0\"\n            }\n        ],\n        \"name\": \"Cuadro futbol 4\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2020-01-01T00:00:00.000Z\",\n        \"description\": \"Harto\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "updateProject",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ahora?\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634cbef7f61fae31296448af",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634cbef7f61fae31296448af"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "322"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"142-5Zn5W1/XHloYte3lFkL+/lcCvjo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 07:32:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project is changed\",\n    \"data\": {\n        \"_id\": \"634cbef7f61fae31296448af\",\n        \"employees\": [\n            {\n                \"name\": \"Salomón\",\n                \"role\": \"QA\",\n                \"rate\": 80,\n                \"_id\": \"634cbef7f61fae31296448b0\"\n            }\n        ],\n        \"name\": \"Ahora?\",\n        \"startDate\": \"2020-01-01T00:00:00.000Z\",\n        \"endDate\": \"2020-01-01T00:00:00.000Z\",\n        \"description\": \"Harto\",\n        \"clientName\": \"Damiani\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "updateProject",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634d6fee260e0ee548943dbf"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-LsSWGLFpG0Dwh0DKymLatRCmPDs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 01:52:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Edited project is empty\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "updateProject",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/634d6fee260e0ee548943dbf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										"634d6fee260e0ee548943dbf"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-LsSWGLFpG0Dwh0DKymLatRCmPDs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 02:11:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Edited project is empty\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "updateProject",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"Hola\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/projects/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"projects",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'none'"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 02:48:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>Cannot PUT /projects/</pre>\n    </body>\n</html>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "getAll - Admins",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/admins?name=Tony",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Tony"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bb-n4C7yKuT4t2kzJXb9vSDpiOZDfI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 06:36:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin found\",\n    \"data\": [\n        {\n            \"_id\": \"634ec422ef58b4a5306a2220\",\n            \"name\": \"Tony\",\n            \"lastName\": \"Montana\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+						},
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/admins?name=Carlos",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Carlos"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-dk/ek+LetMsUH9jodtEah51q5Dw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 06:35:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin not found\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/admins/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "465"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d1-ol3cN0O9tnRvwBodtF+6QuueV+4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 21:04:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin Found\",\n    \"data\": [\n        {\n            \"_id\": \"634d69d77534a458ce3b14b9\",\n            \"name\": \"Michael\",\n            \"lastName\": \"Corleone\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertyuilvfghuil\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d715d1b969b83d3c495a2\",\n            \"name\": \"Carlos\",\n            \"lastName\": \"Brigante\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634dbf4c1b969b83d3c495a5\",\n            \"name\": \"Tony\",\n            \"lastName\": \"Montana\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+						},
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/admins/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-4V2Z6BORN9sHDwNccSrxMlL08Lw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 15:17:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There is no data to display\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "getById - Admins",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -561,41 +2456,338 @@
 							]
 						}
 					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/634d69d77534a458ce3b14b9",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"634d69d77534a458ce3b14b9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-EUm2BpcHEkE2WY4HF1U2YNUxsY0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 21:04:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin found\",\n    \"data\": {\n        \"_id\": \"634d69d77534a458ce3b14b9\",\n        \"name\": \"Michael\",\n        \"lastName\": \"Corleone\",\n        \"email\": \"imnygj0@umn.com\",\n        \"password\": \"ertyuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
 						},
 						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/634ec3b7ef58b4a5306a221dd",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"634ec3b7ef58b4a5306a221dd"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "166"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a6-KpDNJZpDHof7mrIFa5wcphewJ9E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 15:18:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin not find CastError: Cast to ObjectId failed for value \\\"634ec3b7ef58b4a5306a221dd\\\" (type string) at path \\\"_id\\\" for model \\\"admin\\\"\",\n    \"error\": true\n}"
 						},
 						{
-							"key": "Content-Length",
-							"value": "64"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"40-0zB2k0FUn9I1GLNhlu0E4bwpQfk\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 18 Oct 2022 15:19:22 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/pepe pecas pica papas con un pico",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"pepe pecas pica papas con un pico"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "174"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ae-m/KpJvNINEW9hxXwX2OHut/6Wtg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 15:19:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin not find CastError: Cast to ObjectId failed for value \\\"pepe pecas pica papas con un pico\\\" (type string) at path \\\"_id\\\" for model \\\"admin\\\"\",\n    \"error\": true\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"An error occurried, Admin not created\",\n    \"error\": true\n}"
+					]
+				},
+				{
+					"name": "create - Admins",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "        {\r\n            \"name\": \"Tony\",\r\n            \"lastName\": \"Montana\",\r\n            \"email\": \"imnygj0@umn.com\",\r\n            \"password\": \"ertdd55852yuilvfghuil\"\r\n        }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "200"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c8-EldYN3QkOAqarE7BY70Q6uM4/14\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 20:47:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin created successfully\",\n    \"data\": {\n        \"name\": \"Tony\",\n        \"lastName\": \"Montana\",\n        \"email\": \"imnygj0@umn.com\",\n        \"password\": \"ertdd55852yuilvfghuil\",\n        \"_id\": \"634dbf4c1b969b83d3c495a5\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "        {\r\n            \"name\": \"Michael\",\r\n            \"lastName\": \"Corleone\",\r\n            \"password\": \"ertdd55852yuilvfghuil\"\r\n        }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-0zB2k0FUn9I1GLNhlu0E4bwpQfk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 15:19:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"An error occurried, Admin not created\",\n    \"error\": true\n}"
+						}
+					]
 				}
 			]
 		}
