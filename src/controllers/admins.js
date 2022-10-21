@@ -5,12 +5,12 @@ const { ObjectId } = require('mongoose').Types;
 const getAllAdmins = async (req, res) => {
   try {
     const allAdmins = await Admins.find();
-    const queryParams = Object.keys(req.query);
+    const queryParam = Object.keys(req.query);
     const adminFiltered = await Admins.find(req.query);
     const adminKeys = ['name', 'lastName', 'email'];
     let includes = true;
 
-    if (queryParams.length <= 0) {
+    if (queryParam.length <= 0) {
       if (allAdmins.length <= 0 || allAdmins === null) {
         return res.status(404).json({
           message: 'There is no admins to display',
@@ -25,7 +25,7 @@ const getAllAdmins = async (req, res) => {
       });
     }
 
-    queryParams.forEach((element) => {
+    queryParam.forEach((element) => {
       if (!adminKeys.includes(element)) {
         includes = false;
       }
