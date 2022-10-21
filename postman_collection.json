@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3271638c-4e00-4536-aeba-45b02a921347",
+		"_postman_id": "d0e1d139-5df1-4e08-a824-49219e3a6aef",
 		"name": "Postman Collections",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23764186"
+		"_exporter_id": "23762217"
 	},
 	"item": [
 		{
@@ -704,6 +704,531 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"There was an error: \\\"name\\\" is required\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "Create - phone error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Laura\",\r\n    \"lastName\": \"Lorenz\",\r\n    \"phone\": \"123\",\r\n    \"email\": \"lorlor0@furl.net\",\r\n    \"password\": \"apgOdpXFw\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/employees/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"employees",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-l8NLuqSRl9Dka2/hQ28dEVSVMzM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 23:13:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"phone\\\" length must be 10 characters long\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit - Employees",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Edited",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Maria Laura\",\r\n    \"lastName\": \"Canoura\",\r\n    \"phone\": 9876543210,\r\n    \"email\": \"laucan@furl.net\",\r\n    \"password\": \"lalalala2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/employees/634c99a06a24d26e60d74908",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"employees",
+										"634c99a06a24d26e60d74908"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "236"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ec-nOfXJJHQEdMzpaQ4a9ruZdFcP0I\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Oct 2022 19:53:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee widh id 634c99a06a24d26e60d74908 edited\",\n    \"data\": {\n        \"_id\": \"634c99a06a24d26e60d74908\",\n        \"name\": \"Maria Laura\",\n        \"lastName\": \"Canoura\",\n        \"phone\": 9876543210,\n        \"email\": \"laucan@furl.net\",\n        \"password\": \"lalalala2\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "Cannot edit - empty field",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Maria Carla\",\r\n    \"lastName\": \"\",\r\n    \"phone\": \"9876543210\",\r\n    \"email\": \"laucan@furl.net\",\r\n    \"password\": \"lalalala2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/employees/634dd7f2bf92dc8b37e29a9a",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"employees",
+										"634dd7f2bf92dc8b37e29a9a"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-F8A1do4Dc/emb7M2xyv97qCQ1Nk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 00:40:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"lastName\\\" is not allowed to be empty\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "Cannot edit - field not allowed",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Maria Carla\",\r\n    \"lastName\": \"Larrosa\",\r\n    \"house\": \"green\",\r\n    \"phone\": \"9876543210\",\r\n    \"email\": \"laucan@furl.net\",\r\n    \"password\": \"lalalala2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/employees/634dd7f2bf92dc8b37e29a9a",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"employees",
+										"634dd7f2bf92dc8b37e29a9a"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-GnlTpo6fBPHFy+W1HS1OpOm0u4k\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 00:44:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"house\\\" is not allowed\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "Cannot edit - Id not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/employees/634dd7c8bf92d88b37e29a98",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"employees",
+										"634dd7c8bf92d88b37e29a98"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-Xc6mAIhlGpASOvWOLccDPmGN6xU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 01:48:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee not found\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "Cannot edit - Empty body",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/employees/634e170d2ca69ab2aa01f3ea",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"employees",
+										"634e170d2ca69ab2aa01f3ea"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-8Ua1gZB9T3POYFlubDoGwqMqTDQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 02:04:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"You must edit at least one field\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete - Employees",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/employees/634dd7f2bf92dc8b37e29a9a",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"634dd7f2bf92dc8b37e29a9a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/employees/634dd7f2bf92dc8b37e29a9a",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"employees",
+										"634dd7f2bf92dc8b37e29a9a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "230"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e6-9qMqMlh862UPdk4LGZbvrXLOiLg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 00:47:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee with id 634dd7f2bf92dc8b37e29a9a deleted\",\n    \"data\": {\n        \"_id\": \"634dd7f2bf92dc8b37e29a9a\",\n        \"name\": \"Maria Carla\",\n        \"lastName\": \"\",\n        \"phone\": 9876543210,\n        \"email\": \"laucan@furl.net\",\n        \"password\": \"lalalala2\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "Cannot delete - Id not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/employees/634dd7c8bf92dc8b38829a98",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"employees",
+										"634dd7c8bf92dc8b38829a98"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-Xc6mAIhlGpASOvWOLccDPmGN6xU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 01:27:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee not found\",\n    \"error\": true\n}"
 						}
 					]
 				}
@@ -2903,7 +3428,10 @@
 					"name": "getAll - Admins",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": [
 						{
@@ -3165,15 +3693,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "localhost:5000/admins/634d69d77534a458ce3b14b9",
 									"host": [
@@ -3227,15 +3746,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "localhost:5000/admins/634ec3b7ef58b4a5306a221dd",
 									"host": [
@@ -3289,15 +3799,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "  {\r\n    \"name\": \"Michael\",\r\n    \"lastName\": \"Corleone\",\r\n    \"email\": \"imnygj0@umn.com\",\r\n    \"password\": \"ertyuilvfghuil\"\r\n  }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "localhost:5000/admins/pepe pecas pica papas con un pico",
 									"host": [
