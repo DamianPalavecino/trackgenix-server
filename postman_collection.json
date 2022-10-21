@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "88bd4759-b3de-4d97-93f4-3bfa16f91791",
-		"name": "TG-4: admin",
+		"name": "TG-4: Admin",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23764186"
 	},
@@ -13,6 +13,122 @@
 				"header": []
 			},
 			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/admins?name=Tony",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Tony"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "187"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bb-n4C7yKuT4t2kzJXb9vSDpiOZDfI\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 06:36:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin found\",\n    \"data\": [\n        {\n            \"_id\": \"634ec422ef58b4a5306a2220\",\n            \"name\": \"Tony\",\n            \"lastName\": \"Montana\",\n            \"email\": \"imnygj0@umn.com\",\n            \"password\": \"ertdd55852yuilvfghuil\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+				},
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/admins?name=Carlos",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Carlos"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a-dk/ek+LetMsUH9jodtEah51q5Dw\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 06:35:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Admin not found\",\n    \"error\": true\n}"
+				},
 				{
 					"name": "getAll",
 					"originalRequest": {

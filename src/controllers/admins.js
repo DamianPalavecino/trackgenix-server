@@ -2,34 +2,58 @@ import Admins from '../models/Admins';
 
 const getAllAdmins = async (req, res) => {
   try {
-    const admins = await Admins.find();
-    const params = req.query;
+    const allAdmins = await Admins.find();
+    const queryParams = Object.keys(req.query);
+    const adminFiltered = await Admins.find(req.query);
+    const adminKeys = ['name', 'lastName', 'email'];
+    let includes = true;
 
-    if (Object.keys(params).length > 0) {
-      const adminFiltered = await Admins.find(req.query);
+    if (queryParams.length <= 0) {
+      if (allAdmins.length <= 0 || allAdmins === null) {
+        return res.status(404).json({
+          message: 'There is no admins to display',
+          data: undefined,
+          error: true,
+        });
+      }
       return res.status(200).json({
-        message: 'Admin found',
-        data: adminFiltered,
+        message: 'Admins found',
+        data: allAdmins,
         error: false,
       });
     }
 
-    if (admins.length === 0) {
+    queryParams.forEach((element) => {
+      if (!adminKeys.includes(element)) {
+        includes = false;
+      }
+      return includes;
+    });
+
+    if (!includes) {
       return res.status(404).json({
-        message: 'There is no data to display',
+        message: 'Parameters are incorrect',
         data: undefined,
         error: true,
       });
     }
 
-    return res.status(200).json({
-      message: 'Admins found',
-      data: admins,
-      error: false,
+    if (adminFiltered.length > 0) {
+      return res.status(200).json({
+        message: adminFiltered.length === 1 ? 'Admin found' : 'Admin found',
+        data: adminFiltered,
+        error: false,
+      });
+    }
+    return res.status(404).json({
+      message: 'Admin not found',
+      data: undefined,
+      error: true,
     });
   } catch (error) {
     return res.status(400).json({
-      message: 'An error occurried',
+      message: `An error ocurred: ${error}`,
+      data: undefined,
       error: true,
     });
   }
@@ -40,6 +64,13 @@ const getAdminById = async (req, res) => {
     const { id } = req.params;
     const admins = await Admins.findById(id);
 
+    if (!id) {
+      return res.status(400).json({
+        message: 'Missing id parameter',
+        data: undefined,
+        error: true,
+      });
+    }
     return res.status(200).json({
       message: 'Admin found',
       data: admins,
