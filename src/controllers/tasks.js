@@ -1,90 +1,54 @@
-import TaskModel from '../models/tasks';
+import TaskModel from '../models/Tasks';
 
+const responseHandler = (res, statusCode, msg, data) => res.status(statusCode).json({
+  message: msg,
+  data,
+  error: statusCode >= 400,
+});
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await TaskModel.find();
-    const params = req.query;
-    const keys = Object.keys(params);
     if (tasks.length <= 0) {
-      return res.status(404).json({
-        message: 'No tasks found, empty DB.',
-        data: undefined,
-        error: false,
-      });
+      return responseHandler(res, 404, 'No tasks found, empty DB.');
     }
-    if (keys.length > 0) {
-      const foundTask = await TaskModel.find(params);
-      const findInvalidKeys = keys.filter((key) => key !== 'description');
-      if (findInvalidKeys.length > 0) {
-        return res.status(400).json({
-          message: 'Invalid params.',
-          data: undefined,
-          error: true,
-        });
-      }
-      if (foundTask.length <= 0) {
-        return res.status(404).json({
-          message: 'Params does not match any task.',
-          data: undefined,
-          error: true,
-        });
-      }
-      if (foundTask.length > 1) {
-        return res.status(200).json({
-          message: 'Tasks found',
-          data: foundTask,
-          error: false,
-        });
-      }
-      return res.status(200).json({
-        message: 'Task found',
-        data: foundTask,
-        error: false,
-      });
+    const params = JSON.parse(JSON.stringify(req.query).toLocaleLowerCase());
+    params.description = new RegExp(params.description, 'i');
+    const keys = Object.keys(params);
+    if (keys.length === 0) {
+      return responseHandler(res, 200, 'Tasks found.', tasks);
     }
-    return res.status(200).json({
-      message: 'Tasks found.',
-      data: tasks,
-      error: false,
-    });
+    keys[0] = keys[0].toLowerCase();
+    if (keys.length !== 1 || keys[0] !== 'description') {
+      return responseHandler(res, 400, 'There is one or more invalid params.');
+    }
+    const foundTasks = await TaskModel.find(params);
+    if (foundTasks.length <= 0) {
+      return responseHandler(res, 404, 'Params does not match any task.');
+    }
+    const message = foundTasks.length > 1 ? 'Tasks found' : 'Task found';
+    return responseHandler(res, 200, message, foundTasks);
   } catch (error) {
-    return res.status(500).json({
-      message: `An error occured: ${error.message}`,
-      data: undefined,
-      error: true,
-    });
+    const message = `An error occured: ${error.message}`;
+    return responseHandler(res, 500, message);
   }
 };
 
 const getTaskById = async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const task = await TaskModel.findById(id);
-    if (task === null) {
-      return res.status(404).json({
-        message: `The following ID: '${req.params.id}' exist but was deleted.`,
-        data: undefined,
-        error: false,
-      });
+    if (!task || task === null) {
+      const message = `The following ID: '${req.params.id}' does not match any task.`;
+      return responseHandler(res, 404, message);
     }
-    return res.status(200).json({
-      message: 'Task found.',
-      data: task,
-      error: false,
-    });
+    return responseHandler(res, 200, 'Task found', task);
   } catch (error) {
-    if (error.name === 'CastError') {
-      return res.status(404).json({
-        message: `The following ID: '${req.params.id}' does not match any task.`,
-        data: undefined,
-        error: false,
-      });
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      const message = `The following ID: '${req.params.id}' does not match any task. Invalid format.`;
+      return responseHandler(res, 404, message);
     }
-    return res.status(500).json({
-      message: `An error occured: ${error.message}`,
-      data: undefined,
-      error: true,
-    });
+    const message = `An error occured: ${error.message}`;
+    return responseHandler(res, 500, message);
   }
 };
 const createTask = async (req, res) => {
@@ -93,76 +57,46 @@ const createTask = async (req, res) => {
       description: req.body.description,
     });
     const result = await task.save();
-    return res.status(201).json({
-      message: 'Task created successfully.',
-      data: result,
-      error: false,
-    });
+    return responseHandler(res, 201, 'Task created successfully.', result);
   } catch (error) {
-    return res.status(500).json({
-      message: `An error occured: ${error.message}`,
-      data: undefined,
-      error: true,
-    });
+    const message = `An error occured: ${error.message}`;
+    return responseHandler(res, 500, message);
   }
 };
 const deleteTask = async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const result = await TaskModel.findByIdAndDelete(id);
     if (result === null) {
-      return res.status(404).json({
-        message: `The following ID: '${req.params.id}' does not match any task.`,
-        data: undefined,
-        error: false,
-      });
+      const message = `The following ID: '${req.params.id}' does not match any task.`;
+      return responseHandler(res, 404, message);
     }
-    return res.status(204).json({
-      message: 'Task deleted successfully.',
-      data: result,
-      error: false,
-    });
+    return responseHandler(res, 204, 'Task deleted successfully.', result);
   } catch (error) {
-    if (error.name === 'CastError') {
-      return res.status(404).json({
-        message: `The following ID: '${req.params.id}' does not match any task.`,
-        data: undefined,
-        error: false,
-      });
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      const message = `The following ID: '${req.params.id}' does not match any task.`;
+      responseHandler(res, 404, message);
     }
-    return res.status(500).json({
-      message: `An error occured: ${error.message}`,
-      data: undefined,
-      error: true,
-    });
+    const message = `An error occured: ${error.message}`;
+    return responseHandler(res, 500, message);
   }
 };
 const editTask = async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const result = await TaskModel.findByIdAndUpdate(
       { _id: id },
       { ...req.body },
       { new: true },
     );
-    return res.status(201).json({
-      message: 'Task edited successfully.',
-      data: result,
-      error: false,
-    });
+    return responseHandler(res, 201, 'Task edited successfully.', result);
   } catch (error) {
-    if (error.name === 'CastError') {
-      return res.status(404).json({
-        message: `The following ID: '${req.params.id}' does not match any task.`,
-        data: undefined,
-        error: false,
-      });
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      const message = `The following ID: '${req.params.id}' does not match any task.`;
+      return responseHandler(res, 404, message);
     }
-    return res.status(500).json({
-      message: `An error occured: ${error.message}`,
-      data: undefined,
-      error: true,
-    });
+    const message = `An error occured: ${error.message}`;
+    return responseHandler(res, 500, message);
   }
 };
 export default {
