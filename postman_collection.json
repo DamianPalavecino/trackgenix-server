@@ -1,474 +1,1308 @@
 {
 	"info": {
-		"_postman_id": "2a7619e0-6ea5-4a6e-b824-e4a29222bf0a",
-		"name": "postman_collections",
-		"description": "## Week-09 API collection",
+		"_postman_id": "7cb589ba-f049-4c81-94da-b0bc4c3f433c",
+		"name": "Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23768454"
+		"_exporter_id": "23762184"
 	},
 	"item": [
 		{
-			"name": "projects",
-			"item": []
-		},
-		{
-			"name": "employees",
-			"item": []
-		},
-		{
-			"name": "admins",
-			"item": []
-		},
-		{
-			"name": "super-admins",
-			"item": [
+			"name": "getAll - superAdmins",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
 				{
-					"name": "getAll",
-					"request": {
+					"name": "New Request",
+					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/super-admins",
+							"raw": "localhost:5000/superAdmins/",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"super-admins"
+								"superAdmins",
+								""
 							]
 						}
 					},
-					"response": [
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"name": "200 OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:5000/super-admins",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"super-admins"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1167"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"48f-rGBZ5F41z8THytAt8vk+wXFr35g\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 18 Oct 2022 22:39:39 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Super admin found\",\n    \"data\": [\n        {\n            \"_id\": \"634ca7313ba44bede1863022\",\n            \"name\": \"Juancizco\",\n            \"lastName\": \"Papadopulus\",\n            \"email\": \"juan@papa.com\",\n            \"password\": \"2023\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d66d4508e6b134af0ade4\",\n            \"name\": \"Lio\",\n            \"lastName\": \"Mesi\",\n            \"email\": \"champions@fut.com\",\n            \"password\": \"2020\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d72eaa3ee84030759c308\",\n            \"name\": \"ELBICHO\",\n            \"lastName\": \"CR7\",\n            \"email\": \"champions@fut.com\",\n            \"password\": \"2022\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d79430e4d452e827183e4\",\n            \"name\": \"Luisito\",\n            \"lastName\": \"LaCalle\",\n            \"email\": \"lo@100to.com\",\n            \"password\": \"1678\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d795e0e4d452e827183e6\",\n            \"name\": \"Perro\",\n            \"lastName\": \"Primo\",\n            \"email\": \"elmas@quetose.com\",\n            \"password\": \"420\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d9526236d6330928b5fe3\",\n            \"name\": \"Sergio\",\n            \"lastName\": \"Puglia\",\n            \"email\": \"gordito@gmail.com\",\n            \"password\": \"12359\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f089b0862572ab92d58df\",\n            \"name\": \"Camilo\",\n            \"lastName\": \"Puglia\",\n            \"email\": \"camilo@gmail.com\",\n            \"password\": \"1515\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f0d30d29802e8d6dc07e5\",\n            \"name\": \"Karim\",\n            \"lastName\": \"Benzema\",\n            \"email\": \"Krim@.com\",\n            \"password\": \"2025\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f281aca551819ef903f75\",\n            \"name\": \"LaMar\",\n            \"lastName\": \"EstabaSerena\",\n            \"email\": \"srena@estaba.com\",\n            \"password\": \"laMar\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1168"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"490-a8DP8YaH/P3pZ45MKFf5smCIT70\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:00:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
 						}
-					]
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Super admins found\",\n    \"data\": [\n        {\n            \"_id\": \"634ca7313ba44bede1863022\",\n            \"name\": \"Juancizco\",\n            \"lastName\": \"Papadopulus\",\n            \"email\": \"juan@papa.com\",\n            \"password\": \"2023\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d66d4508e6b134af0ade4\",\n            \"name\": \"Lio\",\n            \"lastName\": \"Mesi\",\n            \"email\": \"champions@fut.com\",\n            \"password\": \"2020\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d72eaa3ee84030759c308\",\n            \"name\": \"ELBICHO\",\n            \"lastName\": \"CR7\",\n            \"email\": \"champions@fut.com\",\n            \"password\": \"2022\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d79430e4d452e827183e4\",\n            \"name\": \"Luisito\",\n            \"lastName\": \"LaCalle\",\n            \"email\": \"lo@100to.com\",\n            \"password\": \"1678\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d795e0e4d452e827183e6\",\n            \"name\": \"Perro\",\n            \"lastName\": \"Primo\",\n            \"email\": \"elmas@quetose.com\",\n            \"password\": \"420\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d9526236d6330928b5fe3\",\n            \"name\": \"Sergio\",\n            \"lastName\": \"Puglia\",\n            \"email\": \"gordito@gmail.com\",\n            \"password\": \"12359\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f089b0862572ab92d58df\",\n            \"name\": \"Camilo\",\n            \"lastName\": \"Puglia\",\n            \"email\": \"camilo@gmail.com\",\n            \"password\": \"1515\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f0d30d29802e8d6dc07e5\",\n            \"name\": \"Karim\",\n            \"lastName\": \"Benzema\",\n            \"email\": \"Krim@.com\",\n            \"password\": \"2025\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f281aca551819ef903f75\",\n            \"name\": \"LaMar\",\n            \"lastName\": \"EstabaSerena\",\n            \"email\": \"srena@estaba.com\",\n            \"password\": \"laMar\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
 				},
 				{
-					"name": "getById",
-					"request": {
+					"name": "New Request",
+					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/super-admins/634ca8d90049f0d97594ba66",
+							"raw": "localhost:5000/superAdmins/?name=Perro",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"super-admins",
-								"634ca8d90049f0d97594ba66"
+								"superAdmins",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Perro"
+								}
 							]
 						}
 					},
-					"response": [
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"name": "404 Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:5000/super-admins/634ca8d90049f0d97594ba66",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"super-admins",
-										"634ca8d90049f0d97594ba66"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "49"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"31-W/vlJG1mJ4whTr4WR7ht0S5oqiQ\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 18 Oct 2022 22:40:05 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"meesage\": \"Super admin dont exist\",\n    \"error\": true\n}"
+							"key": "X-Powered-By",
+							"value": "Express"
 						},
 						{
-							"name": "200 OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:5000/super-admins/634f281aca551819ef903f75",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"super-admins",
-										"634f281aca551819ef903f75"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "182"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"b6-lou8GvGoYmF72mUQA60CkISieW8\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 18 Oct 2022 22:41:24 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Super admin found\",\n    \"data\": {\n        \"_id\": \"634f281aca551819ef903f75\",\n        \"name\": \"LaMar\",\n        \"lastName\": \"EstabaSerena\",\n        \"email\": \"srena@estaba.com\",\n        \"password\": \"laMar\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
-						}
-					]
-				},
-				{
-					"name": "create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"LaMar\",\r\n    \"lastName\": \"EstabaSerena\",\r\n    \"email\": \"srena@estaba.com\",\r\n    \"password\": \"laMar\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
 						},
-						"url": {
-							"raw": "localhost:5000/super-admins",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"super-admins"
-							]
-						}
-					},
-					"response": [
 						{
-							"name": "201",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"LaMar\",\r\n    \"lastName\": \"EstabaSerena\",\r\n    \"email\": \"srena@estaba.com\",\r\n    \"password\": \"laMar\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:5000/super-admins",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"super-admins"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "197"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"c5-rMCs2K2ns6W+k2pbX64q2cFAPlc\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 18 Oct 2022 22:26:34 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Super admin created successfully\",\n    \"data\": {\n        \"name\": \"LaMar\",\n        \"lastName\": \"EstabaSerena\",\n        \"email\": \"srena@estaba.com\",\n        \"password\": \"laMar\",\n        \"_id\": \"634f281aca551819ef903f75\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
-						}
-					]
-				},
-				{
-					"name": "deleted",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:5000/super-admins/634f11fb3e83a6092f8999a9",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"super-admins",
-								"634f11fb3e83a6092f8999a9"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "204",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "localhost:5000/super-admins/634f11fb3e83a6092f8999a9",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"super-admins",
-										"634f11fb3e83a6092f8999a9"
-									]
-								}
-							},
-							"status": "No Content",
-							"code": 204,
-							"_postman_previewlanguage": "plain",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"dc-fUZCnjnDN9Z9/AJm51Zh1Sn6egE\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 18 Oct 2022 22:22:04 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": null
-						}
-					]
-				},
-				{
-					"name": "edit",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n{\r\n    \"name\":\"Karim\",\"lastName\":\"Benzema\",\"email\":\"Krim@.com\",\"password\":\"2025\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"key": "Content-Length",
+							"value": "176"
 						},
+						{
+							"key": "ETag",
+							"value": "W/\"b0-VBnnxHb+4kskOCZ5pKiLqniOdag\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:01:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Super admin found\",\n    \"data\": [\n        {\n            \"_id\": \"634d795e0e4d452e827183e6\",\n            \"name\": \"Perro\",\n            \"lastName\": \"Primo\",\n            \"email\": \"elmas@quetose.com\",\n            \"password\": \"420\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
 						"url": {
-							"raw": "localhost:5000/super-admins/634f0d30d29802e8d6dc07e5",
+							"raw": "localhost:5000/superAdmins/?name=a",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"super-admins",
-								"634f0d30d29802e8d6dc07e5"
+								"superAdmins",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "a"
+								}
 							]
 						}
 					},
-					"response": [
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"name": "201",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "\r\n{\r\n    \"name\":\"Karim\",\"lastName\":\"Benzema\",\"email\":\"Krim@.com\",\"password\":\"2025\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:5000/super-admins/634f0d30d29802e8d6dc07e5",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"super-admins",
-										"634f0d30d29802e8d6dc07e5"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "199"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"c7-MC3y3o7564frBSTy1s3Lj20YxA8\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 18 Oct 2022 22:25:26 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Project with id634f0d30d29802e8d6dc07e5 edited.\",\n    \"data\": {\n        \"_id\": \"634f0d30d29802e8d6dc07e5\",\n        \"name\": \"Karim\",\n        \"lastName\": \"Benzema\",\n        \"email\": \"Krim@.com\",\n        \"password\": \"2025\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30-ZlaUSMrp3cWyDbp23ovVBgrMEjQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:01:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
 						}
-					]
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Super admin not found\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/superAdmins/?a=a",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								""
+							],
+							"query": [
+								{
+									"key": "a",
+									"value": "a"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33-n98p0pK9pv/suJOhq/1EaRJWOF0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:01:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Parameters are incorrect\",\n    \"error\": true\n}"
 				}
 			]
 		},
 		{
-			"name": "tasks",
-			"item": []
+			"name": "getById - superAdmins",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "getById - superAdmins",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/superAdmins/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-4K+oE78kHlqE1sUwN2AXQS4xKvg\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:02:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invail ID\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "getById - superAdmins",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/superAdmins/634ca7313ba44bede1863022",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"634ca7313ba44bede1863022"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "181"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b5-kMBbhlshRrrDSNf699OkZLpv134\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:02:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Super Admin found\",\n    \"data\": {\n        \"_id\": \"634ca7313ba44bede1863022\",\n        \"name\": \"Juancizco\",\n        \"lastName\": \"Papadopulus\",\n        \"email\": \"juan@papa.com\",\n        \"password\": \"2023\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "getById - superAdmins",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/superAdmins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1168"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"490-a8DP8YaH/P3pZ45MKFf5smCIT70\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:02:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Super admins found\",\n    \"data\": [\n        {\n            \"_id\": \"634ca7313ba44bede1863022\",\n            \"name\": \"Juancizco\",\n            \"lastName\": \"Papadopulus\",\n            \"email\": \"juan@papa.com\",\n            \"password\": \"2023\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d66d4508e6b134af0ade4\",\n            \"name\": \"Lio\",\n            \"lastName\": \"Mesi\",\n            \"email\": \"champions@fut.com\",\n            \"password\": \"2020\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d72eaa3ee84030759c308\",\n            \"name\": \"ELBICHO\",\n            \"lastName\": \"CR7\",\n            \"email\": \"champions@fut.com\",\n            \"password\": \"2022\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d79430e4d452e827183e4\",\n            \"name\": \"Luisito\",\n            \"lastName\": \"LaCalle\",\n            \"email\": \"lo@100to.com\",\n            \"password\": \"1678\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d795e0e4d452e827183e6\",\n            \"name\": \"Perro\",\n            \"lastName\": \"Primo\",\n            \"email\": \"elmas@quetose.com\",\n            \"password\": \"420\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634d9526236d6330928b5fe3\",\n            \"name\": \"Sergio\",\n            \"lastName\": \"Puglia\",\n            \"email\": \"gordito@gmail.com\",\n            \"password\": \"12359\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f089b0862572ab92d58df\",\n            \"name\": \"Camilo\",\n            \"lastName\": \"Puglia\",\n            \"email\": \"camilo@gmail.com\",\n            \"password\": \"1515\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f0d30d29802e8d6dc07e5\",\n            \"name\": \"Karim\",\n            \"lastName\": \"Benzema\",\n            \"email\": \"Krim@.com\",\n            \"password\": \"2025\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"634f281aca551819ef903f75\",\n            \"name\": \"LaMar\",\n            \"lastName\": \"EstabaSerena\",\n            \"email\": \"srena@estaba.com\",\n            \"password\": \"laMar\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+				},
+				{
+					"name": "getById - superAdmins",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/superAdmins/ss",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"ss"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-4K+oE78kHlqE1sUwN2AXQS4xKvg\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:03:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invail ID\",\n    \"error\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "create - superAdmins",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "create - superAdmins",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Marcos\",\r\n    \"lastName\": \"Perez\",\r\n    \"email\": \"marcosperez@gmail.com\",\r\n    \"password\": \"2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "195"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c3-mPjPM9ks6aaHjVXIWB9AE2j0yl4\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:04:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Super admin created successfully\",\n    \"data\": {\n        \"name\": \"Marcos\",\n        \"lastName\": \"Perez\",\n        \"email\": \"marcosperez@gmail.com\",\n        \"password\": \"2024\",\n        \"_id\": \"6353177e414b58f4591599e0\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "create - superAdmins",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Marcos\",\r\n    \"a\": \"Perez\",\r\n    \"email\": \"marcosperez@gmail.com\",\r\n    \"password\": \"2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"47-F55El4qw9ts9YFIucn2vUiZkQyI\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:04:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"lastName\\\" is required\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "create - superAdmins",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Marcos\",\r\n    \"lastName\": 5,\r\n    \"email\": \"marcosperez@gmail.com\",\r\n    \"password\": \"2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "76"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4c-UWQowUzKQt9YOPrIyrpgvOpcVX8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:05:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"lastName\\\" must be a string\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "create - superAdmins",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Marcos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"47-F55El4qw9ts9YFIucn2vUiZkQyI\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:05:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"lastName\\\" is required\",\n    \"error\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "delete - superAdmins",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/superAdmins/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"superAdmins",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete - superAdmins",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/superAdmins/634ca7313ba44bede1863022",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"634ca7313ba44bede1863022"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "216"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d8-dUNVAvu0O+sUV0Of8CB8TYi2q+0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:05:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Super admin with id 634ca7313ba44bede1863022 deleted\",\n    \"data\": {\n        \"_id\": \"634ca7313ba44bede1863022\",\n        \"name\": \"Juancizco\",\n        \"lastName\": \"Papadopulus\",\n        \"email\": \"juan@papa.com\",\n        \"password\": \"2023\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+				},
+				{
+					"name": "delete - superAdmins",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/superAdmins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								""
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'none'"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "154"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:05:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>Cannot DELETE /superAdmins/</pre>\n    </body>\n</html>"
+				},
+				{
+					"name": "delete - superAdmins",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/superAdmins/56",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"56"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3c-qux+ogEQhkYPIISYNZzVFDmXv8I\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:06:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No super admin with '56' as an id\",\n    \"error\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "put - superAdmins",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/superAdmins/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"superAdmins",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "put - superAdmins",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Gonzalo\",\r\n    \"lastName\": \"Delía\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/6350c5ef60b3da2ca8df1bad",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"6350c5ef60b3da2ca8df1bad"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "87"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"57-yX5MDLlG+YKdwMlUfBwU7jqhfX8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:12:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Super admin id  6350c5ef60b3da2ca8df1bad edited\",\n    \"data\": null,\n    \"error\": false\n}"
+				},
+				{
+					"name": "put - superAdmins",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Gonzalo\",\r\n    \"lastName\": \"Delía\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/4",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"4"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "59"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3b-ZnBWWd8EpTc09UdDFWbfHQfx/4c\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:13:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No super admin with '4' as an id\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "put - superAdmins",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Gonzalo\",\r\n    \"a\": \"Delía\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/6350c5ef60b3da2ca8df1bad",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"6350c5ef60b3da2ca8df1bad"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"43-ipYkhQs+7FrTyUyifPt4rA0g6bY\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:13:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"a\\\" is not allowed\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "put - superAdmins",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Gonzalo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"6"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "59"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3b-7u7c4WDxW18V5jyQi/BlvVD2Hys\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:24:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No super admin with '6' as an id\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "put - superAdmins",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"s\": \"Gonzalo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/6350c5ef60b3da2ca8df1bad",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"6350c5ef60b3da2ca8df1bad"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"43-qAcM1vulTTzONeZRbEF6u5LOXhU\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:24:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"s\\\" is not allowed\",\n    \"error\": true\n}"
+				},
+				{
+					"name": "put - superAdmins",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/superAdmins/6350c5ef60b3da2ca8df1bad",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"superAdmins",
+								"6350c5ef60b3da2ca8df1bad"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"48-FzO1S83GOrWV1JAXOrK8VYtB13M\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 22:25:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"There was an error: \\\"name\\\" must be a string\",\n    \"error\": true\n}"
+				}
+			]
 		}
 	]
 }

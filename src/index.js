@@ -1,12 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import superAdminsRoutes from './routes/super-admins';
+
+import router from './routes';
 
 const app = express();
 const port = 5000;
 
 app.use(express.json());
-app.use('/super-admins', superAdminsRoutes);
+
+app.use(router);
 
 const MONGO_URL = 'mongodb+srv://RadiumB:Radium2022@cluster0.qtxpp68.mongodb.net/Test';
 
