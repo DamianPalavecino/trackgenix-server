@@ -21,7 +21,7 @@ mongoose.connect(
       // eslint-disable-next-line no-console
       console.log('Connected to database');
       app.listen(port, () => {
-      // eslint-disable-next-line no-console
+        // eslint-disable-next-line no-console
         console.log(`Server ready on port ${port}`);
       });
     }
