@@ -4,7 +4,7 @@ const validateCreation = (req, res, next) => {
   const employeeValidation = Joi.object({
     name: Joi.string().min(3).max(50).required(),
     lastName: Joi.string().min(3).max(50).required(),
-    phone: Joi.number().required(),
+    phone: Joi.string().pattern(/^[0-9]+$/).length(10).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(8).required(),
   });
@@ -25,7 +25,7 @@ const validateEdition = (req, res, next) => {
   const employeeValidation = Joi.object({
     name: Joi.string().min(3).max(50),
     lastName: Joi.string().min(3).max(50),
-    phone: Joi.number(),
+    phone: Joi.string().pattern(/^[0-9]+$/).length(10),
     email: Joi.string().email(),
     password: Joi.string().min(8),
   });
