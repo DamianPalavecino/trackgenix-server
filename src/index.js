@@ -7,7 +7,6 @@ const app = express();
 const port = 5000;
 
 app.use(express.json());
-
 app.use(router);
 
 const MONGO_URL = 'mongodb+srv://RadiumB:Radium2022@cluster0.qtxpp68.mongodb.net/Test';
