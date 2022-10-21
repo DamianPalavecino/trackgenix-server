@@ -1,3 +1,4 @@
+import { object } from 'joi';
 import Admins from '../models/Admins';
 
 const editAdmin = async (req, res) => {
@@ -7,7 +8,15 @@ const editAdmin = async (req, res) => {
 
     if (id === null) {
       return res.status(400).json({
-        message: 'no id parameter',
+        message: 'No id parameter',
+        data: undefined,
+        error: true,
+      });
+    }
+
+    if (object.entries(updatedAdmin).length <= 0) {
+      return res.status(400).json({
+        message: 'Admin must have content',
         data: undefined,
         error: true,
       });
