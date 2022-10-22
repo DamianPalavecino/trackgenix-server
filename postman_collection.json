@@ -1,9 +1,16 @@
 {
 	"info": {
+<<<<<<< HEAD
 		"_postman_id": "5e3c5929-f02e-4d6d-93e7-8e892537fa84",
 		"name": "Postman Collections",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23762167"
+=======
+		"_postman_id": "a178744d-80a0-4537-91e3-07d8fea4403d",
+		"name": "Postman Collections",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23762473"
+>>>>>>> origin/master
 	},
 	"item": [
 		{
@@ -3993,6 +4000,530 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"An error occurried, Admin not created\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "delete-Admins",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/admins/634dd699fd04f0365c5969e0",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								"634dd699fd04f0365c5969e0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "succes",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/634dd6a5fd04f0365c5969e2",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"634dd6a5fd04f0365c5969e2"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 02:26:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/634dd6a5fd04f036",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"634dd6a5fd04f036"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-99DmUQVmEpwDt5rUV8oCfkIOVyI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 02:26:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No admin with '634dd6a5fd04f036' as an id\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "try to delete a deleted id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/admins/635073bbb0384916ebc9d18f",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"635073bbb0384916ebc9d18f"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-dk/ek+LetMsUH9jodtEah51q5Dw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 22:27:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin not found\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "put-Admins",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admins",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "succes",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\": \"ramon\",\r\n\"lastName\": \"gomez\",\r\n\"email\": \"ramon@umn.com\",\r\n\"password\": \"ramonsito55852yuilvfghuil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/634dd699fd04f0365c5969e0",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"634dd699fd04f0365c5969e0"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "216"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d8-fe4oqnf8dKRiHlWRseG0gLXNSps\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 02:20:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin id  634dd699fd04f0365c5969e0 edited\",\n    \"data\": {\n        \"_id\": \"634dd699fd04f0365c5969e0\",\n        \"name\": \"ramon\",\n        \"lastName\": \"gomez\",\n        \"email\": \"ramon@umn.com\",\n        \"password\": \"ramonsito55852yuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\": \"ramon\",\r\n\"lastName\": \"gomez\",\r\n\"email\": \"ramon@umn.com\",\r\n\"password\": \"ramonsito55852yuilvfghuil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/634dd699fd04f",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"634dd699fd04f"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-72Fnrso4G8CF6gFVch4/EAc4rko\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 02:22:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No admin with '634dd699fd04f' as an id\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "succes all fileds",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"omar\",\r\n    \"lastName\": \"el armenio\",\r\n    \"email\": \"kebap@gmail.com\",\r\n    \"password\": \"tabule55852yuilvfghuil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/634ec42cef58b4a5306a2222",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"634ec42cef58b4a5306a2222"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "219"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"db-jx8oPViIIwDmFUfGByQlUXrSYwI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 21:48:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin id  634ec42cef58b4a5306a2222 edited\",\n    \"data\": {\n        \"_id\": \"634ec42cef58b4a5306a2222\",\n        \"name\": \"omar\",\n        \"lastName\": \"el armenio\",\n        \"email\": \"kebap@gmail.com\",\n        \"password\": \"tabule55852yuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "succes just 1 field",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"mohammed\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/634ec42cef58b4a5306a2222",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"634ec42cef58b4a5306a2222"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "223"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"df-VSgzE7VtgpJFlrCBaI2uBVnvh2U\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Oct 2022 21:53:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin id  634ec42cef58b4a5306a2222 edited\",\n    \"data\": {\n        \"_id\": \"634ec42cef58b4a5306a2222\",\n        \"name\": \"mohammed\",\n        \"lastName\": \"el armenio\",\n        \"email\": \"kebap@gmail.com\",\n        \"password\": \"tabule55852yuilvfghuil\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "bad id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"pepito\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/admins/63531d68a8a9d30d",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admins",
+										"63531d68a8a9d30d"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-REj7AbcPF7AcL5MUaL+AlS8t/5E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Oct 2022 01:08:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No admin with '63531d68a8a9d30d' as an id\",\n    \"error\": true\n}"
 						}
 					]
 				}
