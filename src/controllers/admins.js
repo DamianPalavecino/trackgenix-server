@@ -121,6 +121,12 @@ const editAdmin = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedAdmin = req.body;
+    const editResult = await Admins.findByIdAndUpdate(
+      { _id: id },
+      { ...updatedAdmin },
+      { new: true },
+    );
+    const result = await Admins.findById(id);
 
     if (id === null) {
       return res.status(400).json({
@@ -137,17 +143,20 @@ const editAdmin = async (req, res) => {
         error: true,
       });
     }
-
-    await Admins.findByIdAndUpdate(id, updatedAdmin);
-    const result = await Admins.findById(id);
-
+    if (result === null) {
+      return res.status(404).json({
+        message: 'Admin not found',
+        data: undefined,
+        error: true,
+      });
+    }
     return res.status(201).json({
       message: `Admin id  ${id} edited`,
-      data: result,
+      data: editResult,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
+    return res.json({
       message: `No admin with '${req.params.id}' as an id`,
       data: undefined,
       error: true,
