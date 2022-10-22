@@ -90,6 +90,8 @@ const editTask = async (req, res) => {
       { ...req.body },
       { new: true },
     );
+    const message = `The following ID: '${req.params.id}' does not match any task.`;
+    if (!result) return responseHandler(res, 404, message);
     return responseHandler(res, 201, 'Task edited successfully.', result);
   } catch (error) {
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
