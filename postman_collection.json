@@ -1,16 +1,9 @@
 {
 	"info": {
-<<<<<<< HEAD
-		"_postman_id": "5e3c5929-f02e-4d6d-93e7-8e892537fa84",
+		"_postman_id": "b7c32d28-5be9-495c-a17f-b86f9efcf3c5",
 		"name": "Postman Collections",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23762167"
-=======
-		"_postman_id": "a178744d-80a0-4537-91e3-07d8fea4403d",
-		"name": "Postman Collections",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23762473"
->>>>>>> origin/master
 	},
 	"item": [
 		{
@@ -4069,7 +4062,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "error",
@@ -6898,7 +6891,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "404: No match found.",
