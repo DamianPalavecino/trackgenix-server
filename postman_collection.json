@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a178744d-80a0-4537-91e3-07d8fea4403d",
+		"_postman_id": "b7c32d28-5be9-495c-a17f-b86f9efcf3c5",
 		"name": "Postman Collections",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23762473"
+		"_exporter_id": "23762167"
 	},
 	"item": [
 		{
@@ -4062,7 +4062,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "error",
@@ -5930,6 +5930,1471 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Timesheet does not exist\",\n    \"error\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "getAllTasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/tasks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Matchs exactly params.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks?description=fix+bugs",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "description",
+											"value": "fix+bugs"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"73-FtVCUdTmlufBUpb5Oe9KlvskOfM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 18:56:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task found\",\n    \"data\": [\n        {\n            \"_id\": \"6352adb26fd9d7321c392e1b\",\n            \"description\": \"fix bugs\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+						},
+						{
+							"name": "200: Contains params.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks?description=fix",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "description",
+											"value": "fix"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"73-FtVCUdTmlufBUpb5Oe9KlvskOfM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 18:57:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task found\",\n    \"data\": [\n        {\n            \"_id\": \"6352adb26fd9d7321c392e1b\",\n            \"description\": \"fix bugs\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+						},
+						{
+							"name": "200: Matchs exactly and more than one result.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks?description=improve+logic",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "description",
+											"value": "improve+logic"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "194"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c2-DNvN/2MYaX40CqSDDuokiPMkVCE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:42:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tasks found\",\n    \"data\": [\n        {\n            \"_id\": \"6352aded6fd9d7321c392e1f\",\n            \"description\": \"improve logic\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6352b44de84539c33fd64be7\",\n            \"description\": \"improve logic\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+						},
+						{
+							"name": "200: Contains params and more than one response.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks?description=improve",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "description",
+											"value": "improve"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "194"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c2-DNvN/2MYaX40CqSDDuokiPMkVCE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:43:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tasks found\",\n    \"data\": [\n        {\n            \"_id\": \"6352aded6fd9d7321c392e1f\",\n            \"description\": \"improve logic\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6352b44de84539c33fd64be7\",\n            \"description\": \"improve logic\",\n            \"__v\": 0\n        }\n    ],\n    \"error\": false\n}"
+						},
+						{
+							"name": "400: Invalid params.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks?invalidparam=Fix bugs",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "invalidparam",
+											"value": "Fix bugs"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-+4WOM9+mboOoh0T1dMK1CZYb6c8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:44:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There is one or more invalid params.\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "400: Valid and invalid params.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks?description=Fix bugs&invalidparam=1231",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "description",
+											"value": "Fix bugs"
+										},
+										{
+											"key": "invalidparam",
+											"value": "1231"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-+4WOM9+mboOoh0T1dMK1CZYb6c8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:44:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There is one or more invalid params.\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "404: No match found.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks?description=Unmatched",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "description",
+											"value": "Unmatched"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-NcQjKYNSlI27pA6YY0mSwV4Zhdw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:44:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Params does not match any task.\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "getTaskById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/tasks/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Match ID.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks/6352f7298ac2cae44a3b9a56",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"6352f7298ac2cae44a3b9a56"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "137"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"89-tv4KQKQJSiOUgSLAuuAb/eJMIGk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:47:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task found\",\n    \"data\": {\n        \"_id\": \"6352f7298ac2cae44a3b9a56\",\n        \"description\": \"define function to handle errors\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "404: ID does not match.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks/6352f7298ac2cae44a3b9a56",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"6352f7298ac2cae44a3b9a56"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-yjrCIXPima+gaK1K9ijHkhryiyE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:55:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The following ID: '6352f7298ac2cae44a3b9a56' does not match any task.\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "404: ID does not match, invalid ID format.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks/INVALIDFORMAT",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"INVALIDFORMAT"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"65-hIxZeGvDohNdGAoSEUaFgVv5WFg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:54:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The following ID: 'INVALIDFORMAT' does not match any task. Invalid format.\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "createTask",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:5000/tasks/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201: Added new task to DB.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\": \"Define function to handle errors\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-EqLdYhb4Wzs0mAIidBPgb5bAWOA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:46:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task created successfully.\",\n    \"data\": {\n        \"description\": \"define function to handle errors\",\n        \"_id\": \"6352f7298ac2cae44a3b9a56\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "400: Missing required key.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\": \"Noname Task\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-xMIg4BHf4csA3TrWF0abB+SemvI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:56:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"description\\\" is required\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "400: Empty field.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\": \"\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-LebYueQO1nniD7AOCZkbjchpE24\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:57:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"description\\\" is not allowed to be empty\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "400: Not allowed key.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\": \"Define function to handle errors.\",\r\n\"name\": \"Manolo\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-1dx4yQ+Bz7fD51t2ShPMwp4zsfM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:57:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"name\\\" is not allowed\",\n    \"error\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteTask",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/tasks/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "204: Deleted task in DB.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks/6352f7298ac2cae44a3b9a56",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"6352f7298ac2cae44a3b9a56"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-c7cib1RqHOJ4BEu4t8iKRwzyzmA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:48:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "404: No match found.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks/634f2bc7a08f2ed340be45e0",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"634f2bc7a08f2ed340be45e0"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-cLHgHJfqih7LPTljkfRm6YPGk7U\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 19:58:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The following ID: '634f2bc7a08f2ed340be45e0' does not match any task.\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "Error when missing ID param: shows 404 but shouldn't be.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'none'"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 05:27:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>Cannot DELETE /tasks/</pre>\n    </body>\n</html>"
+						}
+					]
+				},
+				{
+					"name": "editTask",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/tasks/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201: Edition success.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\": \"task edited to test\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/6352b44de84539c33fd64be7",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"6352b44de84539c33fd64be7"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8b-4p5UPcnEZXNSwef6FDpL56qU684\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 22:43:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task edited successfully.\",\n    \"data\": {\n        \"_id\": \"6352b44de84539c33fd64be7\",\n        \"description\": \"task edited to test\",\n        \"__v\": 0\n    },\n    \"error\": false\n}"
+						},
+						{
+							"name": "400: Missing required field.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\": \"Pedro.\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/6352b44de84539c33fd64be7",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"6352b44de84539c33fd64be7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-xMIg4BHf4csA3TrWF0abB+SemvI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 22:44:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"description\\\" is required\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "400: Empty field.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\": \"\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/6352b44de84539c33fd64be7",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"6352b44de84539c33fd64be7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-LebYueQO1nniD7AOCZkbjchpE24\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 22:45:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"description\\\" is not allowed to be empty\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "400: Not allowed key.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\": \"Pedro.\",\r\n\"description\": \"Define function to handle errors and edit.\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/6352b44de84539c33fd64be7",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"6352b44de84539c33fd64be7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-1dx4yQ+Bz7fD51t2ShPMwp4zsfM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 22:46:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"There was an error: \\\"name\\\" is not allowed\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "404: No matching ID.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\": \"Define function to handle errors and edit.\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/tasks/NONEXISTINGID123",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										"NONEXISTINGID123"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"58-ea/wzGR+Xw5SlJCCxGBBmyhxIQM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Oct 2022 22:46:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The following ID: 'NONEXISTINGID123' does not match any task.\",\n    \"error\": true\n}"
+						},
+						{
+							"name": "Error when missing ID param: shows 404 but shouldn't be.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/tasks/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'none'"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Oct 2022 05:12:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>Cannot PUT /tasks/</pre>\n    </body>\n</html>"
 						}
 					]
 				}
