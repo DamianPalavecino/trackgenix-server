@@ -21,12 +21,11 @@ const error404 = (res, msg) => res.status(404).json({
 const createProject = async (req, res) => {
   try {
     const project = new Projects({
-      employees: req.body.employees,
       name: req.body.name,
+      description: req.body.description,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
       clientName: req.body.clientName,
-      description: req.body.description,
     });
 
     const result = project.save((error, dataProject) => {
@@ -56,7 +55,7 @@ const createProject = async (req, res) => {
 
 const getAllProjects = async (req, res) => {
   try {
-    const projectsAll = await Projects.find();
+    const projectsAll = await Projects.find().populate('employees');
     const queryParams = Object.keys(req.query);
     const find = await Projects.find(req.query);
     const keysProjects = ['name', 'employees', 'startDate', 'endDate', 'description', 'clientName'];
