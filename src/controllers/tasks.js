@@ -9,7 +9,11 @@ const getAllTasks = async (req, res) => {
   try {
     const tasks = await TaskModel.find();
     if (tasks.length <= 0) {
-      return responseHandler(res, 404, 'No tasks found, empty DB.');
+      return res.status(404).json({
+        message: 'No tasks found, empty DB.',
+        data: undefined,
+        error: true,
+      });
     }
     const params = JSON.parse(JSON.stringify(req.query).toLocaleLowerCase());
     params.description = new RegExp(params.description, 'i');
@@ -29,7 +33,7 @@ const getAllTasks = async (req, res) => {
     return responseHandler(res, 200, message, foundTasks);
   } catch (error) {
     const message = `An error occured: ${error.message}`;
-    return responseHandler(res, 500, message);
+    return responseHandler(res, 400, message);
   }
 };
 
@@ -61,7 +65,7 @@ const createTask = async (req, res) => {
     return responseHandler(res, 201, 'Task created successfully.', result);
   } catch (error) {
     const message = `An error occured: ${error.message}`;
-    return responseHandler(res, 500, message);
+    return responseHandler(res, 400, message);
   }
 };
 const deleteTask = async (req, res) => {
@@ -70,16 +74,28 @@ const deleteTask = async (req, res) => {
     const result = await TaskModel.findByIdAndDelete(id);
     if (result === null) {
       const message = `The following ID: '${req.params.id}' does not match any task.`;
-      return responseHandler(res, 404, message);
+      return res.status(404).json({
+        message,
+        data: undefined,
+        error: true,
+      });
     }
     return responseHandler(res, 204, 'Task deleted successfully.', result);
   } catch (error) {
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
       const message = `The following ID: '${req.params.id}' does not match any task.`;
-      responseHandler(res, 404, message);
+      return res.status(404).json({
+        message,
+        data: undefined,
+        error: true,
+      });
     }
     const message = `An error occured: ${error.message}`;
-    return responseHandler(res, 500, message);
+    return res.status(404).json({
+      message,
+      data: undefined,
+      error: true,
+    });
   }
 };
 const editTask = async (req, res) => {
@@ -99,7 +115,7 @@ const editTask = async (req, res) => {
       return responseHandler(res, 404, message);
     }
     const message = `An error occured: ${error.message}`;
-    return responseHandler(res, 500, message);
+    return responseHandler(res, 400, message);
   }
 };
 export default {

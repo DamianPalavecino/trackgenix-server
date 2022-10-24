@@ -60,6 +60,7 @@ describe('GET /task', () => {
 describe('POST /task', () => {
   test('Should return status 201', async () => {
     const response = await request(app).post('/tasks').send(mockedTask1);
+    taskId = response.body.data._id;
 
     expect(response.status).toBe(201);
   });
@@ -134,5 +135,11 @@ describe('DELETE /task/:id', () => {
 
     expect(response.status).toBe(204);
     expect(response.body.data).toBe(undefined);
+  });
+  test('Should return error when try to delete a invalid id', async () => {
+    const response = await request(app).delete('/tasks/1234567892345678234567sd').send();
+
+    expect(response.body.error).toBe(true);
+    expect(response.status).toBe(404);
   });
 });
