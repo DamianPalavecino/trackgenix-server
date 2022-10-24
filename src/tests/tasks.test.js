@@ -127,3 +127,12 @@ describe('PUT /task/:id', () => {
     expect(response.status).toBe(400);
   });
 });
+
+describe('DELETE /task/:id', () => {
+  test('Should delete a task', async () => {
+    const response = await request(app).delete(`/tasks/${taskId}`).send();
+
+    expect(response.status).toBe(204);
+    expect(response.body.data).toBe(undefined);
+  });
+});
