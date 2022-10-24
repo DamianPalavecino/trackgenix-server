@@ -4,9 +4,9 @@ const { ObjectId } = require('mongoose').Types;
 
 const getAllEmployees = async (req, res) => {
   try {
-    const employees = await Employees.find();
+    const employees = await Employees.find().populate('projects');
     const queryParams = Object.keys(req.query);
-    const find = await Employees.find(req.query);
+    const find = await Employees.find(req.query).populate('projects');
     const keysProjects = ['name', 'lastName', 'phone', 'email'];
     let includes = true;
 
@@ -70,7 +70,7 @@ const getEmployeeById = async (req, res) => {
         error: true,
       });
     }
-    const employees = await Employees.findById(id);
+    const employees = await Employees.findById(id).populate('projects');
 
     if (employees === null) {
       res.status(404).json({
@@ -121,7 +121,7 @@ const createEmployee = async (req, res) => {
 const deleteEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await Employees.findByIdAndDelete(id);
+    const result = await Employees.findByIdAndDelete(id).populate('projects');
     if (result === null) {
       return res.status(404).json({
         message: 'Employee not found',
@@ -156,7 +156,7 @@ const editEmployee = async (req, res) => {
       { _id: id },
       { ...req.body },
       { new: true },
-    );
+    ).populate('projects');
     if (result === null) {
       return res.status(404).json({
         message: 'Employee not found',
