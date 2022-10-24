@@ -4,7 +4,7 @@ const { ObjectId } = require('mongoose').Types;
 
 const getAllEmployees = async (req, res) => {
   try {
-    const employees = await Employees.find();
+    const employees = await Employees.find().populate('projects');
     const queryParams = Object.keys(req.query);
     const find = await Employees.find(req.query);
     const keysProjects = ['name', 'lastName', 'phone', 'email'];

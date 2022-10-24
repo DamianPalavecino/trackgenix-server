@@ -56,7 +56,7 @@ const createProject = async (req, res) => {
 
 const getAllProjects = async (req, res) => {
   try {
-    const projectsAll = await Projects.find();
+    const projectsAll = await Projects.find().populate('employees');
     const queryParams = Object.keys(req.query);
     const find = await Projects.find(req.query);
     const keysProjects = ['name', 'employees', 'startDate', 'endDate', 'description', 'clientName'];
