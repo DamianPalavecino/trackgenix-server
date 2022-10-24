@@ -11,6 +11,12 @@ const mockedTask1 = {
 const mockedTask2 = {
   description: '',
 };
+const mockedTask3 = {
+  description: 'see the grass grow',
+};
+const mockedTask4 = {
+  betelgeuse: true,
+};
 
 let taskId;
 
@@ -95,5 +101,29 @@ describe('GET /task', () => {
     const response = await request(app).get(`/tasks/${taskId}`).send();
 
     expect(response.body.data.description).toBe(mockedTask1.description);
+  });
+});
+
+describe('PUT /task/:id', () => {
+  test('Should edit a task', async () => {
+    const response = await request(app).put(`/tasks/${taskId}`).send(mockedTask3);
+
+    expect(response.status).toBe(201);
+    expect(response.body.data.description).toBe('see the grass grow');
+  });
+  test('Should return status 404 when search for a invalid id', async () => {
+    const response = await request(app).put('/tasks/1234567892345678234567sd').send(mockedTask3);
+
+    expect(response.status).toBe(404);
+  });
+  test('Should return status 400 when send a empty body', async () => {
+    const response = await request(app).put(`/tasks/${taskId}`).send();
+
+    expect(response.status).toBe(400);
+  });
+  test('Should return status 400 when send invalid keys and values', async () => {
+    const response = await request(app).put(`/tasks/${taskId}`).send(mockedTask4);
+
+    expect(response.status).toBe(400);
   });
 });
