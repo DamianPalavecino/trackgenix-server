@@ -12,6 +12,8 @@ const mockedTask2 = {
   description: '',
 };
 
+let taskId;
+
 beforeAll(async () => {
   await Tasks.collection.insertMany(tasksSeed);
 });
@@ -70,5 +72,28 @@ describe('POST /task', () => {
     const response = await request(app).post('/tasks').send();
 
     expect(response.status).toBe(400);
+  });
+});
+
+describe('GET /task', () => {
+  test('Should return status 200 when search a valid id', async () => {
+    const response = await request(app).get(`/tasks/${taskId}`).send();
+
+    expect(response.status).toBe(200);
+  });
+  test('Should return error false when search a valid id', async () => {
+    const response = await request(app).get(`/tasks/${taskId}`).send();
+
+    expect(response.body.error).toBe(false);
+  });
+  test('Should return error true when search a invalid id', async () => {
+    const response = await request(app).get('/tasks/1234567892345678234567sd').send();
+
+    expect(response.body.error).toBe(true);
+  });
+  test('Should return the task required', async () => {
+    const response = await request(app).get(`/tasks/${taskId}`).send();
+
+    expect(response.body.data.description).toBe(mockedTask1.description);
   });
 });
