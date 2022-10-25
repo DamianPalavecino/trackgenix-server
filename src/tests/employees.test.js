@@ -1,23 +1,42 @@
 import request from 'supertest';
-// import mongoose from 'mongoose';
 import app from '../app';
 import Projects from '../models/Projects';
 import Employees from '../models/Employees';
 import projectsSeed from '../seeds/projects';
 import employeesSeed from '../seeds/employee';
 
-/* const mockedEmployees = {
-  _id: mongoose.Types.ObjectId('6352b5e596170b594dc07cf2'),
-  name: 'marcus',
-  lastName: 'postgirl',
-  phone: '1234567890',
-  email: 'lorlor0@furl.net',
-  password: 'pacoelflaco123',
-  projects: [
-    { _id: mongoose.Types.ObjectId('634d73ca260e0ee548943dc3') },
-    { _id: mongoose.Types.ObjectId('634d924e260e0ee548943dc7') },
-  ],
-}; */
+const mockedEmployees = {
+  name: 'rodrigo',
+  lastName: 'perez',
+  phone: '1234567880',
+  email: 'emailrandom@adinet.com',
+  password: 'password12234',
+};
+
+const SameEmailMockedEmployees = {
+  name: 'rodrigo',
+  lastName: 'perez',
+  phone: '1234567880',
+  email: 'laucan@furl.net',
+  password: 'password1234',
+};
+
+const incompleteMockedEmployees = {
+  name: 'Rodrigo',
+  lastName: 'Perez',
+  email: 'createemployee@furl.net',
+  password: 'contraseña123',
+};
+
+let employeeId;
+let notFoundId;
+let invalidId;
+
+function expectStatErrMsgHelper(response, statusCode, message) {
+  expect(response.status).toBe(statusCode);
+  expect(response.body.error).toBe(statusCode >= 400);
+  expect(response.body.message).toBe(message);
+}
 
 beforeAll(async () => {
   await Employees.collection.insertMany(employeesSeed);
@@ -25,13 +44,15 @@ beforeAll(async () => {
 });
 
 describe('GET /employees', () => {
+  employeeId = '6352b5e596170b594dc07cf2';
+  notFoundId = '63576051fc13ae37e7000091';
+  invalidId = '123';
+
   describe('GET all', () => {
-    test('Status, error, data and message tests - Successful', async () => {
+    test('Status, error and message tests - Successful', async () => {
       const response = await request(app).get('/employees').send();
 
-      expect(response.status).toBe(200);
-      expect(response.body.error).toBeFalsy();
-      expect(response.body.message).toBe('Employees found');
+      expectStatErrMsgHelper(response, 200, 'Employees found');
       expect(response.body.data.length).toBeGreaterThan(0);
     });
   });
@@ -41,8 +62,7 @@ describe('GET /employees', () => {
       const response = await request(app).get('/employees?asd=marcus').send();
 
       expect(response.status).toBe(400);
-      expect(response.body.message).toBe('An error occurred');
-      expect(response.body.error).toBe(true);
+      expectStatErrMsgHelper(response, 400, 'An error occurred');
     });
 
     test('Name query param must be correct and message be: "Employee found" - Status 200', async () => {
@@ -93,5 +113,58 @@ describe('GET /employees', () => {
 
       expect(response.status).toBe(404);
     });
+  });
+});
+
+describe('GET /employees/:id', () => {
+  test('Status, error and message tests - Successful', async () => {
+    const response = await request(app).get(`/employees/${employeeId}`).send();
+
+    expectStatErrMsgHelper(response, 200, 'Employee found');
+  });
+
+  test('Employee not found', async () => {
+    const response = await request(app).get(`/employees/${notFoundId}`).send();
+
+    expectStatErrMsgHelper(response, 404, 'Employee not found');
+  });
+
+  test('Employee invalid ID', async () => {
+    const response = await request(app).get(`/employees/${invalidId}`).send();
+
+    expectStatErrMsgHelper(response, 400, 'Invalid ID');
+  });
+});
+
+describe('POST /employees', () => {
+  test('Should create an employee and show msg, error and data', async () => {
+    const response = await request(app).post('/employees').send(mockedEmployees);
+
+    expectStatErrMsgHelper(response, 201, 'Employee successfully created');
+    // eslint-disable-next-line no-underscore-dangle
+    expect(response.body.data).toMatchObject(mockedEmployees);
+    // eslint-disable-next-line no-underscore-dangle
+    employeeId = response.body.data._id;
+  });
+
+  test('Should status 400 incomplete employee', async () => {
+    const response = await request(app).post('/employees').send(incompleteMockedEmployees);
+
+    // eslint-disable-next-line no-useless-escape
+    expectStatErrMsgHelper(response, 400, 'There was an error: \"phone\" is required');
+  });
+
+  test('Status of an employee with an existing email should be 400', async () => {
+    const response = await request(app).post('/employees').send(SameEmailMockedEmployees);
+
+    expectStatErrMsgHelper(response, 400, 'Email already exists');
+  });
+});
+
+describe('DELETE /employees', () => {
+  test('Should delete an employee', async () => {
+    const response = await request(app).delete(`/employees/${employeeId}`).send();
+
+    expect(response.status).toBe(200);
   });
 });

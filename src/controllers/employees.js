@@ -64,17 +64,16 @@ const getEmployeeById = async (req, res) => {
   try {
     const { id } = req.params;
     if (!ObjectId.isValid(id)) {
-      return res.status(404).json({
+      return res.status(400).json({
         message: 'Invalid ID',
         data: undefined,
         error: true,
       });
     }
     const employees = await Employees.findById(id).populate('projects');
-
-    if (employees === null) {
-      res.status(404).json({
-        message: 'Invalid ID',
+    if (!employees) {
+      return res.status(404).json({
+        message: 'Employee not found',
         data: undefined,
         error: true,
       });
@@ -95,6 +94,17 @@ const getEmployeeById = async (req, res) => {
 
 const createEmployee = async (req, res) => {
   try {
+    const foundEmail = await Employees.find(
+      { email: req.body.email },
+    );
+    if (Object.keys(foundEmail).length > 0) {
+      return res.status(400).json({
+        message: 'Email already exists',
+        data: undefined,
+        error: true,
+      });
+    }
+
     const employee = new Employees({
       name: req.body.name,
       lastName: req.body.lastName,
@@ -104,13 +114,14 @@ const createEmployee = async (req, res) => {
     });
 
     const result = await employee.save();
+
     return res.status(201).json({
       message: 'Employee successfully created',
       data: result,
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.status(500).json({
       message: 'An error occurred',
       data: undefined,
       error: true,
