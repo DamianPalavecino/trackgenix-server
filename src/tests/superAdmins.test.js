@@ -4,10 +4,20 @@ import SuperAdmins from '../models/Super-admins';
 import superAdminsSeed from '../seeds/superAdmins';
 
 const mockedSuperAdmin = {
-  name: 'Lucas',
-  lastName: 'Salame',
+  name: 'lucas',
+  lastName: 'salame',
   email: 'salamelucas@gmail.com',
   password: 'pacoelflaco123',
+};
+const mockedSuperAdmin4 = {
+  name: 'omar',
+};
+const mockedSuperAdmin2 = {
+  name: 123456,
+};
+
+const mockedSuperAdmin3 = {
+  list: 'unknow',
 };
 
 let superAdminId;
@@ -56,10 +66,36 @@ describe('POST/superAdmins', () => {
     expect(response.body.error).toBe(false);
   });
 
-  test('should return status code 400 and response error be true', async () => {
+  test('should return status code 400 and response error be true , when add a empty body', async () => {
     const response = await request(app).post('/superAdmins').send();
     expect(response.status).toBe(400);
     expect(response.body.error).toBe(true);
+  });
+
+  test('should return status code 400 , should response error be true ,when try to add a bad params', async () => {
+    const response = await request(app).post('/superAdmins').send(mockedSuperAdmin2);
+
+    expect(response.status).toBe(400);
+    expect(response.body.error).toBe(true);
+  });
+});
+
+describe('GET/superAdmins', () => {
+  test('should return status code 200 , should have data inside and response error be false , when filter by id', async () => {
+    const response = await request(app).get(`/superAdmins/${superAdminId}`).send();
+    expect(response.status).toBe(200);
+    expect(response.body.error).toBe(false);
+  });
+
+  test('should return status code 400 and response error be true ,when search with invalid id', async () => {
+    const response = await request(app).get('/superAdmins/wkvehkwegjhw').send();
+    expect(response.status).toBe(400);
+    expect(response.body.error).toBe(true);
+  });
+
+  test('should return the name of the superadmin required', async () => {
+    const response = await request(app).get(`/superAdmins/${superAdminId}`).send();
+    expect(response.body.data.name).toBe(mockedSuperAdmin.name);
   });
 });
 
@@ -73,5 +109,38 @@ describe('DELETE/superAdmins', () => {
   test('should return status code 404', async () => {
     const response = await request(app).delete('/superAdmins').send();
     expect(response.status).toBe(404);
+    expect(response.body.data).toBe(undefined);
+  });
+});
+
+describe('PUT/superAdmins', () => {
+  test('should return status code 201 , should response error be false , when update data', async () => {
+    const response = await request(app).put(`/superAdmins/${superAdminId}`).send(mockedSuperAdmin4);
+    expect(response.status).toBe(201);
+    expect(response.body.error).toBe(false);
+  });
+
+  test('should return status code 404 and response error be true ,when update with invalid id', async () => {
+    const response = await request(app).put('/superAdmins/wkvehkwegjhw').send(mockedSuperAdmin4);
+    expect(response.status).toBe(404);
+    expect(response.body.error).toBe(true);
+  });
+
+  test('should return status code 400 and response error be true ,when add empty body', async () => {
+    const response = await request(app).put(`/superAdmins/${superAdminId}`).send();
+    expect(response.status).toBe(400);
+    expect(response.body.error).toBe(true);
+  });
+
+  test('should return status code 400 and response error be true ,when update with invalid key and value', async () => {
+    const response = await request(app).put(`/superAdmins/${superAdminId}`).send(mockedSuperAdmin3);
+    expect(response.status).toBe(400);
+    expect(response.body.error).toBe(true);
+  });
+
+  test('should return status code 404 and response error be true ,when update with no id', async () => {
+    const response = await request(app).put('/superAdmins/').send(mockedSuperAdmin4);
+    expect(response.status).toBe(404);
+    expect(response.body.error).toBe(true);
   });
 });

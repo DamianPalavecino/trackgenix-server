@@ -82,13 +82,19 @@ const getSuperAdminsById = async (req, res) => {
         error: true,
       });
     }
+    if (!superAdmins) {
+      return res.status(400).json({
+        message: 'superadmin not found',
+        error: true,
+      });
+    }
     return res.status(200).json({
       message: 'Super Admin found',
       data: superAdmins,
       error: false,
     });
   } catch (error) {
-    return res.json({
+    return res.status(400).json({
       message: `An error ocurred: ${error}`,
       error: true,
     });
@@ -155,6 +161,12 @@ const editedSuperAdmin = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedSuperAdmin = req.body;
+    const editResult = await SuperAdmins.findByIdAndUpdate(
+      { _id: id },
+      { ...updatedSuperAdmin },
+      { new: true },
+    );
+    const result = await SuperAdmins.findById(id);
     if (id === null) {
       return res.status(400).json({
         message: 'No id parameter',
@@ -170,11 +182,17 @@ const editedSuperAdmin = async (req, res) => {
         error: true,
       });
     }
+    if (result === null) {
+      return res.status(404).json({
+        message: 'Admin not found',
+        data: undefined,
+        error: true,
+      });
+    }
     await SuperAdmins.findByIdAndUpdate(id, updatedSuperAdmin);
-    const result = await SuperAdmins.findById(id);
     return res.status(201).json({
       message: `Super admin id  ${id} edited`,
-      data: result,
+      data: editResult,
       error: false,
     });
   } catch (error) {
