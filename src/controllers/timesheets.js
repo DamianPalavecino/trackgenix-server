@@ -55,10 +55,7 @@ const createTimesheet = async (req, res) => {
 
 const getAllTimesheets = async (req, res) => {
   try {
-    const allTimesheets = await Timesheets.find()
-      .populate('task')
-      .populate('project')
-      .populate('employee');
+    const allTimesheets = await Timesheets.find();
     const queryParams = Object.keys(req.query);
     const queryTimesheets = await Timesheets.find(req.query);
     const keys = ['description', 'date', 'task'];

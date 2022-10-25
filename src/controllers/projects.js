@@ -1,10 +1,6 @@
 import Projects from '../models/Projects';
 
-const missingId = (res) => res.status(400).json({
-  message: 'Missing id parameter',
-  data: undefined,
-  error: true,
-});
+const { ObjectId } = require('mongoose').Types;
 
 const error400 = (res, msg) => res.status(400).json({
   message: msg,
@@ -73,6 +69,7 @@ const getAllProjects = async (req, res) => {
     }
 
     queryParams.forEach((element) => {
+      element.toLowerCase();
       if (!keysProjects.includes(element)) {
         includes = false;
       }
@@ -100,10 +97,10 @@ const getAllProjects = async (req, res) => {
 const getProjectById = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!id) return missingId(res);
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
     const project = await Projects.findById(id);
-    if (!project) return error404(res, 'Project by id not found');
+    if (!project) return error404(res, 'Project ID not found on database');
 
     return res.status(200).json({
       message: 'Project found',
@@ -122,7 +119,7 @@ const getProjectById = async (req, res) => {
 const deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!id) return missingId(res);
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
     const findById = await Projects.findById(id);
     if (!findById) return error404(res, 'Project not exist');
@@ -144,7 +141,7 @@ const updateProject = async (req, res) => {
     const { id } = req.params;
     const updatedProject = req.body;
 
-    if (!id) return missingId(res);
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
     if (Object.entries(updatedProject).length === 0 || !updatedProject) {
       return error400(res, 'Edited project is empty');
@@ -173,7 +170,7 @@ const addEmployee = async (req, res) => {
     const { id } = req.params;
     const newEmployee = req.body;
 
-    if (!id) return missingId(res);
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
     const project = await Projects.findById(id);
     const addEmployeedProject = await Projects.findByIdAndUpdate(
