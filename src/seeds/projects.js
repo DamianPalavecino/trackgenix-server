@@ -10,7 +10,7 @@ export default [
     clientName: 'Pedro Damiani',
     employees: mongoose.Types.ObjectId('634d1052010b0c589a0b8da1'),
   },
-  /* {
+  {
     _id: mongoose.Types.ObjectId('634d924e260e0ee548943dc7'),
     name: 'Sharing mockaroo data',
     description: 'Typing with collegues new seeds for the team',
@@ -27,5 +27,5 @@ export default [
     endDate: '2022-03-04T00:00:00.000+00:00',
     clientName: 'Garen Nautilus',
     employees: mongoose.Types.ObjectId('634f281aca551819ef903f75'),
-  }, */
+  },
 ];

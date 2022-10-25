@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import request from 'supertest';
@@ -25,78 +26,75 @@ beforeAll(async () => {
 });
 
 describe('GET /task', () => {
-  test('Should return status 200', async () => {
+  test('Should return status 200, correct message and error false', async () => {
     const response = await request(app).get('/tasks').send();
 
     expect(response.status).toBe(200);
-  });
-  test('Should return error false', async () => {
-    const response = await request(app).get('/tasks').send();
-
+    expect(response.body.message).toBe('Tasks found');
     expect(response.body.error).toBe(false);
   });
-  test('Should return more than one tasks', async () => {
+  test('Should return at least one task', async () => {
     const response = await request(app).get('/tasks').send();
 
     expect(response.body.data.length).toBeGreaterThan(0);
   });
-  test('Should return status 200 when filter by query params', async () => {
+  test('Should return status 200 an correct message when filter by valid query params', async () => {
     const response = await request(app).get('/tasks?description=Knowledge').send();
 
     expect(response.status).toBe(200);
+    expect(response.body.message).toBe('Task found');
   });
-  test('Should return status 404 when not found any filtered task', async () => {
+  test('Should return status 404 when not found any filtered task and show correct message', async () => {
     const response = await request(app).get('/tasks?description=Paquito').send();
 
     expect(response.status).toBe(404);
+    expect(response.body.message).toBe('Params does not match any task.');
   });
-  test('Should return status 400 when filter by invalid query params', async () => {
+  test('Should return status 400 and correct message when filter by invalid query params', async () => {
     const response = await request(app).get('/tasks?address=moldavia').send();
 
     expect(response.status).toBe(400);
+    expect(response.body.message).toBe('There is one or more invalid params.');
   });
 });
 
 describe('POST /task', () => {
-  test('Should return status 201', async () => {
+  test('Should return status 201 and correct message', async () => {
     const response = await request(app).post('/tasks').send(mockedTask1);
     taskId = response.body.data._id;
 
     expect(response.status).toBe(201);
+    expect(response.body.message).toBe('Task created successfully');
   });
-  test('Should return error code 400 when send a description empty', async () => {
+  test('Should return status 400, error true and correct message when send a description empty', async () => {
     const response = await request(app).post('/tasks').send(mockedTask2);
 
     expect(response.status).toBe(400);
     expect(response.body.error).toBe(true);
+    expect(response.body.message).toBe('There was an error: \"description\" is not allowed to be empty');
   });
-  test('Should return error true when send a description empty', async () => {
-    const response = await request(app).post('/tasks').send();
-
-    expect(response.body.error).toBe(true);
-  });
-  test('Should return status 400 when send a empty body', async () => {
+  test('Should return error true, status 400 and correct message when send a body empty', async () => {
     const response = await request(app).post('/tasks').send();
 
     expect(response.status).toBe(400);
+    expect(response.body.error).toBe(true);
+    expect(response.body.message).toBe('There was an error: \"description\" is required');
   });
 });
 
 describe('GET /task', () => {
-  test('Should return status 200 when search a valid id', async () => {
+  test('Should return status 200, error false and correct message when search a valid id', async () => {
     const response = await request(app).get(`/tasks/${taskId}`).send();
 
     expect(response.status).toBe(200);
-  });
-  test('Should return error false when search a valid id', async () => {
-    const response = await request(app).get(`/tasks/${taskId}`).send();
-
     expect(response.body.error).toBe(false);
+    expect(response.body.message).toBe('Task found');
   });
-  test('Should return error true when search a invalid id', async () => {
-    const response = await request(app).get('/tasks/1234567892345678234567sd').send();
+  test('Should return error true and status 404 when search a invalid id', async () => {
+    const response = await request(app).get('/tasks/63576051fc13ae37e7000092').send();
 
     expect(response.body.error).toBe(true);
+    expect(response.status).toBe(404);
   });
   test('Should return the task required', async () => {
     const response = await request(app).get(`/tasks/${taskId}`).send();
@@ -127,6 +125,11 @@ describe('PUT /task/:id', () => {
 
     expect(response.status).toBe(400);
   });
+  test('Should return status 404 when dont send an id', async () => {
+    const response = await request(app).put('/tasks').send();
+
+    expect(response.status).toBe(404);
+  });
 });
 
 describe('DELETE /task/:id', () => {
@@ -140,6 +143,11 @@ describe('DELETE /task/:id', () => {
     const response = await request(app).delete('/tasks/1234567892345678234567sd').send();
 
     expect(response.body.error).toBe(true);
+    expect(response.status).toBe(404);
+  });
+  test('Should return error 404 when try to delete data without an id', async () => {
+    const response = await request(app).delete('/tasks').send();
+
     expect(response.status).toBe(404);
   });
 });
