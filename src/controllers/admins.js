@@ -2,6 +2,12 @@ import Admins from '../models/Admins';
 
 const { ObjectId } = require('mongoose').Types;
 
+const responseHandler = (res, statusCode, msg, data) => res.status(statusCode).json({
+  message: msg,
+  data,
+  error: statusCode >= 400,
+});
+
 const getAllAdmins = async (req, res) => {
   try {
     const allAdmins = await Admins.find();
@@ -12,17 +18,9 @@ const getAllAdmins = async (req, res) => {
 
     if (queryParam.length <= 0) {
       if (allAdmins.length <= 0 || allAdmins === null) {
-        return res.status(404).json({
-          message: 'There is no admins to display',
-          data: undefined,
-          error: true,
-        });
+        return responseHandler(res, 404, 'There is no admins to display');
       }
-      return res.status(200).json({
-        message: 'Admins found',
-        data: allAdmins,
-        error: false,
-      });
+      return responseHandler(res, 200, 'Admins found', allAdmins);
     }
 
     queryParam.forEach((element) => {
@@ -33,25 +31,14 @@ const getAllAdmins = async (req, res) => {
     });
 
     if (!includes) {
-      return res.status(404).json({
-        message: 'Parameters are incorrect',
-        data: undefined,
-        error: true,
-      });
+      return responseHandler(res, 404, 'Parameters are incorrect');
     }
 
     if (adminFiltered.length > 0) {
-      return res.status(200).json({
-        message: adminFiltered.length === 1 ? 'Admin found' : 'Admin found',
-        data: adminFiltered,
-        error: false,
-      });
+      const message = adminFiltered.length === 1 ? 'Admin found' : 'Admin found';
+      return responseHandler(res, 200, message, adminFiltered);
     }
-    return res.status(404).json({
-      message: 'Admin not found',
-      data: undefined,
-      error: true,
-    });
+    return responseHandler(res, 404, 'Admin not found');
   } catch (error) {
     return res.json({
       message: `An error ocurred: ${error}`,
@@ -65,27 +52,15 @@ const getAdminById = async (req, res) => {
   try {
     const { id } = req.params;
     if (!ObjectId.isValid(id)) {
-      return res.status(400).json({
-        message: 'Invail ID',
-        data: undefined,
-        error: true,
-      });
+      return responseHandler(res, 400, 'Invalid ID');
     }
 
     const admins = await Admins.findById(id);
 
     if (!id) {
-      return res.status(400).json({
-        message: 'Missing id parameter',
-        data: undefined,
-        error: true,
-      });
+      return responseHandler(res, 400, 'Missing ID parameter');
     }
-    return res.status(200).json({
-      message: 'Admin found',
-      data: admins,
-      error: false,
-    });
+    return responseHandler(res, 200, 'Admin found', admins);
   } catch (error) {
     return res.json({
       message: `An error ocurred: ${error}`,
@@ -104,11 +79,7 @@ const createAdmin = async (req, res) => {
     });
 
     const result = await admin.save();
-    return res.status(201).json({
-      message: 'Admin created successfully',
-      data: result,
-      error: false,
-    });
+    return responseHandler(res, 201, 'Admin created successfully', result);
   } catch (error) {
     return res.json({
       message: 'An error occurred, Admin not created',
@@ -129,32 +100,17 @@ const editAdmin = async (req, res) => {
     const result = await Admins.findById(id);
 
     if (id === null) {
-      return res.status(400).json({
-        message: 'No id parameter',
-        data: undefined,
-        error: true,
-      });
+      return responseHandler(res, 400, 'No ID parameter');
     }
 
     if (Object.entries(updatedAdmin).length <= 0) {
-      return res.status(400).json({
-        message: 'Admin must have content',
-        data: undefined,
-        error: true,
-      });
+      return responseHandler(res, 400, 'Admin must have content');
     }
     if (result === null) {
-      return res.status(404).json({
-        message: 'Admin not found',
-        data: undefined,
-        error: true,
-      });
+      return responseHandler(res, 404, 'Admin not found');
     }
-    return res.status(201).json({
-      message: `Admin id  ${id} edited`,
-      data: editResult,
-      error: false,
-    });
+    const message = `Admin id  ${id} edited`;
+    return responseHandler(res, 201, message, editResult);
   } catch (error) {
     return res.json({
       message: `No admin with '${req.params.id}' as an id`,
@@ -170,28 +126,16 @@ const deleteAdmin = async (req, res) => {
     const result = await Admins.findByIdAndDelete(id);
 
     if (id === null) {
-      return res.status(400).json({
-        message: 'no id parameter',
-        data: undefined,
-        error: true,
-      });
+      return responseHandler(res, 400, 'No ID parameter');
     }
 
     await Admins.findByIdAndDelete(id);
 
     if (result === null) {
-      return res.status(404).json({
-        message: 'Admin not found',
-        data: undefined,
-        error: true,
-      });
+      return responseHandler(res, 404, 'Admin not found');
     }
-
-    return res.status(200).json({
-      message: `Admin with id ${id} deleted`,
-      data: result,
-      error: false,
-    });
+    const message = `Admin with id ${id} deleted`;
+    return responseHandler(res, 200, message, result);
   } catch (error) {
     return res.status(404).json({
       message: `No admin with '${req.params.id}' as an id`,
