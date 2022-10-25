@@ -45,5 +45,5 @@ export default [
     hours: 97,
     project: mongoose.Types.ObjectId('6354d16dfc13ae65b20000d6'),
     employee: mongoose.Types.ObjectId('6354d08efc13ae65b200007d'),
-  }
+  },
 ];
