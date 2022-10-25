@@ -17,16 +17,36 @@ beforeAll(async () => {
 });
 
 describe('GET/superAdmins', () => {
-  test('should return status code 200', async () => {
+  test('should return status code 200 , should have data inside and response error be false', async () => {
     const response = await request(app).get('/superAdmins').send();
     expect(response.status).toBe(200);
     expect(response.body.data.length).toBeGreaterThan(0);
     expect(response.body.error).toBe(false);
   });
+
+  test('should return status code 200 when filter by query params', async () => {
+    const response = await request(app).get('/superAdmins?lastName=Salame').send();
+    expect(response.status).toBe(200);
+  });
+
+  test('should return status code 404 when not found filter data', async () => {
+    const response = await request(app).get('/superAdmins?name=elcapo').send();
+    expect(response.status).toBe(404);
+  });
+
+  test('should return status code 400 when filter invalid params', async () => {
+    const response = await request(app).get('/superAdmins?phone=55555555555').send();
+    expect(response.status).toBe(404);
+  });
+
+  test('should return status code 400', async () => {
+    const response = await request(app).get('/').send();
+    expect(response.status).toBe(404);
+  });
 });
 
 describe('POST/superAdmins', () => {
-  test('should create an super admin', async () => {
+  test('should return status code 200 , should response error be false', async () => {
     const response = await request(app).post('/superAdmins').send(mockedSuperAdmin);
 
     // eslint-disable-next-line no-underscore-dangle
@@ -36,7 +56,7 @@ describe('POST/superAdmins', () => {
     expect(response.body.error).toBe(false);
   });
 
-  test('should not create an super admin', async () => {
+  test('should return status code 400 and response error be true', async () => {
     const response = await request(app).post('/superAdmins').send();
     expect(response.status).toBe(400);
     expect(response.body.error).toBe(true);
@@ -44,15 +64,14 @@ describe('POST/superAdmins', () => {
 });
 
 describe('DELETE/superAdmins', () => {
-  test('should delete a superadmin', async () => {
+  test('should return status code 200 and response error be false', async () => {
     const response = await request(app).delete(`/superAdmins/${superAdminId}`).send();
     expect(response.status).toBe(200);
     expect(response.body.error).toBe(false);
   });
 
-  test('should not delete a superadmin', async () => {
+  test('should return status code 404', async () => {
     const response = await request(app).delete('/superAdmins').send();
     expect(response.status).toBe(404);
-    expect(response.body.error).toBe(true);
   });
 });
