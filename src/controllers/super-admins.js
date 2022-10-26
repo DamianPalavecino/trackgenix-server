@@ -2,6 +2,17 @@ import SuperAdmins from '../models/Super-admins';
 
 const { ObjectId } = require('mongoose').Types;
 
+const error404 = (res, msg) => res.status(404).json({
+  message: msg,
+  data: undefined,
+  error: true,
+});
+const error400 = (res, msg) => res.status(400).json({
+  message: msg,
+  data: undefined,
+  error: true,
+});
+
 const getAllSuperAdmins = async (req, res) => {
   try {
     const allSuperAdmins = await SuperAdmins.find();
@@ -160,44 +171,26 @@ const deletedSuperAdmin = async (req, res) => {
 const editedSuperAdmin = async (req, res) => {
   try {
     const { id } = req.params;
+    if (!ObjectId.isValid(id)) return error404(res, 'Invalid ID');
+
     const updatedSuperAdmin = req.body;
-    const editResult = await SuperAdmins.findByIdAndUpdate(
-      { _id: id },
-      { ...updatedSuperAdmin },
-      { new: true },
-    );
-    const result = await SuperAdmins.findById(id);
-    if (id === null) {
-      return res.status(400).json({
-        message: 'No id parameter',
-        data: undefined,
-        error: true,
-      });
+
+    if (Object.entries(updatedSuperAdmin).length === 0 || !updatedSuperAdmin) {
+      return error400(res, 'Edited super admin is empty');
     }
 
-    if (Object.entries(updatedSuperAdmin).length <= 0) {
-      return res.status(400).json({
-        message: 'Super Admit must not be empty',
-        data: undefined,
-        error: true,
-      });
-    }
-    if (result === null) {
-      return res.status(404).json({
-        message: 'Admin not found',
-        data: undefined,
-        error: true,
-      });
-    }
-    await SuperAdmins.findByIdAndUpdate(id, updatedSuperAdmin);
-    return res.status(201).json({
-      message: `Super admin id  ${id} edited`,
-      data: editResult,
+    const result = await SuperAdmins.findByIdAndUpdate(id, updatedSuperAdmin, { new: true });
+
+    if (!result) return error404(res, 'Super admin ID not found on database');
+
+    return res.status(200).json({
+      message: 'Super admin edited',
+      data: result,
       error: false,
     });
   } catch (error) {
-    return res.status(404).json({
-      message: `No super admin with '${req.params.id}' as an id`,
+    return res.json({
+      message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
     });

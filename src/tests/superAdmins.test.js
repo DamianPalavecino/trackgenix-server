@@ -11,6 +11,7 @@ const mockedSuperAdmin = {
 };
 const mockedSuperAdmin4 = {
   name: 'omar',
+  lastName: 'jamon',
 };
 const mockedSuperAdmin2 = {
   name: 123456,
@@ -99,24 +100,10 @@ describe('GET/superAdmins', () => {
   });
 });
 
-describe('DELETE/superAdmins', () => {
-  test('should return status code 200 and response error be false', async () => {
-    const response = await request(app).delete(`/superAdmins/${superAdminId}`).send();
-    expect(response.status).toBe(200);
-    expect(response.body.error).toBe(false);
-  });
-
-  test('should return status code 404', async () => {
-    const response = await request(app).delete('/superAdmins').send();
-    expect(response.status).toBe(404);
-    expect(response.body.data).toBe(undefined);
-  });
-});
-
 describe('PUT/superAdmins', () => {
-  test('should return status code 201 , should response error be false , when update data', async () => {
+  test('should return status code 200 , should response error be false , when update data', async () => {
     const response = await request(app).put(`/superAdmins/${superAdminId}`).send(mockedSuperAdmin4);
-    expect(response.status).toBe(201);
+    expect(response.status).toBe(200);
     expect(response.body.error).toBe(false);
   });
 
@@ -141,6 +128,19 @@ describe('PUT/superAdmins', () => {
   test('should return status code 404 and response error be true ,when update with no id', async () => {
     const response = await request(app).put('/superAdmins/').send(mockedSuperAdmin4);
     expect(response.status).toBe(404);
-    expect(response.body.error).toBe(true);
+  });
+});
+
+describe('DELETE/superAdmins', () => {
+  test('should return status code 200 and response error be false', async () => {
+    const response = await request(app).delete(`/superAdmins/${superAdminId}`).send();
+    expect(response.status).toBe(200);
+    expect(response.body.error).toBe(false);
+  });
+
+  test('should return status code 404', async () => {
+    const response = await request(app).delete('/superAdmins').send();
+    expect(response.status).toBe(404);
+    expect(response.body.data).toBe(undefined);
   });
 });
