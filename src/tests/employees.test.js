@@ -73,6 +73,13 @@ describe('POST /employees', () => {
     employeeId = response.body.data._id;
   });
 
+  test('Empty employee should be bad request (400)', async () => {
+    const response = await request(app).post('/employees').send(emptyMocked);
+
+    expect(response.status).toBe(400);
+    expect(response.body.error).toBe(true);
+  });
+
   test('Should status 400 incomplete employee', async () => {
     const response = await request(app).post('/employees').send(incompleteMockedEmployees);
 
