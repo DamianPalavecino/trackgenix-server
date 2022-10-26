@@ -139,9 +139,9 @@ const deleteProject = async (req, res) => {
 const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedProject = req.body;
-
     if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
+
+    const updatedProject = req.body;
 
     if (Object.entries(updatedProject).length === 0 || !updatedProject) {
       return error400(res, 'Edited project is empty');
