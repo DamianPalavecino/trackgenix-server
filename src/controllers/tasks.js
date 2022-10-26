@@ -7,7 +7,7 @@ const responseHandler = (res, statusCode, msg, data) => res.status(statusCode).j
 });
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await TaskModel.find();
+    const tasks = await TaskModel.find().populate('employees').populate('tasks').populate('projects');
     if (tasks.length <= 0) {
       return responseHandler(res, 404, 'No tasks found, empty DB.');
     }

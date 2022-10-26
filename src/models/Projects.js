@@ -13,7 +13,6 @@ const projectSchema = new Schema(
     description: { type: String, required: true },
     clientName: { type: String, required: true },
   },
-  { timestamps: true },
 );
 
 export default mongoose.model('Projects', projectSchema);
