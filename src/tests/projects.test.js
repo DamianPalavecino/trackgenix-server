@@ -96,9 +96,17 @@ const updateOnlyName = {
   name: 'Updated name',
 };
 
-const validId = '634d73ca260e0ee548943dc3';
+const validId = '634d924e260e0ee548943dc7';
 
 let projectId;
+
+const employeeOK = {
+  employeeId: '6353177e414b58f4591599e0',
+};
+
+const employeeNonexistentID = {
+  employeeId: '634f281aca551819ef903f76',
+};
 
 describe('GET All /projects', () => {
   describe(msg200, () => {
@@ -248,6 +256,7 @@ describe('PUT /projects', () => {
       const response = await request(app).put(`/projects/${validId}`).send(updateOnlyName);
       expect(response.status).toBe(200);
       expect(response.body.error).toBeFalsy();
+      expect(response.body.message).toBe('Project has been changed');
     });
   });
   describe(msg400, () => {
@@ -270,6 +279,51 @@ describe('PUT /projects', () => {
   describe(msg404, () => {
     test('inexistent ID on DB', async () => {
       const response = await request(app).put('/projects/634d73ca260e0ee548943df1').send(updateOnlyName);
+      expect(response.status).toBe(404);
+      expect(response.body.error).toBeTruthy();
+    });
+  });
+});
+
+describe('PUT /projects/:id/assignEmployee', () => {
+  describe(msg201, () => {
+    test('assign a valid employee', async () => {
+      const response = await request(app).put('/projects/634d924e260e0ee548943dc7/assignEmployee').send(employeeOK);
+      expect(response.status).toBe(201);
+      expect(response.body.error).toBeFalsy();
+      expect(response.body.message).toBe('Employee has been added');
+    });
+  });
+  describe(msg400, () => {
+    test('empty ID project', async () => {
+      const response = await request(app).put('/projects//assignEmployee').send(employeeOK);
+      expect(response.status).toBe(400);
+      expect(response.body.error).toBeTruthy();
+    });
+    test('invalid ID project', async () => {
+      const response = await request(app).put('/projects/6/assignEmployee').send(employeeOK);
+      expect(response.status).toBe(400);
+      expect(response.body.error).toBeTruthy();
+    });
+    test('empty employee ID', async () => {
+      const response = await request(app).put('/projects/634f42d0409f09628b8a1479/assignEmployee').send('');
+      expect(response.status).toBe(400);
+      expect(response.body.error).toBeTruthy();
+    });
+    test('invalid employee ID', async () => {
+      const response = await request(app).put('/projects/634f42d0409f09628b8a1479/assignEmployee').send('1');
+      expect(response.status).toBe(400);
+      expect(response.body.error).toBeTruthy();
+    });
+  });
+  describe(msg404, () => {
+    test('nonexistent ID project', async () => {
+      const response = await request(app).put('/projects/634f42d0409f09628b8a1471/assignEmployee').send(employeeOK);
+      expect(response.status).toBe(404);
+      expect(response.body.error).toBeTruthy();
+    });
+    test('nonexistent employee ID', async () => {
+      const response = await request(app).put('/projects/634f42d0409f09628b8a1479/assignEmployee').send(employeeNonexistentID);
       expect(response.status).toBe(404);
       expect(response.body.error).toBeTruthy();
     });

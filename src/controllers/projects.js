@@ -1,4 +1,5 @@
 import Projects from '../models/Projects';
+import Employees from '../models/Employees';
 
 const { ObjectId } = require('mongoose').Types;
 
@@ -99,7 +100,7 @@ const getProjectById = async (req, res) => {
     const { id } = req.params;
     if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
-    const project = await Projects.findById(id);
+    const project = await Projects.findById(id).populate('employees');
     if (!project) return error404(res, 'Project ID not found on database');
 
     return res.status(200).json({
@@ -147,9 +148,9 @@ const updateProject = async (req, res) => {
       return error400(res, 'Edited project is empty');
     }
     const project = await Projects.findById(id);
-    const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
-
     if (!project) return error404(res, 'Project does not exist');
+
+    const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
 
     return res.status(200).json({
       message: 'Project has been changed',
@@ -168,22 +169,24 @@ const updateProject = async (req, res) => {
 const addEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const newEmployee = req.body;
-
-    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid project ID');
 
     const project = await Projects.findById(id);
+    if (!project) return error404(res, 'Project does not exist on DB');
+
+    const newEmployee = req.body;
+    const foundEmployee = await Employees.findById(newEmployee.employeeId);
+    if (!foundEmployee) return error404(res, 'Employee does not exist on DB');
+
     const addEmployeedProject = await Projects.findByIdAndUpdate(
       { _id: id },
       {
         $addToSet: {
-          employees: newEmployee,
+          employees: newEmployee.employeeId,
         },
       },
       { new: true },
     );
-
-    if (!project) return error400(res, 'Project does not exist');
 
     return res.status(201).json({
       message: 'Employee has been added',
