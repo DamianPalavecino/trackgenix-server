@@ -201,6 +201,12 @@ describe('PUT /employees', () => {
 
     expectStatErrMsgHelper(response, 404, 'Employee does not exist');
   });
+
+  test('Invalid ID should return 400', async () => {
+    const response = await request(app).put('/employees/1').send(editedMockedEmployees);
+
+    expectStatErrMsgHelper(response, 400, 'Invalid ID');
+  });
 });
 
 describe('DELETE /employees', () => {

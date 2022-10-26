@@ -164,7 +164,13 @@ const deleteEmployee = async (req, res) => {
 const editEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({
+        message: 'Invalid ID',
+        data: undefined,
+        error: true,
+      });
+    }
     if (Object.entries(req.body).length === 0) {
       return res.status(400).json({
         message: 'You must edit at least one field',
