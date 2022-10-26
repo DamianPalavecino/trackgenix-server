@@ -91,29 +91,43 @@ const createAdmin = async (req, res) => {
 const editAdmin = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedAdmin = req.body;
-    const editResult = await Admins.findByIdAndUpdate(
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({
+        message: 'Invalid ID.',
+        data: undefined,
+        error: true,
+      });
+    }
+    if (Object.entries(req.body).length === 0) {
+      return res.status(400).json({
+        message: 'You must edit at least one field.',
+        data: undefined,
+        error: true,
+      });
+    }
+
+    const findById = await Admins.findById(id);
+    if (!findById) {
+      return res.status(404).json({
+        message: 'Admin does not exist.',
+        data: undefined,
+        error: true,
+      });
+    }
+    const result = await Admins.findByIdAndUpdate(
       { _id: id },
-      { ...updatedAdmin },
+      { ...req.body },
       { new: true },
     );
-    const result = await Admins.findById(id);
 
-    if (id === null) {
-      return responseHandler(res, 400, 'No ID parameter');
-    }
-
-    if (Object.entries(updatedAdmin).length <= 0) {
-      return responseHandler(res, 400, 'Admin must have content');
-    }
-    if (result === null) {
-      return responseHandler(res, 404, 'Admin not found');
-    }
-    const message = `Admin id  ${id} edited`;
-    return responseHandler(res, 201, message, editResult);
+    return res.status(200).json({
+      message: `Admin with ID: ${id} was edited successfully.`,
+      data: result,
+      error: false,
+    });
   } catch (error) {
     return res.json({
-      message: `No admin with '${req.params.id}' as an id`,
+      message: `Server error: ${error}`,
       data: undefined,
       error: true,
     });

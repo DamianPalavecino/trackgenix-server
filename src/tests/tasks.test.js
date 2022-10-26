@@ -1,10 +1,14 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 import request from 'supertest';
 import app from '../app';
 import Admins from '../models/Admins';
 import AdminsSeed from '../seeds/admins';
+
+const expectHandler = (response, statusCode) => {
+  expect(response.status).toBe(statusCode);
+  expect(response.body.data).toBe(statusCode < 400 ? response.body.data : undefined);
+  expect(response.body.error).toBe(statusCode >= 400);
+};
+let adminId;
 
 const mockedAdmin1 = {
   name: 'mohammed',
@@ -39,41 +43,92 @@ describe('GET /admins', () => {
     const response = await request(app).get('/admins').send();
 
     expect(response.status).toBe(200);
-    expect(response.body.message).toBe('Admins found');
     expect(response.body.error).toBe(false);
+    expect(response.body.message).toBe('Admins found');
   });
 });
 
 describe('POST /admins', () => {
   test('Should return status 201, correct message and error false when all required fields are filled.', async () => {
     const response = await request(app).post('/admins').send(mockedAdmin1);
-
-    expect(response.status).toBe(201);
+    // eslint-disable-next-line no-underscore-dangle
+    adminId = response.body.data._id;
+    expectHandler(response, 201);
     expect(response.body.message).toBe('Admin created successfully');
-    expect(response.body.error).toBe(false);
   });
-  test('Should return status 400 and error true when lack some required key.', async () => {
+  test('Should return status 400, data undefined and error true when lack some required key.', async () => {
     const response = await request(app).post('/admins').send(mockedAdmin2);
 
-    expect(response.status).toBe(400);
-    expect(response.body.error).toBe(true);
+    expectHandler(response, 400);
   });
-  test('Should return status 400 and error true when an unexpected key is sent.', async () => {
+  test('Should return status 400, data undefined and error true when an unexpected key is sent.', async () => {
     const response = await request(app).post('/admins').send(mockedAdmin3);
 
-    expect(response.status).toBe(400);
-    expect(response.body.error).toBe(true);
+    expectHandler(response, 400);
   });
-  test('Should return status 400 and error true when empty body.', async () => {
+  test('Should return status 400, data undefined and error true when empty body.', async () => {
     const response = await request(app).post('/admins').send();
 
-    expect(response.status).toBe(400);
-    expect(response.body.error).toBe(true);
+    expectHandler(response, 400);
   });
-  test('Should return status 400 and error true when empty required field.', async () => {
+  test('Should return status 400, data undefined and error true when empty required field.', async () => {
     const response = await request(app).post('/admins').send(mockedAdmin4);
 
-    expect(response.status).toBe(400);
-    expect(response.body.error).toBe(true);
+    expectHandler(response, 400);
+  });
+});
+
+describe('GET /admins', () => {
+  test('Should return status 200, some data and error false.', async () => {
+    const response = await request(app).get(`/admins/${adminId}`).send();
+
+    expectHandler(response, 200);
+    expect(Object.keys(response.body.data).length).toBeGreaterThan(0);
+  });
+  test('Should return status 400, data undefined and error true.', async () => {
+    const response = await request(app).get('/admins/cualquiercosa').send();
+
+    expectHandler(response, 400);
+  });
+});
+
+describe('PUT /admins', () => {
+  test('Should return status 200, some data and error false.', async () => {
+    const response = await request(app).put(`/admins/${adminId}`).send(mockedAdmin2);
+    expect(Object.keys(response.body.data).length).toBeGreaterThan(0);
+    expectHandler(response, 200);
+  });
+  test('Should return status 404, data undefined and error true when ID is not found.', async () => {
+    const response = await request(app).put('/admins/63531d3a49c6396544e3dc5e').send(mockedAdmin2);
+    expectHandler(response, 404);
+  });
+  test('Should return status 400, data undefined and error true when invalid ID format.', async () => {
+    const response = await request(app).put('/admins/cualquiera').send(mockedAdmin2);
+    expectHandler(response, 400);
+  });
+  test('Should return status 400, data undefined and error true when no body is sent.', async () => {
+    const response = await request(app).put(`/admins/${adminId}`).send();
+    expectHandler(response, 400);
+  });
+  test('Should return status 400, data undefined and error true when no body has invalid keys.', async () => {
+    const response = await request(app).put(`/admins/${adminId}`).send(mockedAdmin3);
+    expectHandler(response, 400);
+  });
+});
+
+describe('DELETE /admins', () => {
+  test('Should return status 200 and error false.', async () => {
+    const response = await request(app).delete(`/admins/${adminId}`).send();
+    expectHandler(response, 200);
+  });
+
+  test('Should return status 404 and data undefined when not found ID.', async () => {
+    const response = await request(app).delete('/admins/63531d3a49c6396544e3dc5e').send();
+    expectHandler(response, 404);
+  });
+
+  test('Should return status 404 and data undefined when invalid ID.', async () => {
+    const response = await request(app).delete('/admins/cualquiercosa').send();
+    expectHandler(response, 404);
   });
 });
