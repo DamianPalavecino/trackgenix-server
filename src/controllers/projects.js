@@ -1,10 +1,7 @@
 import Projects from '../models/Projects';
+import Employees from '../models/Employees';
 
-const missingId = (res) => res.status(400).json({
-  message: 'Missing id parameter',
-  data: undefined,
-  error: true,
-});
+const { ObjectId } = require('mongoose').Types;
 
 const error400 = (res, msg) => res.status(400).json({
   message: msg,
@@ -21,12 +18,11 @@ const error404 = (res, msg) => res.status(404).json({
 const createProject = async (req, res) => {
   try {
     const project = new Projects({
-      employees: req.body.employees,
       name: req.body.name,
+      description: req.body.description,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
       clientName: req.body.clientName,
-      description: req.body.description,
     });
 
     const result = project.save((error, dataProject) => {
@@ -56,7 +52,7 @@ const createProject = async (req, res) => {
 
 const getAllProjects = async (req, res) => {
   try {
-    const projectsAll = await Projects.find();
+    const projectsAll = await Projects.find().populate('employees');
     const queryParams = Object.keys(req.query);
     const find = await Projects.find(req.query);
     const keysProjects = ['name', 'employees', 'startDate', 'endDate', 'description', 'clientName'];
@@ -74,6 +70,7 @@ const getAllProjects = async (req, res) => {
     }
 
     queryParams.forEach((element) => {
+      element.toLowerCase();
       if (!keysProjects.includes(element)) {
         includes = false;
       }
@@ -101,10 +98,10 @@ const getAllProjects = async (req, res) => {
 const getProjectById = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!id) return missingId(res);
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
-    const project = await Projects.findById(id);
-    if (!project) return error404(res, 'Project by id not found');
+    const project = await Projects.findById(id).populate('employees');
+    if (!project) return error404(res, 'Project ID not found on database');
 
     return res.status(200).json({
       message: 'Project found',
@@ -123,7 +120,7 @@ const getProjectById = async (req, res) => {
 const deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!id) return missingId(res);
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
     const findById = await Projects.findById(id);
     if (!findById) return error404(res, 'Project not exist');
@@ -143,17 +140,17 @@ const deleteProject = async (req, res) => {
 const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedProject = req.body;
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
-    if (!id) return missingId(res);
+    const updatedProject = req.body;
 
     if (Object.entries(updatedProject).length === 0 || !updatedProject) {
       return error400(res, 'Edited project is empty');
     }
     const project = await Projects.findById(id);
-    const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
-
     if (!project) return error404(res, 'Project does not exist');
+
+    const result = await Projects.findByIdAndUpdate(id, updatedProject, { new: true });
 
     return res.status(200).json({
       message: 'Project has been changed',
@@ -172,22 +169,24 @@ const updateProject = async (req, res) => {
 const addEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const newEmployee = req.body;
-
-    if (!id) return missingId(res);
+    if (!ObjectId.isValid(id)) return error400(res, 'Invalid project ID');
 
     const project = await Projects.findById(id);
+    if (!project) return error404(res, 'Project does not exist on DB');
+
+    const newEmployee = req.body;
+    const foundEmployee = await Employees.findById(newEmployee.employeeId);
+    if (!foundEmployee) return error404(res, 'Employee does not exist on DB');
+
     const addEmployeedProject = await Projects.findByIdAndUpdate(
       { _id: id },
       {
         $addToSet: {
-          employees: newEmployee,
+          employees: newEmployee.employeeId,
         },
       },
       { new: true },
     );
-
-    if (!project) return error400(res, 'Project does not exist');
 
     return res.status(201).json({
       message: 'Employee has been added',
