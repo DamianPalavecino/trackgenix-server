@@ -11,7 +11,6 @@ const timesheetSchema = new Schema(
     project: { type: Schema.Types.ObjectId, ref: 'Projects' },
     employee: { type: Schema.Types.ObjectId, ref: 'Employee' },
   },
-  { timestamps: true },
 );
 
 export default mongoose.model('Timesheet', timesheetSchema);

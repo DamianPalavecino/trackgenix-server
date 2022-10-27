@@ -7,6 +7,7 @@ const validateCreation = (req, res, next) => {
     phone: Joi.string().pattern(/^[0-9]+$/).length(10).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(8).required(),
+    projects: Joi.array().min(1),
   });
 
   const validation = employeeValidation.validate(req.body);
@@ -28,6 +29,7 @@ const validateEdition = (req, res, next) => {
     phone: Joi.string().pattern(/^[0-9]+$/).length(10),
     email: Joi.string().email(),
     password: Joi.string().min(8),
+    projects: Joi.array().min(1),
   });
 
   const validation = employeeValidation.validate(req.body);

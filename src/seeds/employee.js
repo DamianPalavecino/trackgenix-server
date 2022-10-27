@@ -34,7 +34,7 @@ export default [
     email: 'lorlor0@furl.net',
     password: 'apgOdpXFw',
     projects: [
-      { _id: mongoose.Types.ObjectId('6634f42d0409f09628b8a1479') },
+      { _id: mongoose.Types.ObjectId('634d924e260e0ee548943dc7') },
     ],
   },
 ];
