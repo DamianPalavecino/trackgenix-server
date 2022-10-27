@@ -8,7 +8,7 @@ export default [
     startDate: '2020-01-01T00:00:00.000+00:00',
     endDate: '2020-01-02T00:00:00.000+00:00',
     clientName: 'Graves Braum',
-    project: mongoose.Types.ObjectId('6352b5e596170b594dc07cf2'),
+    employees: [mongoose.Types.ObjectId('634f281aca551819ef903f75')],
   },
   {
     _id: mongoose.Types.ObjectId('634d924e260e0ee548943dc7'),
@@ -17,7 +17,7 @@ export default [
     startDate: '2021-02-02T00:00:00.000+00:00',
     endDate: '2021-02-03T00:00:00.000+00:00',
     clientName: 'Katarina Soraka',
-    project: mongoose.Types.ObjectId('635317372535a3c0f85955eb'),
+    employees: [mongoose.Types.ObjectId('6353177e414b58f4591599e0')],
   },
   {
     _id: mongoose.Types.ObjectId('634f42d0409f09628b8a1479'),
@@ -26,6 +26,14 @@ export default [
     startDate: '2022-03-03T00:00:00.000+00:00',
     endDate: '2022-03-04T00:00:00.000+00:00',
     clientName: 'Garen Nautilus',
-    project: mongoose.Types.ObjectId('635326e0531b3bfdf5a64ba9'),
+    employees: [mongoose.Types.ObjectId('634d795e0e4d452e827183e6')],
+  },
+  {
+    name: 'Probando con Vale y Luis',
+    description: 'Project description example 1',
+    startDate: '2020-01-01T00:00:00.000+00:00',
+    endDate: '2020-01-02T00:00:00.000+00:00',
+    clientName: 'Gigatech',
+    employees: [mongoose.Types.ObjectId('6352b5e596170b594dc07cf2')],
   },
 ];

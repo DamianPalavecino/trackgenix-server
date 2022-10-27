@@ -9,9 +9,9 @@ import projectsSeed from '../seeds/projects';
 import Employees from '../models/Employees';
 import employeesSeed from '../seeds/employee';
 
-let timesheetId;
-let idNotFound;
-let invalidId;
+const timesheetId = '6350b1792476de78a2f1db94';
+const idNotFound = '6389b1754576de78a2f1db63';
+const invalidId = 'lalala';
 
 beforeAll(async () => {
   await Timesheets.collection.insertMany(timesheetsSeed);
@@ -94,9 +94,6 @@ describe('GET /timesheet', () => {
 });
 
 describe('Get timesheets/:id', () => {
-  timesheetId = '6350b1792476de78a2f1db94';
-  idNotFound = '6389b1754576de78a2f1db63';
-  invalidId = 'lalala';
   test('should return 200', async () => {
     const response = await request(app).get(`/timesheets/${timesheetId}`).send();
 
@@ -118,9 +115,6 @@ describe('Get timesheets/:id', () => {
 });
 
 describe('PUT /timesheets', () => {
-  timesheetId = '6350b1792476de78a2f1db94';
-  idNotFound = '6389b1754576de78a2f1db63';
-  invalidId = 'lalala';
   test('should return 200', async () => {
     const response = await request(app).put(`/timesheets/${timesheetId}`).send(editedMockedTimehseets);
 
@@ -148,9 +142,6 @@ describe('PUT /timesheets', () => {
 });
 
 describe('DELETE /timesheets', () => {
-  timesheetId = '6350b1792476de78a2f1db94';
-  idNotFound = '6389b1754576de78a2f1db63';
-  invalidId = 'lalala';
   test('should return 204', async () => {
     const response = await request(app).delete(`/timesheets/${timesheetId}`).send();
 

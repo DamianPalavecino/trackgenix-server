@@ -2,5 +2,8 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm run lint
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 npm run test
