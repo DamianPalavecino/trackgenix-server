@@ -10,7 +10,7 @@ export default [
     description: 'Knowledge transfer',
   },
   {
-    _id: mongoose.Types.ObjectId('634d795e0e4d452e827183e6'),
+    _id: mongoose.Types.ObjectId('634d795e0e3d452e827183e6'),
     description: 'est qui dolorem',
   },
   {
@@ -19,10 +19,10 @@ export default [
   },
   {
     _id: mongoose.Types.ObjectId('6352b44de84539c33fd64be7'),
-    description: 'resolve conflicts',
+    description: 'Knowledge transfer',
   },
   {
-    _id: mongoose.Types.ObjectId('63570cde56843ec436619dd8'),
-    description: 'merge branches',
+    _id: mongoose.Types.ObjectId('634d795e0e4d452e827183e6'),
+    description: 'est qui dolorem',
   },
 ];

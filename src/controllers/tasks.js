@@ -1,4 +1,4 @@
-import TaskModel from '../models/Tasks';
+import Tasks from '../models/Tasks';
 
 const responseHandler = (res, statusCode, msg, data) => res.status(statusCode).json({
   message: msg,
@@ -7,9 +7,13 @@ const responseHandler = (res, statusCode, msg, data) => res.status(statusCode).j
 });
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await TaskModel.find();
+    const tasks = await Tasks.find();
     if (tasks.length <= 0) {
-      return responseHandler(res, 404, 'No tasks found, empty DB.');
+      return res.status(404).json({
+        message: 'No tasks found, empty DB.',
+        data: undefined,
+        error: true,
+      });
     }
     const params = JSON.parse(JSON.stringify(req.query).toLocaleLowerCase());
     params.description = new RegExp(params.description, 'i');
@@ -21,7 +25,7 @@ const getAllTasks = async (req, res) => {
     if (keys.length !== 1 || keys[0] !== 'description') {
       return responseHandler(res, 400, 'There is one or more invalid params.');
     }
-    const foundTasks = await TaskModel.find(params);
+    const foundTasks = await Tasks.find(params);
     if (foundTasks.length <= 0) {
       return responseHandler(res, 404, 'Params does not match any task.');
     }
@@ -29,14 +33,14 @@ const getAllTasks = async (req, res) => {
     return responseHandler(res, 200, message, foundTasks);
   } catch (error) {
     const message = `An error occured: ${error.message}`;
-    return responseHandler(res, 500, message);
+    return responseHandler(res, 400, message);
   }
 };
 
 const getTaskById = async (req, res) => {
   const { id } = req.params;
   try {
-    const task = await TaskModel.findById(id);
+    const task = await Tasks.findById(id);
     if (!task || task === null) {
       const message = `The following ID: '${req.params.id}' does not match any task.`;
       return responseHandler(res, 404, message);
@@ -54,38 +58,57 @@ does not match any task. Invalid format.`;
 };
 const createTask = async (req, res) => {
   try {
-    const task = new TaskModel({
+    const admin = new Tasks({
       description: req.body.description,
     });
-    const result = await task.save();
-    return responseHandler(res, 201, 'Task created successfully.', result);
+
+    const result = await admin.save();
+    return res.status(201).json({
+      message: 'Task created successfully',
+      data: result,
+      error: false,
+    });
   } catch (error) {
-    const message = `An error occured: ${error.message}`;
-    return responseHandler(res, 500, message);
+    return res.json({
+      message: 'An error occurred, Task not created',
+      error: true,
+    });
   }
 };
 const deleteTask = async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await TaskModel.findByIdAndDelete(id);
+    const result = await Tasks.findByIdAndDelete(id);
     if (result === null) {
       const message = `The following ID: '${req.params.id}' does not match any task.`;
-      return responseHandler(res, 404, message);
+      return res.status(404).json({
+        message,
+        data: undefined,
+        error: true,
+      });
     }
     return responseHandler(res, 204, 'Task deleted successfully.', result);
   } catch (error) {
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
       const message = `The following ID: '${req.params.id}' does not match any task.`;
-      responseHandler(res, 404, message);
+      return res.status(404).json({
+        message,
+        data: undefined,
+        error: true,
+      });
     }
     const message = `An error occured: ${error.message}`;
-    return responseHandler(res, 500, message);
+    return res.status(404).json({
+      message,
+      data: undefined,
+      error: true,
+    });
   }
 };
 const editTask = async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await TaskModel.findByIdAndUpdate(
+    const result = await Tasks.findByIdAndUpdate(
       { _id: id },
       { ...req.body },
       { new: true },
@@ -99,7 +122,7 @@ const editTask = async (req, res) => {
       return responseHandler(res, 404, message);
     }
     const message = `An error occured: ${error.message}`;
-    return responseHandler(res, 500, message);
+    return responseHandler(res, 400, message);
   }
 };
 export default {
