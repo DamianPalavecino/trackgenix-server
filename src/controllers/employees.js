@@ -4,9 +4,9 @@ const { ObjectId } = require('mongoose').Types;
 
 const getAllEmployees = async (req, res) => {
   try {
-    const employees = await Employees.find();
+    const employees = await Employees.find().populate('projects');
     const queryParams = Object.keys(req.query);
-    const find = await Employees.find(req.query);
+    const find = await Employees.find(req.query).populate('projects');
     const keysProjects = ['name', 'lastName', 'phone', 'email'];
     let includes = true;
 
@@ -64,17 +64,16 @@ const getEmployeeById = async (req, res) => {
   try {
     const { id } = req.params;
     if (!ObjectId.isValid(id)) {
-      return res.status(404).json({
+      return res.status(400).json({
         message: 'Invalid ID',
         data: undefined,
         error: true,
       });
     }
-    const employees = await Employees.findById(id);
-
-    if (employees === null) {
-      res.status(404).json({
-        message: 'Invalid ID',
+    const employees = await Employees.findById(id).populate('projects');
+    if (!employees) {
+      return res.status(404).json({
+        message: 'Employee not found',
         data: undefined,
         error: true,
       });
@@ -95,22 +94,35 @@ const getEmployeeById = async (req, res) => {
 
 const createEmployee = async (req, res) => {
   try {
+    const foundEmail = await Employees.find(
+      { email: req.body.email },
+    );
+    if (Object.keys(foundEmail).length > 0) {
+      return res.status(400).json({
+        message: 'Email already exists',
+        data: undefined,
+        error: true,
+      });
+    }
+
     const employee = new Employees({
       name: req.body.name,
       lastName: req.body.lastName,
       phone: req.body.phone,
       email: req.body.email,
       password: req.body.password,
+      projects: req.body.projects,
     });
 
     const result = await employee.save();
+
     return res.status(201).json({
       message: 'Employee successfully created',
       data: result,
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.json({
       message: 'An error occurred',
       data: undefined,
       error: true,
@@ -121,6 +133,13 @@ const createEmployee = async (req, res) => {
 const deleteEmployee = async (req, res) => {
   try {
     const { id } = req.params;
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({
+        message: 'Invalid ID',
+        data: undefined,
+        error: true,
+      });
+    }
     const result = await Employees.findByIdAndDelete(id);
     if (result === null) {
       return res.status(404).json({
@@ -145,6 +164,13 @@ const deleteEmployee = async (req, res) => {
 const editEmployee = async (req, res) => {
   try {
     const { id } = req.params;
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({
+        message: 'Invalid ID',
+        data: undefined,
+        error: true,
+      });
+    }
     if (Object.entries(req.body).length === 0) {
       return res.status(400).json({
         message: 'You must edit at least one field',
@@ -152,18 +178,22 @@ const editEmployee = async (req, res) => {
         error: true,
       });
     }
-    const result = await Employees.findByIdAndUpdate(
-      { _id: id },
-      { ...req.body },
-      { new: true },
-    );
-    if (result === null) {
+
+    const findById = await Employees.findById(id).populate('projects');
+    if (!findById) {
       return res.status(404).json({
-        message: 'Employee not found',
+        message: 'Employee does not exist',
         data: undefined,
         error: true,
       });
     }
+
+    const result = await Employees.findByIdAndUpdate(
+      { _id: id },
+      { ...req.body },
+      { new: true },
+    ).populate('projects');
+
     return res.status(200).json({
       message: `Employee widh id ${id} edited`,
       data: result,
