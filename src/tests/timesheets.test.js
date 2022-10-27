@@ -7,7 +7,7 @@ import tasksSeed from '../seeds/tasks';
 import Projects from '../models/Projects';
 import projectsSeed from '../seeds/projects';
 import Employees from '../models/Employees';
-import employeesSeed from '../seeds/employee';
+import employeesSeed from '../seeds/employees';
 
 const timesheetId = '6350b1792476de78a2f1db94';
 const idNotFound = '6389b1754576de78a2f1db63';
