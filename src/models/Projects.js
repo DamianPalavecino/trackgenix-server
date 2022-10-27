@@ -11,6 +11,7 @@ const projectSchema = new Schema(
     clientName: { type: String, required: true },
     employees: [{ type: Schema.Types.ObjectId, ref: 'Employee' }],
   },
+  { timestamps: true },
 );
 
 export default mongoose.model('Projects', projectSchema);
