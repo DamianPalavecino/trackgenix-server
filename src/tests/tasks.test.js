@@ -42,7 +42,7 @@ describe('GET /task', () => {
     const response = await request(app).get('/tasks?description=Knowledge').send();
 
     expect(response.status).toBe(200);
-    expect(response.body.message).toBe('Task found');
+    expect(response.body.message).toBe('Tasks found');
   });
   test('Should return status 404 when not found any filtered task and show correct message', async () => {
     const response = await request(app).get('/tasks?description=Paquito').send();

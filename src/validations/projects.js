@@ -59,9 +59,7 @@ const validateEdit = (req, res, next) => {
 
 const validatePutEmployee = (req, res, next) => {
   const employeeValidation = Joi.object({
-    name: Joi.string().min(3).max(50).required(),
-    role: Joi.string().valid('DEV', 'QA', 'TL').required(),
-    rate: Joi.number().required(),
+    employeeId: Joi.string().pattern(/^(?=[a-f\d]{24}$)(\d+[a-f]|[a-f]+\d)/i).required(),
   });
 
   const validation = employeeValidation.validate(req.body);

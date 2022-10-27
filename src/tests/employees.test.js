@@ -113,33 +113,33 @@ describe('GET /employees', () => {
 
   describe('GET query filter', () => {
     test('Query param must be correct', async () => {
-      const response = await request(app).get('/employees?asd=marcus').send();
+      const response = await request(app).get('/employees?asd=Pedro').send();
 
       expect(response.status).toBe(400);
       expectStatErrMsgHelper(response, 400, 'An error occurred');
     });
 
     test('Name query param must be correct and message be: "Employee found" - Status 200', async () => {
-      const response = await request(app).get('/employees?name=marcus').send();
+      const response = await request(app).get('/employees?name=lucas').send();
 
       expect(response.status).toBe(200);
       expect(response.body.message).toBe('Employee found');
     });
 
     test('Last name query param must be correct - Status 200', async () => {
-      const response = await request(app).get('/employees?lastName=postgirl').send();
+      const response = await request(app).get('/employees?lastName=salchichon').send();
 
       expect(response.status).toBe(200);
     });
 
     test('Phone query param must be correct - Status 200', async () => {
-      const response = await request(app).get('/employees?phone=1234567890').send();
+      const response = await request(app).get('/employees?phone=555555555').send();
 
       expect(response.status).toBe(200);
     });
 
     test('Email query param must be correct - Status 200', async () => {
-      const response = await request(app).get('/employees?email=lorlor0@furl.net').send();
+      const response = await request(app).get('/employees?email=pepepecas@gmail.com').send();
 
       expect(response.status).toBe(200);
     });
