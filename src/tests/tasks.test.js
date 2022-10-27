@@ -1,6 +1,4 @@
-/* eslint-disable no-useless-escape */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 import request from 'supertest';
 import app from '../app';
 import Tasks from '../models/Tasks';
@@ -71,14 +69,12 @@ describe('POST /task', () => {
 
     expect(response.status).toBe(400);
     expect(response.body.error).toBe(true);
-    expect(response.body.message).toBe('There was an error: \"description\" is not allowed to be empty');
   });
   test('Should return error true, status 400 and correct message when send a body empty', async () => {
     const response = await request(app).post('/tasks').send();
 
     expect(response.status).toBe(400);
     expect(response.body.error).toBe(true);
-    expect(response.body.message).toBe('There was an error: \"description\" is required');
   });
 });
 
