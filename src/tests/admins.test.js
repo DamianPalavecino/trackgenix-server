@@ -19,6 +19,7 @@ const mockedAdmin1 = {
 const mockedAdmin2 = {
   name: 'mohammed',
   email: 'kebap@gmail.com',
+  status: true,
 };
 const mockedAdmin3 = {
   hola: 'chau',
