@@ -8,6 +8,7 @@ const validateCreation = (req, res, next) => {
     email: Joi.string().email().required(),
     password: Joi.string().min(8).required(),
     projects: Joi.array().min(1),
+    status: Joi.boolean(),
   });
 
   const validation = employeeValidation.validate(req.body);
@@ -30,6 +31,7 @@ const validateEdition = (req, res, next) => {
     email: Joi.string().email(),
     password: Joi.string().min(8),
     projects: Joi.array().min(1),
+    status: Joi.boolean(),
   });
 
   const validation = employeeValidation.validate(req.body);
