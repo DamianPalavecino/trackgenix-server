@@ -26,6 +26,9 @@ const createTimesheet = async (req, res) => {
       description: req.body.description,
       date: req.body.date,
       task: req.body.task,
+      project: req.body.project,
+      hours: req.body.hours,
+      employee: req.body.employee,
     });
 
     const result = timesheet.save((error, dataTimesheet) => {
@@ -55,7 +58,7 @@ const createTimesheet = async (req, res) => {
 
 const getAllTimesheets = async (req, res) => {
   try {
-    const allTimesheets = await Timesheets.find();
+    const allTimesheets = await Timesheets.find().populate('task').populate('employee').populate('project');
     const queryParams = Object.keys(req.query);
     const queryTimesheets = await Timesheets.find(req.query);
     const keys = ['description', 'date', 'task'];
@@ -103,7 +106,7 @@ const getTimesheetById = async (req, res) => {
     const { id } = req.params;
     if (!ObjectId.isValid(id)) return error400(res, 'Invalid ID');
 
-    const timesheet = await Timesheets.findById(id);
+    const timesheet = await Timesheets.findById(id).populate('task').populate('employee').populate('project');
 
     if (!timesheet) return error404(res, 'Timesheet ID not found on database');
 
@@ -132,7 +135,10 @@ const editTimesheetById = async (req, res) => {
       return error400(res, 'Edited timesheet is empty');
     }
 
-    const result = await Timesheets.findByIdAndUpdate(id, updatedTimesheet, { new: true });
+    const result = await Timesheets.findByIdAndUpdate(id, updatedTimesheet, { new: true })
+      .populate('task')
+      .populate('employee')
+      .populate('project');
 
     if (!result) return error404(res, 'Timesheet ID not found on database');
 

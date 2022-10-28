@@ -28,12 +28,4 @@ export default [
     clientName: 'Garen Nautilus',
     employees: [mongoose.Types.ObjectId('634d795e0e4d452e827183e6')],
   },
-  {
-    name: 'Probando con Vale y Luis',
-    description: 'Project description example 1',
-    startDate: '2020-01-01T00:00:00.000+00:00',
-    endDate: '2020-01-02T00:00:00.000+00:00',
-    clientName: 'Gigatech',
-    employees: [mongoose.Types.ObjectId('6352b5e596170b594dc07cf2')],
-  },
 ];
