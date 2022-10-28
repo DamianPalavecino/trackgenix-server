@@ -76,13 +76,14 @@ const createAdmin = async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       password: req.body.password,
+      status: false,
     });
 
     const result = await admin.save();
     return responseHandler(res, 201, 'Admin created successfully', result);
   } catch (error) {
     return res.json({
-      message: 'An error occurred, Admin not created',
+      message: `An error ocurred: ${error}`,
       error: true,
     });
   }
