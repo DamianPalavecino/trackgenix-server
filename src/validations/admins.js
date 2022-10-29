@@ -28,7 +28,7 @@ const validateEdition = (req, res, next) => {
     email: Joi.string()
       .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
     password: Joi.string().min(10).max(30),
-    status: Joi.boolean().required(),
+    status: Joi.boolean(),
   });
 
   const validation = adminValidations.validate(req.body);
