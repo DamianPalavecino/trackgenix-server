@@ -23,26 +23,17 @@ const createProject = async (req, res) => {
       startDate: req.body.startDate,
       endDate: req.body.endDate,
       clientName: req.body.clientName,
+      employees: req.body.employees,
+      status: false,
     });
-
-    const result = project.save((error, dataProject) => {
-      if (error) {
-        return res.status.json({
-          message: error,
-          data: undefined,
-          error: true,
-        });
-      }
-
-      return res.status(201).json({
-        message: 'Project created',
-        data: dataProject,
-        error: false,
-      });
+    const result = await project.save();
+    return res.status(201).json({
+      message: 'Project created',
+      data: result,
+      error: false,
     });
-    return result;
   } catch (error) {
-    return res.status.json({
+    return res.status(400).json({
       message: `An error ocurred: ${error}`,
       data: undefined,
       error: true,
@@ -181,8 +172,12 @@ const addEmployee = async (req, res) => {
     const addEmployeedProject = await Projects.findByIdAndUpdate(
       { _id: id },
       {
-        $addToSet: {
-          employees: newEmployee.employeeId,
+        $push: {
+          employees: {
+            employeeId: newEmployee.employeeId,
+            rate: newEmployee.rate,
+            role: newEmployee.role,
+          },
         },
       },
       { new: true },

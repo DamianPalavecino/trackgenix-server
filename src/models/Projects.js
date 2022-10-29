@@ -9,7 +9,12 @@ const projectSchema = new Schema(
     endDate: { type: Date, required: true },
     description: { type: String, required: true },
     clientName: { type: String, required: true },
-    employees: [{ type: Schema.Types.ObjectId, ref: 'Employee' }],
+    employees: [{
+      employeeId: { type: Schema.Types.ObjectId, required: true, ref: 'Employee' },
+      role: { type: String, enum: ['DEV', 'QA', 'PM', 'TL'], required: true },
+      rate: { type: Number, required: true },
+    }],
+    status: { type: Boolean, required: true },
   },
   { timestamps: true },
 );

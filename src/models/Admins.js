@@ -12,6 +12,7 @@ const adminSchema = new Schema(
       lowercase: true,
     },
     password: { type: String, required: true },
+    status: { type: Boolean, required: true },
   },
   { timestamps: true },
 );

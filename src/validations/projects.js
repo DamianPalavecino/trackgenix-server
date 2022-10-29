@@ -3,7 +3,7 @@ import { now } from 'mongoose';
 
 const validateCreation = (req, res, next) => {
   const employeeValidation = Joi.object({
-    name: Joi.string().min(3).max(50).required(),
+    employeeId: Joi.string().hex().length(24).required(),
     role: Joi.string().valid('DEV', 'QA', 'TL').required(),
     rate: Joi.number().required(),
   });
@@ -15,6 +15,7 @@ const validateCreation = (req, res, next) => {
     clientName: Joi.string().min(3).max(50).required(),
     description: Joi.string().min(3).max(50).required(),
     employees: Joi.array().items(employeeValidation),
+    status: Joi.boolean(),
   });
 
   const validation = projectValidation.validate(req.body);
@@ -31,7 +32,7 @@ const validateCreation = (req, res, next) => {
 
 const validateEdit = (req, res, next) => {
   const employeeValidation = Joi.object({
-    name: Joi.string().min(3).max(50),
+    employeeId: Joi.string().hex().length(24).required(),
     role: Joi.string().valid('DEV', 'QA', 'TL'),
     rate: Joi.number(),
   });
@@ -43,6 +44,7 @@ const validateEdit = (req, res, next) => {
     clientName: Joi.string().min(3).max(50),
     description: Joi.string().min(3).max(50),
     employees: Joi.array().items(employeeValidation),
+    status: Joi.boolean(),
   });
 
   const validation = projectValidation.validate(req.body);
@@ -59,7 +61,9 @@ const validateEdit = (req, res, next) => {
 
 const validatePutEmployee = (req, res, next) => {
   const employeeValidation = Joi.object({
-    employeeId: Joi.string().pattern(/^(?=[a-f\d]{24}$)(\d+[a-f]|[a-f]+\d)/i).required(),
+    employeeId: Joi.string().hex().length(24).required(),
+    role: Joi.string().valid('DEV', 'QA', 'TL'),
+    rate: Joi.number(),
   });
 
   const validation = employeeValidation.validate(req.body);

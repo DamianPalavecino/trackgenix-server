@@ -112,6 +112,7 @@ const createEmployee = async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       projects: req.body.projects,
+      status: false,
     });
 
     const result = await employee.save();

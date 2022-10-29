@@ -12,6 +12,7 @@ const employeeSchema = new Schema(
     projects: [
       { type: Schema.Types.ObjectId, ref: 'Projects' },
     ],
+    status: { type: Boolean, required: true },
   },
   { timestamps: true },
 );
