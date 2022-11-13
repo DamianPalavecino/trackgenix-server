@@ -45,7 +45,7 @@ describe('GET /admins', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.error).toBe(false);
-    expect(response.body.message).toBe('Admins found');
+    expect(response.body.message).toBe('Admins found successfully');
   });
 });
 
@@ -81,8 +81,8 @@ describe('POST /admins', () => {
 
 describe('GET /admins', () => {
   test('Should return status 200, some data and error false.', async () => {
+    adminId = '634ec42cef58b4a5306a2222';
     const response = await request(app).get(`/admins/${adminId}`).send();
-
     expectHandler(response, 200);
     expect(Object.keys(response.body.data).length).toBeGreaterThan(0);
   });
@@ -118,9 +118,9 @@ describe('PUT /admins', () => {
 });
 
 describe('DELETE /admins', () => {
-  test('Should return status 200 and error false.', async () => {
+  test('Should return status 204.', async () => {
     const response = await request(app).delete(`/admins/${adminId}`).send();
-    expectHandler(response, 200);
+    expect(response.status).toBe(204);
   });
 
   test('Should return status 404 and data undefined when not found ID.', async () => {
@@ -128,8 +128,8 @@ describe('DELETE /admins', () => {
     expectHandler(response, 404);
   });
 
-  test('Should return status 404 and data undefined when invalid ID.', async () => {
+  test('Should return status 400 and data undefined when invalid ID.', async () => {
     const response = await request(app).delete('/admins/cualquiercosa').send();
-    expectHandler(response, 404);
+    expectHandler(response, 400);
   });
 });

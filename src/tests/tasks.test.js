@@ -103,7 +103,7 @@ describe('PUT /task/:id', () => {
   test('Should edit a task', async () => {
     const response = await request(app).put(`/tasks/${taskId}`).send(mockedTask3);
 
-    expect(response.status).toBe(201);
+    expect(response.status).toBe(200);
     expect(response.body.data.description).toBe('see the grass grow');
   });
   test('Should return status 404 when search for a invalid id', async () => {
