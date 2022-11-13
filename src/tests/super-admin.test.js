@@ -132,10 +132,9 @@ describe('PUT/superAdmins', () => {
 });
 
 describe('DELETE/superAdmins', () => {
-  test('should return status code 200 and response error be false', async () => {
+  test('should return status code 204', async () => {
     const response = await request(app).delete(`/superAdmins/${superAdminId}`).send();
-    expect(response.status).toBe(200);
-    expect(response.body.error).toBe(false);
+    expect(response.status).toBe(204);
   });
 
   test('should return status code 404', async () => {
