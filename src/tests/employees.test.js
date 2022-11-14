@@ -66,7 +66,7 @@ describe('POST /employees', () => {
   test('Should create an employee and show msg, error and data', async () => {
     const response = await request(app).post('/employees').send(mockedEmployees);
 
-    expectStatErrMsgHelper(response, 201, 'Employee successfully created');
+    expectStatErrMsgHelper(response, 201, 'Employee created successfully');
     // eslint-disable-next-line no-underscore-dangle
     expect(response.body.data).toMatchObject(mockedEmployees);
     // eslint-disable-next-line no-underscore-dangle
@@ -106,7 +106,7 @@ describe('GET /employees', () => {
     test('Status, error and message tests - Successful', async () => {
       const response = await request(app).get('/employees').send();
 
-      expectStatErrMsgHelper(response, 200, 'Employees found');
+      expectStatErrMsgHelper(response, 200, 'Employees were found successfully');
       expect(response.body.data.length).toBeGreaterThan(0);
     });
   });
@@ -123,7 +123,7 @@ describe('GET /employees', () => {
       const response = await request(app).get('/employees?name=lucas').send();
 
       expect(response.status).toBe(200);
-      expect(response.body.message).toBe('Employee found');
+      expect(response.body.message).toBe('Employee was found successfully');
     });
 
     test('Last name query param must be correct - Status 200', async () => {
@@ -174,7 +174,7 @@ describe('GET /employees/:id', () => {
   test('Status, error and message tests - Successful', async () => {
     const response = await request(app).get(`/employees/${employeeId}`).send();
 
-    expectStatErrMsgHelper(response, 200, 'Employee found');
+    expectStatErrMsgHelper(response, 200, 'Employee was found successfully');
   });
 
   test('Employee not found', async () => {
@@ -186,7 +186,7 @@ describe('GET /employees/:id', () => {
   test('Employee invalid ID', async () => {
     const response = await request(app).get(`/employees/${invalidId}`).send();
 
-    expectStatErrMsgHelper(response, 400, 'Invalid ID');
+    expectStatErrMsgHelper(response, 400, `Employee with ID ${invalidId} was not found`);
   });
 });
 
@@ -194,7 +194,7 @@ describe('PUT /employees', () => {
   test('Should change the employee - Status, msg and error', async () => {
     const response = await request(app).put(`/employees/${employeeId}`).send(editedMockedEmployees);
 
-    expectStatErrMsgHelper(response, 200, `Employee widh id ${employeeId} edited`);
+    expectStatErrMsgHelper(response, 200, `Employee with id ${employeeId} edited successfully`);
   });
 
   test('Empty data should response status 400 - msg', async () => {
@@ -220,7 +220,7 @@ describe('DELETE /employees', () => {
   test('Should delete an employee', async () => {
     const response = await request(app).delete(`/employees/${employeeId}`).send();
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(204);
   });
 
   test('Succesfull delete => data must be undefined', async () => {
@@ -232,6 +232,6 @@ describe('DELETE /employees', () => {
   test('Invalid id => status 400, error true and msg', async () => {
     const response = await request(app).delete('/employees/1').send(employeeId);
 
-    expectStatErrMsgHelper(response, 400, 'Invalid ID');
+    expectStatErrMsgHelper(response, 400, 'Invalid ID, 1 does not exist');
   });
 });
