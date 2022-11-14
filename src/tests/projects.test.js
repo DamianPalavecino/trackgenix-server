@@ -122,7 +122,7 @@ describe('GET All /projects', () => {
       const response = await request(app).get('/projects/?fakeKey1234=fake').send();
       expect(response.status).toBe(400);
       expect(response.body.error).toBeTruthy();
-      expect(response.body.message).toBe('Parameters are incorrect');
+      expect(response.body.message).toBe('There was an error: ID param is empty');
     });
   });
   describe(msg404, () => {
@@ -130,7 +130,7 @@ describe('GET All /projects', () => {
       const response = await request(app).get('/projects/?name=inexistent name').send();
       expect(response.status).toBe(404);
       expect(response.body.error).toBeTruthy();
-      expect(response.body.message).toBe('Project not found');
+      expect(response.body.message).toBe('There was an error: Project not found');
     });
   });
 });
@@ -149,7 +149,7 @@ describe('GET ById /projects/:id', () => {
       const response = await request(app).get('/projects/1').send();
       expect(response.status).toBe(400);
       expect(response.body.error).toBeTruthy();
-      expect(response.body.message).toBe('Invalid ID');
+      expect(response.body.message).toBe('There was an error: The ID 1 is not valid');
     });
   });
   describe(msg404, () => {
@@ -157,7 +157,7 @@ describe('GET ById /projects/:id', () => {
       const response = await request(app).get('/projects/634d73ca260e0ee548943dc4').send();
       expect(response.status).toBe(404);
       expect(response.body.error).toBeTruthy();
-      expect(response.body.message).toBe('Project ID not found on database');
+      expect(response.body.message).toBe('There was an error: Project with ID 634d73ca260e0ee548943dc4 was not found');
     });
   });
 });
@@ -256,7 +256,7 @@ describe('PUT /projects', () => {
       const response = await request(app).put(`/projects/${validId}`).send(updateOnlyName);
       expect(response.status).toBe(200);
       expect(response.body.error).toBeFalsy();
-      expect(response.body.message).toBe('Project has been changed');
+      expect(response.body.message).toBe('Project has been edited successfully');
     });
   });
   describe(msg400, () => {
@@ -291,7 +291,7 @@ describe('PUT /projects/:id/assignEmployee', () => {
       const response = await request(app).put('/projects/634d924e260e0ee548943dc7/assignEmployee').send(employeeOK);
       expect(response.status).toBe(201);
       expect(response.body.error).toBeFalsy();
-      expect(response.body.message).toBe('Employee has been added');
+      expect(response.body.message).toBe('Employee has been added successfully');
     });
   });
   describe(msg400, () => {

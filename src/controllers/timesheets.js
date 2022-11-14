@@ -60,7 +60,7 @@ const getAllTimesheets = async (req, res) => {
   try {
     const allTimesheets = await Timesheets.find().populate('task').populate('employee').populate('project');
     const queryParams = Object.keys(req.query);
-    const queryTimesheets = await Timesheets.find(req.query);
+    const queryTimesheets = await Timesheets.find(req.query).populate('task').populate('employee').populate('project');
     const keys = ['description', 'date', 'task'];
     let includes = true;
 
