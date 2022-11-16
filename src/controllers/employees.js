@@ -19,7 +19,7 @@ const getAllEmployees = async (req, res) => {
         });
       }
       return res.status(200).json({
-        message: 'Employees found',
+        message: 'Employees were found successfully',
         data: employees,
         error: false,
       });
@@ -41,7 +41,7 @@ const getAllEmployees = async (req, res) => {
 
     if (find.length > 0) {
       return res.status(200).json({
-        message: find.length === 1 ? 'Employee found' : 'Employees found',
+        message: find.length === 1 ? 'Employee was found successfully' : 'Employees were found successfully',
         data: find,
         error: false,
       });
@@ -65,7 +65,7 @@ const getEmployeeById = async (req, res) => {
     const { id } = req.params;
     if (!ObjectId.isValid(id)) {
       return res.status(400).json({
-        message: 'Invalid ID',
+        message: `Employee with ID ${id} was not found`,
         data: undefined,
         error: true,
       });
@@ -79,7 +79,7 @@ const getEmployeeById = async (req, res) => {
       });
     }
     return res.status(200).json({
-      message: 'Employee found',
+      message: 'Employee was found successfully',
       data: employees,
       error: false,
     });
@@ -118,7 +118,7 @@ const createEmployee = async (req, res) => {
     const result = await employee.save();
 
     return res.status(201).json({
-      message: 'Employee successfully created',
+      message: 'Employee created successfully',
       data: result,
       error: false,
     });
@@ -136,7 +136,7 @@ const deleteEmployee = async (req, res) => {
     const { id } = req.params;
     if (!ObjectId.isValid(id)) {
       return res.status(400).json({
-        message: 'Invalid ID',
+        message: `Invalid ID, ${id} does not exist`,
         data: undefined,
         error: true,
       });
@@ -149,8 +149,8 @@ const deleteEmployee = async (req, res) => {
         error: true,
       });
     }
-    return res.status(200).json({
-      message: `Employee with id ${id} deleted`,
+    return res.status(204).json({
+      message: `Employee with id ${id} deleted successfully`,
       data: result,
       error: false,
     });
@@ -196,7 +196,7 @@ const editEmployee = async (req, res) => {
     ).populate('projects');
 
     return res.status(200).json({
-      message: `Employee widh id ${id} edited`,
+      message: `Employee with id ${id} edited successfully`,
       data: result,
       error: false,
     });

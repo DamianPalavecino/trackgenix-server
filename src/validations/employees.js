@@ -1,9 +1,12 @@
 import Joi from 'joi';
 
+const regex = /^[a-zA-Z\s]*$/;
 const validateCreation = (req, res, next) => {
   const employeeValidation = Joi.object({
-    name: Joi.string().min(3).max(50).required(),
-    lastName: Joi.string().min(3).max(50).required(),
+    name: Joi.string().min(3).max(25).pattern(regex)
+      .required(),
+    lastName: Joi.string().min(3).max(25).pattern(regex)
+      .required(),
     phone: Joi.string().pattern(/^[0-9]+$/).length(10).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(8).required(),
@@ -25,8 +28,8 @@ const validateCreation = (req, res, next) => {
 
 const validateEdition = (req, res, next) => {
   const employeeValidation = Joi.object({
-    name: Joi.string().min(3).max(50),
-    lastName: Joi.string().min(3).max(50),
+    name: Joi.string().min(3).max(25).pattern(regex),
+    lastName: Joi.string().min(3).max(25).pattern(regex),
     phone: Joi.string().pattern(/^[0-9]+$/).length(10),
     email: Joi.string().email(),
     password: Joi.string().min(8),
