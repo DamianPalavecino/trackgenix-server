@@ -1,5 +1,4 @@
 import Joi from 'joi';
-import { now } from 'mongoose';
 
 const validateCreation = (req, res, next) => {
   const employeeValidation = Joi.object({
@@ -10,8 +9,8 @@ const validateCreation = (req, res, next) => {
 
   const projectValidation = Joi.object({
     name: Joi.string().min(3).max(50).required(),
-    startDate: Joi.date().max(now().toDateString()).required(),
-    endDate: Joi.date().max(now().toDateString()).required(),
+    startDate: Joi.date().required(),
+    endDate: Joi.date().greater(Joi.ref('startDate')).required(),
     clientName: Joi.string().min(3).max(50).required(),
     description: Joi.string().min(3).max(50).required(),
     employees: Joi.array().items(employeeValidation),
@@ -39,8 +38,8 @@ const validateEdit = (req, res, next) => {
 
   const projectValidation = Joi.object({
     name: Joi.string().min(3).max(50),
-    startDate: Joi.date().max(now().toDateString()),
-    endDate: Joi.date().max(now().toDateString()),
+    startDate: Joi.date(),
+    endDate: Joi.date().greater(Joi.ref('startDate')),
     clientName: Joi.string().min(3).max(50),
     description: Joi.string().min(3).max(50),
     employees: Joi.array().items(employeeValidation),
