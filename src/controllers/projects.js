@@ -183,6 +183,16 @@ const addEmployee = async (req, res) => {
       { new: true },
     );
 
+    await Employees.findByIdAndUpdate(
+      { _id: newEmployee.employeeId },
+      {
+        $push: {
+          projects: id,
+        },
+      },
+      { new: true },
+    );
+
     return res.status(201).json({
       message: 'Employee has been added successfully',
       data: addEmployeedProject,
