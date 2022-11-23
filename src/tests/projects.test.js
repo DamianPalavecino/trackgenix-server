@@ -33,11 +33,11 @@ const projectMissingRequieredKey = {
   endDate: '2020-01-02T00:00:00.000+00:00',
 };
 
-const projectFullFutureDate = {
+const projectEndDateBeforeStartDate = {
   name: 'Trying to post a project',
   description: 'Posting a project with superjet',
-  startDate: '2020-01-01T00:00:00.000+00:00',
-  endDate: '2025-01-02T00:00:00.000+00:00',
+  startDate: '2022-01-01T00:00:00.000+00:00',
+  endDate: '2021-01-02T00:00:00.000+00:00',
   clientName: 'Graves Braum',
 };
 
@@ -178,8 +178,8 @@ describe('POST /projects', () => {
       expect(response.status).toBe(400);
       expect(response.body.error).toBeTruthy();
     });
-    test('future date in body req', async () => {
-      const response = await request(app).post('/projects').send(projectFullFutureDate);
+    test('end date before start date', async () => {
+      const response = await request(app).post('/projects').send(projectEndDateBeforeStartDate);
       expect(response.status).toBe(400);
       expect(response.body.error).toBeTruthy();
     });
