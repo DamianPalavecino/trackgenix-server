@@ -1,4 +1,5 @@
 import Admins from '../models/Admins';
+import firebase from '../helpers/firebase';
 
 const { ObjectId } = require('mongoose').Types;
 
@@ -71,12 +72,19 @@ const getAdminById = async (req, res) => {
 
 const createAdmin = async (req, res) => {
   try {
+    const newFirebaseUser = await firebase.auth().createUser({
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    await firebase.auth().setCustomUserClaims(newFirebaseUser.uid, { role: 'ADMIN' });
     const admin = new Admins({
       name: req.body.name,
       lastName: req.body.lastName,
       email: req.body.email,
       password: req.body.password,
       status: false,
+      firebaseUid: newFirebaseUser.uid,
     });
 
     const result = await admin.save();
@@ -107,12 +115,19 @@ const editAdmin = async (req, res) => {
       });
     }
 
-    const findById = await Admins.findById(id);
-    if (!findById) {
+    const admin = await Admins.findById(id);
+    if (!admin) {
       return res.status(404).json({
         message: `There was an error: Admin with ID ${id} was not found`,
         data: undefined,
         error: true,
+      });
+    }
+
+    if (req.body.email && req.body.password) {
+      await firebase.auth().updateUser(admin.firebaseUid, {
+        email: req.body.email,
+        password: req.body.password,
       });
     }
     const result = await Admins.findByIdAndUpdate(
@@ -138,13 +153,14 @@ const editAdmin = async (req, res) => {
 const deleteAdmin = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await Admins.findByIdAndDelete(id);
 
     if (id === null) {
       return responseHandler(res, 400, 'There was an error: ID param is empty');
     }
 
-    await Admins.findByIdAndDelete(id);
+    const admin = await Admins.findById(id);
+    await firebase.auth().deleteUser(admin.firebaseUid);
+    const result = await Admins.findByIdAndDelete(id);
 
     if (result === null) {
       return responseHandler(res, 404, `There was an error: Admin with ${id} was not found`);

@@ -1,3 +1,4 @@
+import firebase from '../helpers/firebase';
 import Employees from '../models/Employees';
 
 const { ObjectId } = require('mongoose').Types;
@@ -94,66 +95,45 @@ const getEmployeeById = async (req, res) => {
 
 const createEmployee = async (req, res) => {
   try {
-    const foundEmail = await Employees.find(
-      { email: req.body.email },
-    );
-    if (Object.keys(foundEmail).length > 0) {
-      return res.status(400).json({
-        message: 'Email already exists',
-        data: undefined,
-        error: true,
-      });
-    }
+    const newFirebaseUser = await firebase.auth().createUser({
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    await firebase.auth().setCustomUserClaims(newFirebaseUser.uid, { role: 'EMPLOYEE' });
 
     const employee = new Employees({
       name: req.body.name,
       lastName: req.body.lastName,
       phone: req.body.phone,
       email: req.body.email,
-      password: req.body.password,
       projects: req.body.projects,
       status: false,
+      firebaseUid: newFirebaseUser.uid,
     });
-
     const result = await employee.save();
-
     return res.status(201).json({
-      message: 'Employee created successfully',
+      message: 'Employee was created successfully',
       data: result,
       error: false,
     });
   } catch (error) {
-    return res.json({
-      message: 'An error occurred',
-      data: undefined,
-      error: true,
-    });
+    return res.status(204).send();
   }
 };
 
 const deleteEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!ObjectId.isValid(id)) {
-      return res.status(400).json({
-        message: `Invalid ID, ${id} does not exist`,
-        data: undefined,
-        error: true,
-      });
-    }
-    const result = await Employees.findByIdAndDelete(id);
-    if (result === null) {
-      return res.status(404).json({
+    const employee = await Employees.findByIdAndDelete(id);
+    await firebase.auth().deleteUser(employee.firebaseUid);
+    if (!employee) {
+      throw new Error({
         message: 'Employee not found',
-        data: undefined,
-        error: true,
+        status: 404,
       });
     }
-    return res.status(204).json({
-      message: `Employee with id ${id} deleted successfully`,
-      data: result,
-      error: false,
-    });
+    return res.status(204).send();
   } catch (error) {
     return res.json({
       message: `Server error: ${error}`,
@@ -180,8 +160,8 @@ const editEmployee = async (req, res) => {
       });
     }
 
-    const findById = await Employees.findById(id).populate('projects');
-    if (!findById) {
+    const employee = await Employees.findById(id).populate('projects');
+    if (!employee) {
       return res.status(404).json({
         message: 'Employee does not exist',
         data: undefined,
@@ -189,6 +169,12 @@ const editEmployee = async (req, res) => {
       });
     }
 
+    if (req.body.email && req.body.password) {
+      await firebase.auth().updateUser(employee.firebaseUid, {
+        email: req.body.email,
+        password: req.body.password,
+      });
+    }
     const result = await Employees.findByIdAndUpdate(
       { _id: id },
       { ...req.body },
