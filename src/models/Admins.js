@@ -11,7 +11,6 @@ const adminSchema = new Schema(
       required: true,
       lowercase: true,
     },
-    password: { type: String, required: true },
     status: { type: Boolean, required: true },
     firebaseUid: { type: String, required: true },
   },
