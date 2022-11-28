@@ -10,6 +10,6 @@ router
   .delete('/:id', checkAuth(['ADMIN']), employeeControllers.deleteEmployee)
   .get('/', checkAuth(['ADMIN']), employeeControllers.getAllEmployees)
   .get('/:id', checkAuth(['ADMIN']), employeeControllers.getEmployeeById)
-  .post('/', checkAuth(['ADMIN']), employeeValidations.validateCreation, employeeControllers.createEmployee);
+  .post('/', employeeValidations.validateCreation, employeeControllers.createEmployee);
 
 export default router;
