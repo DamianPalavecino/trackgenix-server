@@ -45,7 +45,7 @@ const editedMockedTimehseets = {
 
 const EmptyMockedTimehseets = {};
 
-describe('POST /timesheet', () => {
+describe.skip('POST /timesheet', () => {
   test('should return status code 201', async () => {
     const response = await request(app).post('/timesheets').send(mockedTimehseets);
 
@@ -59,7 +59,7 @@ describe('POST /timesheet', () => {
   });
 });
 
-describe('GET /timesheet', () => {
+describe.skip('GET /timesheet', () => {
   describe('Get all Timesheets', () => {
     test('should return status code 200 and Timesheets found', async () => {
       const response = await request(app).get('/timesheets').send();
@@ -73,7 +73,7 @@ describe('GET /timesheet', () => {
       expect(response.status).toBe(404);
     });
   });
-  describe('Get all filtered Timesheets', () => {
+  describe.skip('Get all filtered Timesheets', () => {
     test('should return status code 200 and Timehseet/s found', async () => {
       const response = await request(app).get('/timesheets?description=knowledge transfer').send();
 
@@ -93,7 +93,7 @@ describe('GET /timesheet', () => {
   });
 });
 
-describe('Get timesheets/:id', () => {
+describe.skip('Get timesheets/:id', () => {
   test('should return 200', async () => {
     const response = await request(app).get(`/timesheets/${timesheetId}`).send();
 
@@ -114,7 +114,7 @@ describe('Get timesheets/:id', () => {
   });
 });
 
-describe('PUT /timesheets', () => {
+describe.skip('PUT /timesheets', () => {
   test('should return 200', async () => {
     const response = await request(app).put(`/timesheets/${timesheetId}`).send(editedMockedTimehseets);
 
@@ -141,7 +141,7 @@ describe('PUT /timesheets', () => {
   });
 });
 
-describe('DELETE /timesheets', () => {
+describe.skip('DELETE /timesheets', () => {
   test('should return 204', async () => {
     const response = await request(app).delete(`/timesheets/${timesheetId}`).send();
 

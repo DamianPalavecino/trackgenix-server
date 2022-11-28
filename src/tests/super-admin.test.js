@@ -27,7 +27,7 @@ beforeAll(async () => {
   await SuperAdmins.collection.insertMany(superAdminsSeed);
 });
 
-describe('GET/superAdmins', () => {
+describe.skip('GET/superAdmins', () => {
   test('should return status code 200 , should have data inside and response error be false', async () => {
     const response = await request(app).get('/superAdmins').send();
     expect(response.status).toBe(200);
@@ -56,7 +56,7 @@ describe('GET/superAdmins', () => {
   });
 });
 
-describe('POST/superAdmins', () => {
+describe.skip('POST/superAdmins', () => {
   test('should return status code 200 , should response error be false', async () => {
     const response = await request(app).post('/superAdmins').send(mockedSuperAdmin);
 
@@ -81,7 +81,7 @@ describe('POST/superAdmins', () => {
   });
 });
 
-describe('GET/superAdmins', () => {
+describe.skip('GET/superAdmins', () => {
   test('should return status code 200 , should have data inside and response error be false , when filter by id', async () => {
     const response = await request(app).get(`/superAdmins/${superAdminId}`).send();
     expect(response.status).toBe(200);
@@ -100,7 +100,7 @@ describe('GET/superAdmins', () => {
   });
 });
 
-describe('PUT/superAdmins', () => {
+describe.skip('PUT/superAdmins', () => {
   test('should return status code 200 , should response error be false , when update data', async () => {
     const response = await request(app).put(`/superAdmins/${superAdminId}`).send(mockedSuperAdmin4);
     expect(response.status).toBe(200);
@@ -131,7 +131,7 @@ describe('PUT/superAdmins', () => {
   });
 });
 
-describe('DELETE/superAdmins', () => {
+describe.skip('DELETE/superAdmins', () => {
   test('should return status code 204', async () => {
     const response = await request(app).delete(`/superAdmins/${superAdminId}`).send();
     expect(response.status).toBe(204);
