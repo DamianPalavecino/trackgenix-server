@@ -1,3 +1,4 @@
+import firebase from '../helpers/firebase';
 import SuperAdmins from '../models/Super-admins';
 
 const { ObjectId } = require('mongoose').Types;
@@ -114,11 +115,18 @@ const getSuperAdminsById = async (req, res) => {
 
 const createSuperAdmin = async (req, res) => {
   try {
+    const newFirebaseUser = await firebase.auth().createUser({
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    await firebase.auth().setCustomUserClaims(newFirebaseUser.uid, { role: 'SUPER_ADMIN' });
+
     const superAdmin = new SuperAdmins({
       name: req.body.name,
       lastName: req.body.lastName,
       email: req.body.email,
-      password: req.body.password,
+      firebaseUid: newFirebaseUser.uid,
     });
 
     const result = await superAdmin.save();
@@ -137,25 +145,16 @@ const createSuperAdmin = async (req, res) => {
 
 const deletedSuperAdmin = async (req, res) => {
   try {
-    const { id } = req.params;
-    const result = await SuperAdmins.findByIdAndDelete(id);
-    if (id === null) {
-      return res.status(400).json({
-        message: 'There was an error: No ID parameter',
-        data: undefined,
-        error: true,
-      });
-    }
-    await SuperAdmins.findByIdAndDelete(id);
-    if (result === null) {
-      return res.status(404).json({
-        message: `There was an error: Super Admin with ID ${id} was not found`,
-        data: undefined,
-        error: true,
+    const superAdmin = await SuperAdmins.findByIdAndDelete(req.params.id);
+    await firebase.auth().deleteUser(superAdmin.firebaseUid);
+    if (!superAdmin) {
+      throw new Error({
+        message: 'SuperAdmin not found',
+        status: 404,
       });
     }
     return res.status(204).json({
-      data: result,
+      data: superAdmin,
       error: false,
     });
   } catch (error) {
@@ -172,13 +171,19 @@ const editedSuperAdmin = async (req, res) => {
     const { id } = req.params;
     if (!ObjectId.isValid(id)) return error404(res, `There was an error: ID ${id} is not valid`);
 
-    const updatedSuperAdmin = req.body;
+    const superAdmin = req.body;
 
-    if (Object.entries(updatedSuperAdmin).length === 0 || !updatedSuperAdmin) {
+    if (Object.entries(superAdmin).length === 0 || !superAdmin) {
       return error400(res, 'There was an error: The request body was empty');
     }
 
-    const result = await SuperAdmins.findByIdAndUpdate(id, updatedSuperAdmin, { new: true });
+    if (req.body.email && req.body.password) {
+      await firebase.auth().updateUser(superAdmin.firebaseUid, {
+        email: req.body.email,
+        password: req.body.password,
+      });
+    }
+    const result = await SuperAdmins.findByIdAndUpdate(id, superAdmin, { new: true });
 
     if (!result) return error404(res, `There was an error: Super Admin with ID ${id} was not found`);
 

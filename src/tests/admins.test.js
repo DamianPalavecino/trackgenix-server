@@ -39,7 +39,7 @@ beforeAll(async () => {
   await Admins.collection.insertMany(AdminsSeed);
 });
 
-describe('GET /admins', () => {
+describe.skip('GET /admins', () => {
   test('Should return status 200, correct message and error false.', async () => {
     const response = await request(app).get('/admins').send();
 
@@ -49,7 +49,7 @@ describe('GET /admins', () => {
   });
 });
 
-describe('POST /admins', () => {
+describe.skip('POST /admins', () => {
   test('Should return status 201, correct message and error false when all required fields are filled.', async () => {
     const response = await request(app).post('/admins').send(mockedAdmin1);
     // eslint-disable-next-line no-underscore-dangle
@@ -79,7 +79,7 @@ describe('POST /admins', () => {
   });
 });
 
-describe('GET /admins', () => {
+describe.skip('GET /admins', () => {
   test('Should return status 200, some data and error false.', async () => {
     adminId = '634ec42cef58b4a5306a2222';
     const response = await request(app).get(`/admins/${adminId}`).send();
@@ -93,7 +93,7 @@ describe('GET /admins', () => {
   });
 });
 
-describe('PUT /admins', () => {
+describe.skip('PUT /admins', () => {
   test('Should return status 200, some data and error false.', async () => {
     const response = await request(app).put(`/admins/${adminId}`).send(mockedAdmin2);
     expect(Object.keys(response.body.data).length).toBeGreaterThan(0);
@@ -117,7 +117,7 @@ describe('PUT /admins', () => {
   });
 });
 
-describe('DELETE /admins', () => {
+describe.skip('DELETE /admins', () => {
   test('Should return status 204.', async () => {
     const response = await request(app).delete(`/admins/${adminId}`).send();
     expect(response.status).toBe(204);

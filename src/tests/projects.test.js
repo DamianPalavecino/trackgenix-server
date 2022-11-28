@@ -108,7 +108,7 @@ const employeeNonexistentID = {
   employeeId: '634f281aca551819ef903f76',
 };
 
-describe('GET All /projects', () => {
+describe.skip('GET All /projects', () => {
   describe(msg200, () => {
     test('getAll with a non empty DB', async () => {
       const response = await request(app).get('/projects').send();
@@ -135,7 +135,7 @@ describe('GET All /projects', () => {
   });
 });
 
-describe('GET ById /projects/:id', () => {
+describe.skip('GET ById /projects/:id', () => {
   describe(msg200, () => {
     test('getById with an existent ID on DB', async () => {
       const response = await request(app).get(`/projects/${validId}`).send();
@@ -162,7 +162,7 @@ describe('GET ById /projects/:id', () => {
   });
 });
 
-describe('POST /projects', () => {
+describe.skip('POST /projects', () => {
   describe(msg201, () => {
     test('valid body req', async () => {
       const response = await request(app).post('/projects').send(projectOK);
@@ -221,7 +221,7 @@ describe('POST /projects', () => {
   });
 });
 
-describe('DELETE /projects', () => {
+describe.skip('DELETE /projects', () => {
   describe(msg204, () => {
     test('existent ID on DB', async () => {
       const response = await request(app).delete(`/projects/${projectId}`).send();
@@ -250,7 +250,7 @@ describe('DELETE /projects', () => {
   });
 });
 
-describe('PUT /projects', () => {
+describe.skip('PUT /projects', () => {
   describe(msg200, () => {
     test('update only name in a valid ID on DB', async () => {
       const response = await request(app).put(`/projects/${validId}`).send(updateOnlyName);
@@ -259,7 +259,7 @@ describe('PUT /projects', () => {
       expect(response.body.message).toBe('Project has been edited successfully');
     });
   });
-  describe(msg400, () => {
+  describe.skip(msg400, () => {
     test('trying to update a key nonexistent on Schema', async () => {
       const response = await request(app).put(`/projects/${validId}`).send(projectUndefinedKey);
       expect(response.status).toBe(400);
@@ -285,7 +285,7 @@ describe('PUT /projects', () => {
   });
 });
 
-describe('PUT /projects/:id/assignEmployee', () => {
+describe.skip('PUT /projects/:id/assignEmployee', () => {
   describe(msg201, () => {
     test('assign a valid employee', async () => {
       const response = await request(app).put('/projects/634d924e260e0ee548943dc7/assignEmployee').send(employeeOK);
@@ -316,7 +316,7 @@ describe('PUT /projects/:id/assignEmployee', () => {
       expect(response.body.error).toBeTruthy();
     });
   });
-  describe(msg404, () => {
+  describe.skip(msg404, () => {
     test('nonexistent ID project', async () => {
       const response = await request(app).put('/projects/634f42d0409f09628b8a1471/assignEmployee').send(employeeOK);
       expect(response.status).toBe(404);
