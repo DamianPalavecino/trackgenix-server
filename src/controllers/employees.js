@@ -118,7 +118,11 @@ const createEmployee = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(204).send();
+    return res.status(400).json({
+      message: error.message || error,
+      data: undefined,
+      error: true,
+    });
   }
 };
 
