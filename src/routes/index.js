@@ -5,6 +5,7 @@ import employeeRoutes from './employees';
 import projectRoutes from './projects';
 import adminsRoutes from './admins';
 import tasksRoutes from './tasks';
+import authRoutes from './auth';
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router
   .use('/employees', employeeRoutes)
   .use('/projects', projectRoutes)
   .use('/admins', adminsRoutes)
-  .use('/tasks', tasksRoutes);
+  .use('/tasks', tasksRoutes)
+  .use('/auth', authRoutes);
 
 export default router;
