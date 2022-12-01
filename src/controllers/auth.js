@@ -1,12 +1,10 @@
 import SuperAdmins from '../models/Super-admins';
 import Employees from '../models/Employees';
 import Admins from '../models/Admins';
-// import firebase from '../helpers/firebase';
 
 const getUserProfile = async (req, res) => {
   try {
-    const { role } = req;
-    const { firebaseUid } = req;
+    const { role, firebaseUid } = req;
     if (role === 'ADMIN') {
       const admin = await Admins.findOne({ firebaseUid });
       if (admin) {
