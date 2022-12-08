@@ -169,6 +169,8 @@ const addEmployee = async (req, res) => {
     const foundEmployee = await Employees.findById(newEmployee.employeeId);
     if (!foundEmployee) return error404(res, 'Employee was not found');
     if (req.body.role === 'PM') {
+      const hasProjectManager = project.employees.some((employee) => employee.role === 'PM');
+      if (hasProjectManager) return error400(res, 'The project already has a Project Manager assigned');
       foundEmployee.isProjectManager = true;
       await foundEmployee.save();
     }
