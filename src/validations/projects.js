@@ -3,7 +3,7 @@ import Joi from 'joi';
 const validateCreation = (req, res, next) => {
   const employeeValidation = Joi.object({
     employeeId: Joi.string().hex().length(24).required(),
-    role: Joi.string().valid('DEV', 'QA', 'TL').required(),
+    role: Joi.string().valid('DEV', 'QA', 'TL', 'PM').required(),
     rate: Joi.number().required(),
   });
 
@@ -32,7 +32,7 @@ const validateCreation = (req, res, next) => {
 const validateEdit = (req, res, next) => {
   const employeeValidation = Joi.object({
     employeeId: Joi.string().hex().length(24).required(),
-    role: Joi.string().valid('DEV', 'QA', 'TL'),
+    role: Joi.string().valid('DEV', 'QA', 'TL', 'PM'),
     rate: Joi.number(),
   });
 
@@ -61,7 +61,7 @@ const validateEdit = (req, res, next) => {
 const validatePutEmployee = (req, res, next) => {
   const employeeValidation = Joi.object({
     employeeId: Joi.string().hex().length(24).required(),
-    role: Joi.string().valid('DEV', 'QA', 'TL'),
+    role: Joi.string().valid('DEV', 'QA', 'TL', 'PM'),
     rate: Joi.number(),
   });
 
