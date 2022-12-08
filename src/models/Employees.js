@@ -12,6 +12,7 @@ const employeeSchema = new Schema(
       { type: Schema.Types.ObjectId, ref: 'Projects' },
     ],
     status: { type: Boolean, required: true },
+    isProjectManager: { type: Boolean, required: true },
     firebaseUid: { type: String, required: true },
   },
   { timestamps: true },
