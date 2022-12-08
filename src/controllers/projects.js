@@ -168,6 +168,10 @@ const addEmployee = async (req, res) => {
     const newEmployee = req.body;
     const foundEmployee = await Employees.findById(newEmployee.employeeId);
     if (!foundEmployee) return error404(res, 'Employee was not found');
+    if (req.body.role === 'PM') {
+      foundEmployee.isProjectManager = true;
+      await foundEmployee.save();
+    }
 
     const addEmployeedProject = await Projects.findByIdAndUpdate(
       { _id: id },
