@@ -10,7 +10,7 @@ router
   .get('/:id', checkAuth(['ADMIN', 'EMPLOYEE']), projectsControllers.getProjectById)
   .post('/', checkAuth(['ADMIN']), projectsValidations.validateCreation, projectsControllers.createProject)
   .delete('/:id', checkAuth(['ADMIN']), projectsControllers.deleteProject)
-  .put('/:id', checkAuth(['ADMIN']), projectsValidations.validateEdit, projectsControllers.updateProject)
+  .put('/:id', checkAuth(['ADMIN', 'EMPLOYEE']), projectsValidations.validateEdit, projectsControllers.updateProject)
   .put('/:id/assignEmployee', checkAuth(['ADMIN']), projectsValidations.validatePutEmployee, projectsControllers.addEmployee);
 
 export default router;

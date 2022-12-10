@@ -109,6 +109,7 @@ const createEmployee = async (req, res) => {
       email: req.body.email,
       projects: req.body.projects,
       status: false,
+      isProjectManager: false,
       firebaseUid: newFirebaseUser.uid,
     });
     const result = await employee.save();
