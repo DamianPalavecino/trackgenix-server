@@ -12,6 +12,7 @@ router
   .delete('/:id', checkAuth(['ADMIN']), projectsControllers.deleteProject)
   .put('/:id', checkAuth(['ADMIN', 'EMPLOYEE']), projectsValidations.validateEdit, projectsControllers.updateProject)
   .put('/:id/assignEmployee', checkAuth(['ADMIN']), projectsValidations.validatePutEmployee, projectsControllers.addEmployee)
-  .put('/:id/removeEmployee/:employee', checkAuth(['ADMIN']), projectsControllers.deleteEmployee);
+  .delete('/:id/removeEmployee/:employee', checkAuth(['ADMIN']), projectsControllers.deleteEmployee)
+  .put('/:id/editEmployee', checkAuth(['ADMIN']), projectsValidations.validatePutEmployee, projectsControllers.editEmployee);
 
 export default router;

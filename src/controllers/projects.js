@@ -226,7 +226,8 @@ const deleteEmployee = async (req, res) => {
     const foundEmployee = await Employees.findById(employee);
     if (!foundEmployee) return error404(res, 'Employee was not found');
     // eslint-disable-next-line no-underscore-dangle
-    const employeeExists = project.employees.some((elem) => elem._id === employee);
+    const employeeExists = project.employees.some((elem) => elem.employeeId.toString()
+    === employee);
     if (!employeeExists) return error400(res, 'The employee does not exist in the project');
     await Projects.findOneAndUpdate(
       { _id: project },
@@ -250,6 +251,41 @@ const deleteEmployee = async (req, res) => {
   }
 };
 
+const editEmployee = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!ObjectId.isValid(id)) return error400(res);
+    const project = await Projects.findById(id);
+    if (!project) return error404(res, 'Project was not found');
+    const { employeeId: employee } = req.body;
+    const foundEmployee = await Employees.findById(employee);
+    if (!foundEmployee) return error404(res, 'Employee was not found');
+    // eslint-disable-next-line no-underscore-dangle
+    const employeeExists = project.employees.some((elem) => elem.employeeId.toString()
+    === employee);
+    if (!employeeExists) return error400(res, 'The employee does not exist in the project');
+    await Projects.updateOne(
+      { _id: project, 'employees.employeeId': employee },
+      {
+        $set: {
+          'employees.$.rate': req.body.rate,
+          'employees.$.role': req.body.role,
+        },
+      },
+    );
+    return res.status(200).json({
+      message: 'Employee has been edited successfully',
+      error: false,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: `${error}`,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
 export default {
   createProject,
   getAllProjects,
@@ -258,4 +294,5 @@ export default {
   addEmployee,
   updateProject,
   deleteEmployee,
+  editEmployee,
 };
