@@ -13,6 +13,7 @@ const projectSchema = new Schema(
       employeeId: { type: Schema.Types.ObjectId, required: true, ref: 'Employee' },
       role: { type: String, enum: ['DEV', 'QA', 'PM', 'TL'], required: true },
       rate: { type: Number, required: true },
+      _id: false,
     }],
     status: { type: Boolean, required: true },
   },

@@ -168,6 +168,10 @@ const addEmployee = async (req, res) => {
     const newEmployee = req.body;
     const foundEmployee = await Employees.findById(newEmployee.employeeId);
     if (!foundEmployee) return error404(res, 'Employee was not found');
+    // eslint-disable-next-line no-underscore-dangle
+    const employeeExists = project.employees
+      .some((elem) => elem.employeeId.toString() === newEmployee.employeeId);
+    if (employeeExists) return error400(res, 'The employee was already assigned in the project');
     if (req.body.role === 'PM') {
       const hasProjectManager = project.employees.some((employee) => employee.role === 'PM');
       if (hasProjectManager) return error400(res, 'The project already has a Project Manager assigned');
@@ -213,6 +217,39 @@ const addEmployee = async (req, res) => {
   }
 };
 
+const deleteEmployee = async (req, res) => {
+  try {
+    const { id, employee } = req.params;
+    if (!ObjectId.isValid(id)) return error400(res);
+    const project = await Projects.findById(id);
+    if (!project) return error404(res, 'Project was not found');
+    const foundEmployee = await Employees.findById(employee);
+    if (!foundEmployee) return error404(res, 'Employee was not found');
+    // eslint-disable-next-line no-underscore-dangle
+    const employeeExists = project.employees.some((elem) => elem._id === employee);
+    if (!employeeExists) return error400(res, 'The employee does not exist in the project');
+    await Projects.findOneAndUpdate(
+      { _id: project },
+      { $pull: { employees: { employeeId: employee } } },
+    );
+    await Employees.updateOne(
+      { _id: employee },
+      // eslint-disable-next-line no-underscore-dangle
+      { $pull: { projects: project._id } },
+    );
+    return res.status(200).json({
+      message: 'Employee has been deleted successfully',
+      error: false,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: `${error}`,
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
 export default {
   createProject,
   getAllProjects,
@@ -220,4 +257,5 @@ export default {
   deleteProject,
   addEmployee,
   updateProject,
+  deleteEmployee,
 };
