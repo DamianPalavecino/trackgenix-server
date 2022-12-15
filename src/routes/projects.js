@@ -11,6 +11,8 @@ router
   .post('/', checkAuth(['ADMIN']), projectsValidations.validateCreation, projectsControllers.createProject)
   .delete('/:id', checkAuth(['ADMIN']), projectsControllers.deleteProject)
   .put('/:id', checkAuth(['ADMIN', 'EMPLOYEE']), projectsValidations.validateEdit, projectsControllers.updateProject)
-  .put('/:id/assignEmployee', checkAuth(['ADMIN']), projectsValidations.validatePutEmployee, projectsControllers.addEmployee);
+  .put('/:id/assignEmployee', checkAuth(['ADMIN']), projectsValidations.validatePutEmployee, projectsControllers.addEmployee)
+  .delete('/:id/removeEmployee/:employee', checkAuth(['ADMIN']), projectsControllers.deleteEmployee)
+  .put('/:id/editEmployee', checkAuth(['ADMIN']), projectsValidations.validatePutEmployee, projectsControllers.editEmployee);
 
 export default router;
