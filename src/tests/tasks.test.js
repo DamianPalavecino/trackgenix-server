@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import request from 'supertest';
-import app from '../app';
+import app from '../index';
 import Tasks from '../models/Tasks';
 import tasksSeed from '../seeds/tasks';
 

@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app';
+import app from '../index';
 import Timesheets from '../models/Timesheets';
 import timesheetsSeed from '../seeds/timesheets';
 import Tasks from '../models/Tasks';

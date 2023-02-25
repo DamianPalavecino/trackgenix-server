@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app';
+import app from '../index';
 import SuperAdmins from '../models/Super-admins';
 import superAdminsSeed from '../seeds/superAdmins';
 
