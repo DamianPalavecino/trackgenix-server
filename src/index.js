@@ -4,10 +4,11 @@ import mongoose from 'mongoose';
 import app from './app';
 
 dotenv.config();
-const { PORT, DATABASE_URL } = process.env;
+
+const PORT = process.env.PORT || 3000;
 
 mongoose.connect(
-  DATABASE_URL,
+  process.env.DATABASE_URL,
   (error) => {
     if (error) {
       console.log('Fail connection to database', error);
